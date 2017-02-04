@@ -7,7 +7,7 @@
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
     <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
-    
+
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="img/touch/apple-touch-icon-144x144-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="img/touch/apple-touch-icon-114x114-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="img/touch/apple-touch-icon-72x72-precomposed.png">
@@ -42,17 +42,17 @@
     <link href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" media="all" rel="stylesheet" type="text/css">
 
     <!-- Stylesheets -->
-    <link rel="stylesheet" href="css/animate.css">
-    <link rel="stylesheet" href="css/materialize.min.css">
-    <link rel="stylesheet" href="css/swipebox.min.css">
-    <link rel="stylesheet" href="css/swiper.min.css">
-    <link rel="stylesheet" href="css/normalize.css">
-    <link rel="stylesheet" href="css/main.css">
-    <script src="js/vendor/modernizr-2.7.1.min.js"></script>
+    <link rel="stylesheet" href="{{ static_url('shuttle/css/animate.css') }}">
+    <link rel="stylesheet" href="{{ static_url('shuttle/css/materialize.min.css') }}">
+    <link rel="stylesheet" href="{{ static_url('shuttle/css/swipebox.min.css') }}">
+    <link rel="stylesheet" href="{{ static_url('shuttle/css/swiper.min.css') }}">
+    <link rel="stylesheet" href="{{ static_url('shuttle/css/normalize.css') }}">
+    <link rel="stylesheet" href="{{ static_url('shuttle/css/main.css') }}">
+    <script src="{{ static_url('shuttle/js/vendor/modernizr-2.7.1.min.js') }}"></script>
   </head>
-  
+
   <body>
-        
+
     <!-- Main Container -->
     <div id="main" class="main">
 
@@ -70,10 +70,10 @@
 
       <!-- Page Contents -->
       <div class="page animated fadeinup">
-        
+
         <!-- Hero Header -->
         <div class="hero-header animated fadein">
-          <!-- Slider -->         
+          <!-- Slider -->
           <div class="swiper-container swiper-slider">
             <div class="swiper-wrapper">
               <div class="swiper-slide">
@@ -112,7 +112,7 @@
             <li class="tab col s3"><a class="active" href="#product1">Info</a></li>
             <li class="tab col s3"><a href="#product2">About</a></li>
           </ul>
-          
+
           <div id="product1" class="p-20">
             <p class="text-flow">It showed a lady fitted out with a fur hat and fur boa who sat upright, raising a heavy fur muff that covered the whole of her lower arm towards the viewer. Gregor then turned to look out the window at the dull weather. Drops of rain could be heard hitting the pane, which made him feel quite sad.</p>
           </div>
@@ -120,7 +120,7 @@
             <p class="text-flow">what a strenuous career it is that I've chosen! Travelling day in and day out. Doing business like this takes much more effort than doing your own business at home, and on top of that there's the curse of travelling, worries about making train connections, bad and irregular food, contact with different people all the time so that you can never get to know anyone or become friendly with them. It can all go to Hell!</p>
           </div>
         </div>
-        
+
         <div class="product-variation">
           <h5><strong>Choose a color:</strong></h5>
           <form action="#">
@@ -162,7 +162,7 @@
             <option value="2">Cash on Delivery</option>
             <option value="3">Online Payment</option>
           </select>
-        </div> 
+        </div>
 
         <div class="product-variation">
           <a class="waves-effect waves-light btn-large modal-trigger accent-color block m-20" href="checkout.html">Add to Cart</a>
@@ -186,8 +186,8 @@
             </div>
           </div>
         </footer>
-      
-      </div> 
+
+      </div>
       <!-- End of Page Contents -->
 
       <!-- Sidebars -->
@@ -238,7 +238,7 @@
                 <a href="blank.html">Blank</a>
               </li>
             </ul>
-          </div>  
+          </div>
         </li>
         <li>
           <div class="collapsible-header waves-effect">
@@ -489,21 +489,21 @@
         </li>
       </ul>
       <!-- End of Sidebars -->
-        
+
     </div>
     <!-- End of Main Container -->
-    
+
     <!-- Scripts -->
-    <script src="js/vendor/jquery-2.1.0.min.js"></script>
-    <script src="js/helper.js"></script>
-    <script src="js/vendor/HeadsUp.js"></script>
-    <script src="js/vendor/jquery.smoothState.js"></script>
-    <script src="js/vendor/chart.min.js"></script>
-    <script src="js/vendor/jquery.mixitup.min.js"></script>
-    <script src="js/vendor/jquery.swipebox.min.js"></script>
-    <script src="js/vendor/masonry.min.js"></script>
-    <script src="js/vendor/swiper.min.js"></script>
-    <script src="js/vendor/materialize.min.js"></script>
-    <script src="js/main.js"></script>
+    <script src="{{ static_url('shuttle/js/vendor/jquery-2.1.0.min.js') }}"></script>
+    <script src="{{ static_url('shuttle/js/helper.js') }}"></script>
+    <script src="{{ static_url('shuttle/js/vendor/HeadsUp.js') }}"></script>
+    <script src="{{ static_url('shuttle/js/vendor/jquery.smoothState.js') }}"></script>
+    <script src="{{ static_url('shuttle/js/vendor/chart.min.js') }}"></script>
+    <script src="{{ static_url('shuttle/js/vendor/jquery.mixitup.min.js') }}"></script>
+    <script src="{{ static_url('shuttle/js/vendor/jquery.swipebox.min.js') }}"></script>
+    <script src="{{ static_url('shuttle/js/vendor/masonry.min.js') }}"></script>
+    <script src="{{ static_url('shuttle/js/vendor/swiper.min.js') }}"></script>
+    <script src="{{ static_url('shuttle/js/vendor/materialize.min.js') }}"></script>
+    <script src="{{ static_url('shuttle/js/main.js') }}"></script>
   </body>
 </html>
