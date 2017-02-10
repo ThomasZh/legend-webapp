@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html class="no-js">
+  <head>
+    <meta charset="utf-8">
+    <title>Shuttle - Material Design Mobile Template</title>
+    <meta name="description" content="Material Design Mobile Template">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
+
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/static/shuttle/img/touch/apple-touch-icon-144x144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/static/shuttle/img/touch/apple-touch-icon-114x114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/static/shuttle/img/touch/apple-touch-icon-72x72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="/static/shuttle/img/touch/apple-touch-icon-57x57-precomposed.png">
+    <link rel="shortcut icon" sizes="196x196" href="/static/shuttle/img/touch/touch-icon-196x196.png">
+    <link rel="shortcut icon" href="/static/shuttle/img/touch/apple-touch-icon.png">
+
+    <!-- Tile icon for Win8 (144x144 + tile color) -->
+    <meta name="msapplication-TileImage" content="/static/shuttle/img/touch/apple-touch-icon-144x144-precomposed.png">
+    <meta name="msapplication-TileColor" content="#222222">
+
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <!-- SEO: If mobile URL is different from desktop URL, add a canonical link to the desktop page -->
+    <!--
+    <link rel="canonical" href="http://www.example.com/" >
+    -->
+
+    <!-- For iOS web apps. Delete if not needed. https://github.com/h5bp/mobile-boilerplate/issues/94 -->
+    <!--
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="">
+    -->
+
+    <!-- Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,700,100' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>
+    <!-- Icons -->
+    <link href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" media="all" rel="stylesheet" type="text/css">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="{{ static_url('shuttle/css/animate.css') }}">
+    <link rel="stylesheet" href="{{ static_url('shuttle/css/materialize.min.css') }}">
+    <link rel="stylesheet" href="{{ static_url('shuttle/css/swipebox.min.css') }}">
+    <link rel="stylesheet" href="{{ static_url('shuttle/css/swiper.min.css') }}">
+    <link rel="stylesheet" href="{{ static_url('shuttle/css/normalize.css') }}">
+    <link rel="stylesheet" href="{{ static_url('shuttle/css/main.css') }}">
+    <link rel="stylesheet" href="{{ static_url('weui/lib/weui.min.css') }}">
+  </head>
+
+  <body>
+
+    <!-- Main Container -->
+    <div id="main" class="main">
+
+      <!-- Toolbar -->
+      {% module Template("shuttle/block-toolbar.html") %}
+      <!-- End of Toolbar -->
+
+      <!-- Page Contents -->
+      <div class="animated fadeinup">
+
+        <!-- 这里是页面内容区 -->
+        <div class="valign">
+          <div class="bd">
+            <div class="weui_cells_title">&nbsp;</div>
+            <div class="weui_cells_title">&nbsp;</div>
+            <div class="weui_cells_title">背景图片</div>
+            <div class="weui_cells weui_cells_form">
+              <div class="weui_cell">
+                <div class="weui_cell_bd weui_cell_primary">
+                  <div class="weui_uploader">
+                    <div class="weui_uploader_hd weui_cell">
+                      <div class="weui_cell_bd weui_cell_primary">图片上传</div>
+                      <div id="file_counter" class="weui_cell_ft">0/4</div>
+                    </div>
+                    <div class="weui_uploader_bd">
+                      <ul class="weui_uploader_files" id="weui_uploader_files">
+                        <li>
+                          <div class="weui_uploader_input_wrp">
+                            <input id="file" name="file" class="weui_uploader_input"
+                              type="file" accept="image/jpg,image/jpeg,image/png,image/gif" />
+                            <input type="hidden" id="filenames" name="filenames">
+                          </div>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- uploading toast -->
+            <div id="loadingToast" class="weui_loading_toast" style="display:none;">
+                <div class="weui_mask_transparent"></div>
+                <div class="weui_toast">
+                    <div class="weui_loading">
+                        <div class="weui_loading_leaf weui_loading_leaf_0"></div>
+                        <div class="weui_loading_leaf weui_loading_leaf_1"></div>
+                        <div class="weui_loading_leaf weui_loading_leaf_2"></div>
+                        <div class="weui_loading_leaf weui_loading_leaf_3"></div>
+                        <div class="weui_loading_leaf weui_loading_leaf_4"></div>
+                        <div class="weui_loading_leaf weui_loading_leaf_5"></div>
+                        <div class="weui_loading_leaf weui_loading_leaf_6"></div>
+                        <div class="weui_loading_leaf weui_loading_leaf_7"></div>
+                        <div class="weui_loading_leaf weui_loading_leaf_8"></div>
+                        <div class="weui_loading_leaf weui_loading_leaf_9"></div>
+                        <div class="weui_loading_leaf weui_loading_leaf_10"></div>
+                        <div class="weui_loading_leaf weui_loading_leaf_11"></div>
+                    </div>
+                    <p class="weui_toast_content">图片上传中...</p>
+                </div>
+            </div>
+
+            <!--BEGIN dialog2-->
+            <div class="weui_dialog_alert" id="dialog2" style="display: none;">
+              <div class="weui_mask"></div>
+              <div class="weui_dialog">
+                <div class="weui_dialog_hd"><strong class="weui_dialog_title">提示</strong></div>
+                <div class="weui_dialog_bd">最多只能上传4个文件</div>
+                <div class="weui_dialog_ft">
+                  <a href="javascript:;" class="weui_btn_dialog primary">确定</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="weui_cells_title">描述文字</div>
+            <div class="weui_cells weui_cells_form">
+              <div class="weui_cell">
+                <div class="weui_cell_bd weui_cell_primary">
+                  <textarea id="subtitle" class="weui_textarea" placeholder="请输入描述" rows="3"></textarea>
+                  <div class="weui_textarea_counter"><span>0</span>/200</div>
+                </div>
+              </div>
+            </div>
+            <div class="weui_cells_tips">描述以200个字为宜</div>
+
+            <div class="weui_btn_area">
+              <a onclick="onSubmit();" class="waves-effect waves-light btn-large accent-color block m-b-20 animated bouncein delay-2">保存</a>
+            </div>
+          </div>
+        </div> <!-- content -->
+
+        <!-- footer -->
+        {% module Template("shuttle/block-footer.html") %}
+        <!-- /footer -->
+
+      </div>
+      <!-- End of Page Contents -->
+
+      <!-- Sidebars -->
+      <!-- left sidebar -->
+      {% module Template("shuttle/block-left-sidebar.html") %}
+      <!-- /left sidebar -->
+
+      <!-- right sidebar -->
+      {% module Template("shuttle/block-right-sidebar.html") %}
+      <!-- /right sidebar -->
+      <!-- End of Sidebars -->
+
+    </div>
+    <!-- End of Main Container -->
+
+    <!-- Scripts -->
+    <script src="{{ static_url('shuttle/js/vendor/jquery-2.1.0.min.js') }}"></script>
+    <script src="{{ static_url('shuttle/js/helper.js') }}"></script>
+    <script src="{{ static_url('shuttle/js/vendor/HeadsUp.js') }}"></script>
+    <script src="{{ static_url('shuttle/js/vendor/jquery.smoothState.js') }}"></script>
+    <script src="{{ static_url('shuttle/js/vendor/chart.min.js') }}"></script>
+    <script src="{{ static_url('shuttle/js/vendor/jquery.mixitup.min.js') }}"></script>
+    <script src="{{ static_url('shuttle/js/vendor/jquery.swipebox.min.js') }}"></script>
+    <script src="{{ static_url('shuttle/js/vendor/masonry.min.js') }}"></script>
+    <script src="{{ static_url('shuttle/js/vendor/swiper.min.js') }}"></script>
+    <script src="{{ static_url('shuttle/js/vendor/materialize.min.js') }}"></script>
+    <script src="{{ static_url('shuttle/js/main.js') }}"></script>
+
+    <!-- fileinput -->
+  	<script src="{{ static_url("upyun/js/spark-md5.min.js") }}"></script>
+  	<script src="{{ static_url("upyun/js/async.js") }}"></script>
+  	<script src="{{ static_url("upyun/js/upyun-mu.js") }}"></script>
+
+    <!-- customer js files -->
+    <script src='{{ static_url("js/exif.js") }}' type="text/javascript"></script>
+    <script src='{{ static_url("js/mobileBUGFix.mini.js") }}' type="text/javascript"></script>
+    <script src='{{ static_url("js/json2.js") }}' type='text/javascript'></script>
+
+    <script>
+      var lastImgUrl;
+      var fileCounter = 0;
+      var arrayObj = new Array();
+
+      function onSubmit() {
+        subtitle = $("#subtitle").val();
+        if (subtitle == null || subtitle == undefined || subtitle == '') {
+          if (fileCounter == 0) {
+            alert('请上传图片或输入描述');
+            return false;
+          }
+        }
+
+        var data = {
+          "imgs": arrayObj,
+          "subtitle": subtitle,
+        };
+        var json = JSON.stringify(data);
+        console.log(json);
+
+        $.ajax({
+          type: "POST",
+          url: "/api/moments",
+          data: json,
+          dataType: "json",
+          contentType: 'application/json',
+          success: function(data, status, xhr) {
+            location.href = "/webapp/demo/moments";
+          },
+          error: function(XMLHttpRequest, textStatus, errorThrown) {
+            console.log("XMLHttpRequest.status:" + XMLHttpRequest.status);
+            if (XMLHttpRequest.status == 200) {
+              location.href = "/webapp/demo/moments";
+            }
+          },
+          complete: function(XMLHttpRequest, textStatus) {
+            this; // 调用本次AJAX请求时传递的options参数
+          }
+        });
+      }
+
+      $(function () {
+        $("input[type=file]").each(function() {
+          var _this = $(this);
+          _this.localResizeIMG({
+            width : 1920,
+            quality : 0.9,
+            success : function(result) {
+              if (fileCounter == 4) {
+                $('#dialog2').show().on('click', '.weui_btn_dialog', function () {
+                  $('#dialog2').off('click').hide();
+                });
+                return false;
+              }
+              $('#loadingToast').show();
+
+              //获取后缀名
+              var att = pre.substr(pre.lastIndexOf("."));
+              //压缩后图片的base64字符串
+              var base64_string = result.clearBase64;
+              //console.log(base64_string);
+              //图片预览
+              var imgObj = $("#img");
+              imgObj.attr("src", "data:image/jpeg;base64," + base64_string)                                      .show();
+              //拼接data字符串，传递会后台
+              var fileData = $("#fileData");
+              fileData.val(att + "," + imgObj.attr("src"));
+              //console.log(fileData);
+
+              var blob = dataURLtoBlob(result.base64);
+              //console.log(blob);
+
+              lastImgUrl = uploadBlogImgToUpyun(blob);
+              console.log('lastImgUrl', lastImgUrl);
+
+              arrayObj.push(lastImgUrl);
+              $("#filenames").val(arrayObj);
+            }
+          });
+        });
+
+        document.addEventListener('uploaded', function(e) {
+          //$('#weui_uploader_files').html('');
+          inner_html = '<li class="weui_uploader_file" style="background-image:url(' + lastImgUrl + '!200x200)"></li>';
+          $('#weui_uploader_files').append(inner_html);
+
+          fileCounter++;
+          $('#file_counter').html(""+fileCounter+"/4");
+
+          $('#loadingToast').hide();
+        });
+      });
+
+
+      ////////////////////////////////////////////////////////////////////
+      // 图片压缩上传,
+      // 引用LocalResizeIMG.js（插件主体）及mobileBUGFix.mini.js（移动端的补丁）
+
+      var pre;//源图片名称
+      var Orientation = null;//图片方向角
+
+      /**
+       * 获得base64
+       * @param {Object} obj
+       * @param {Number} [obj.width] 图片需要压缩的宽度，高度会跟随调整
+       * @param {Number} [obj.quality=0.8] 压缩质量，不压缩为1
+       * @param {Function} [obj.before(this, blob, file)] 处理前函数,this指向的是input:file
+       * @param {Function} obj.success(obj) 处理后函数
+       *
+       */
+      $.fn.localResizeIMG = function(obj) {
+        this.on('change', function() {
+          var file = this.files[0];
+          pre = file.name;
+          var URL = window.URL || window.webkitURL;
+          var blob = URL.createObjectURL(file);
+
+          //获取照片方向角属性，用户旋转控制
+          EXIF.getData(file, function() {
+            //alert(EXIF.pretty(file));
+            EXIF.getAllTags(file);
+            Orientation = EXIF.getTag(file, 'Orientation');
+            //alert(Orientation);
+            //return;
+          });
+
+          // 执行前函数
+          if ($.isFunction(obj.before)) {
+            obj.before(this, blob, file);
+          }
+
+          _create(blob, file);
+          this.value = ''; // 清空临时数据
+        });
+
+        /**
+         * 生成base64
+         * @param blob 通过file获得的二进制
+         */
+        function _create(blob, file) {
+          var img = new Image();
+          img.src = blob;
+
+          img.onload = function() {
+            var that = this;
+
+            //生成比例
+            var w = that.width, h = that.height, scale = w / h;
+            w = obj.width || w;
+            h = w / scale;
+
+            //生成canvas
+            var canvas = document.createElement('canvas');
+            var ctx = canvas.getContext('2d');
+            $(canvas).attr({
+              width : w,
+              height : h
+            });
+            ctx.drawImage(that, 0, 0, w, h);
+
+            /**
+             * 生成base64
+             * 兼容修复移动设备需要引入mobileBUGFix.js
+             */
+            var base64 = canvas.toDataURL('image/jpeg', obj.quality || 0.6);
+
+            // 修复IOS
+            if (navigator.userAgent.match(/iphone/i)) {
+              console.log('iphone');
+              //alert(w + ',' + h);
+              //如果方向角不为1，都需要进行旋转
+              if (Orientation != "" && Orientation != 1){
+                switch(Orientation){
+                  case 6://需要顺时针（向左）90度旋转
+                      //alert('需要顺时针（向左）90度旋转');
+                      rotateImg(this,'left',canvas);
+                      break;
+                  case 8://需要逆时针（向右）90度旋转
+                      //alert('需要顺时针（向右）90度旋转');
+                      rotateImg(this,'right',canvas);
+                      break;
+                  case 3://需要180度旋转
+                      //alert('需要180度旋转');
+                      rotateImg(this,'right',canvas);//转两次
+                      rotateImg(this,'right',canvas);
+                      break;
+                  default:
+                    //alert('未旋转处理');
+                    break;
+                }
+              }
+
+              // var mpImg = new MegaPixImage(img);
+              // mpImg.render(canvas, {
+              //   maxWidth : w,
+              //   maxHeight : h,
+              //   quality : obj.quality || 0.8
+              // });
+              base64 = canvas.toDataURL('image/jpeg', obj.quality || 0.6);
+            } else if (navigator.userAgent.match(/Android/i)) { // 修复android
+              var encoder = new JPEGEncoder();
+              base64 = encoder.encode(ctx.getImageData(0, 0, w, h),
+                    obj.quality * 100 || 80);
+            } else {
+              //如果方向角不为1，都需要进行旋转
+              if (Orientation != "" && Orientation != 1){
+                switch(Orientation){
+                  case 6://需要顺时针（向左）90度旋转
+                      //alert('需要顺时针（向左）90度旋转');
+                      rotateImg(this,'left',canvas);
+                      break;
+                  case 8://需要逆时针（向右）90度旋转
+                      //alert('需要顺时针（向右）90度旋转');
+                      rotateImg(this,'right',canvas);
+                      break;
+                  case 3://需要180度旋转
+                      //alert('需要180度旋转');
+                      rotateImg(this,'right',canvas);//转两次
+                      rotateImg(this,'right',canvas);
+                      break;
+                  default:
+                    //alert('未旋转处理');
+                    break;
+                }
+              }
+
+              // var mpImg = new MegaPixImage(img);
+              // mpImg.render(canvas, {
+              //   maxWidth : w,
+              //   maxHeight : h,
+              //   quality : obj.quality || 0.8
+              // });
+              base64 = canvas.toDataURL('image/jpeg', obj.quality || 0.6);
+            }
+
+            // 生成结果
+            var result = {
+              base64 : base64,
+              clearBase64 : base64.substr(base64.indexOf(',') + 1)
+            };
+
+            // 执行后函数
+            obj.success(result);
+          };
+        }
+      };
+
+
+      //对图片旋转处理 added by lzk
+      function rotateImg(img, direction,canvas) {
+        //alert(img);
+        //最小与最大旋转方向，图片旋转4次后回到原方向
+        var min_step = 0;
+        var max_step = 3;
+        //var img = document.getElementById(pid);
+        if (img == null)return;
+        //img的高度和宽度不能在img元素隐藏后获取，否则会出错
+        var height = img.height;
+        var width = img.width;
+        //var step = img.getAttribute('step');
+        var step = 2;
+        if (step == null) {
+            step = min_step;
+        }
+        if (direction == 'right') {
+            step++;
+            //旋转到原位置，即超过最大值
+            step > max_step && (step = min_step);
+        } else {
+            step--;
+            step < min_step && (step = max_step);
+        }
+        //img.setAttribute('step', step);
+        /*var canvas = document.getElementById('pic_' + pid);
+        if (canvas == null) {
+            img.style.display = 'none';
+            canvas = document.createElement('canvas');
+            canvas.setAttribute('id', 'pic_' + pid);
+            img.parentNode.appendChild(canvas);
+        }  */
+        //旋转角度以弧度值为参数
+        var degree = step * 90 * Math.PI / 180;
+        var ctx = canvas.getContext('2d');
+        switch (step) {
+            case 0:
+                canvas.width = width;
+                canvas.height = height;
+                ctx.drawImage(img, 0, 0);
+                break;
+            case 1:
+                canvas.width = height;
+                canvas.height = width;
+                ctx.rotate(degree);
+                ctx.drawImage(img, 0, -height);
+                break;
+            case 2:
+                canvas.width = width;
+                canvas.height = height;
+                ctx.rotate(degree);
+                ctx.drawImage(img, -width, -height);
+                break;
+            case 3:
+                canvas.width = height;
+                canvas.height = width;
+                ctx.rotate(degree);
+                ctx.drawImage(img, -width, 0);
+                break;
+        }
+      }
+
+      // image:data 转成 blob格式
+      function dataURLtoBlob(dataUrl) {
+        var arr = dataUrl.split(','), mime = arr[0].match(/:(.*?);/)[1],
+          bstr = atob(arr[1]), n = bstr.length, u8arr = new Uint8Array(n);
+        while(n--){
+          u8arr[n] = bstr.charCodeAt(n);
+        }
+        return new Blob([u8arr], {type:mime});
+      }
+
+
+      // 上传blob到upyun
+      function uploadBlogImgToUpyun(blob) {
+        var config = {
+          // 空间名称
+          bucket : 'tripc2c-club-title',
+          // 上传请求过期时间
+          expiration : parseInt((new Date().getTime() + 3600000) / 1000),
+          // 尽量不要使用直接传表单 API 的方式，以防泄露造成安全隐患
+          form_api_secret : 'CRKAOsKHGbbCnU+yztBxUT0bYR0='
+        };
+
+        var instance = new Sand(config);
+        var options = {
+          'notify_url' : 'http://upyun.com',
+          //"allow-file-type":"jpg,jpeg,png",
+          //"x-gmkerl-value": "150", /// 如需缩小功能,这必须输入(缩略图宽度/像素)
+          //"x-gmkerl-quality": "95", /// 可选(图片压缩质量,默认 95)
+          //"x-gmkerl-unsharp": "True", /// 可选(是否进行锐化处理,默认锐化)
+          //"x-gmkerl-rotate": "auto", /// 可选(是否进行图片旋转)
+          //"x-gmkerl-clip" : "800x800s300a300", /// 可选(是否进行图片裁剪)
+        };
+        instance.setOptions(options);
+
+        var d = new Date();
+        var month = d.getMonth() + 1;
+        var filename = '/multimedia/' + d.getFullYear() + '/' + month + '/' + d.getDate() + '/' + uuid();
+        console.log(filename);
+        instance.upload_blob(filename, blob);
+
+        return 'https://tripc2c-club-title.b0.upaiyun.com' + filename;
+      }
+
+
+      function uuid() {
+        var s = [];
+        var hexDigits = "0123456789abcdef";
+        for (var i = 0; i < 36; i++) {
+          s[i] = hexDigits.substr(Math.floor(Math.random() * 0x10), 1);
+        }
+        s[14] = "4"; // bits 12-15 of the time_hi_and_version field to 0010
+        s[19] = hexDigits.substr((s[19] & 0x3) | 0x8, 1); // bits 6-7 of the clock_seq_hi_and_reserved to 01
+        s[8] = s[13] = s[18] = s[23] = "-";
+
+        var uuid = s.join("");
+        return uuid;
+      }
+
+      // 图片压缩上传,
+      // 引用LocalResizeIMG.js（插件主体）及mobileBUGFix.mini.js（移动端的补丁）
+      ////////////////////////////////////////////////////////////////////
+
+    </script>
+  </body>
+</html>

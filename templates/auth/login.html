@@ -1,128 +1,198 @@
-<!DOCTYPE HTML>
-<html>
+<!DOCTYPE html>
+<html class="no-js">
+  <head>
+    <meta charset="utf-8">
+    <title>Shuttle - Material Design Mobile Template</title>
+    <meta name="description" content="Material Design Mobile Template">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
 
-<head>
-  <title>用户登录-UI中国-专业界面交互设计平台</title>
-  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-  <meta name="Keywords" content="ui设计,界面设计,ui平台,学ui,ui教程,ui源文件,ui下载,ui问答,ui杂志,ui活动,ui软件,ui工具,ui灵感,ui经验">
-  <meta property="qc:admins" content="172174204536747716" />
-  <meta name="Description" content="UI中国,前身为iconfans.com。是专业的界面设计师交流、学习/展示平台.同时也是UI设计师人才流动的集散地,会员均为一线UI设计师,覆盖主流互联网公司.我们希望借助互联网的力量打造国内最专业的UI设计平台,为UI设计师做最好的服务,提高UI设计行业价值!">
-  <link rel="stylesheet" href="{{ static_url('uicn/css/iconfont.css') }}">
-  <link rel="stylesheet" href="{{ static_url('uicn/css/base.css') }}">
-  <link rel="stylesheet" href="{{ static_url('uicn/css/login-fluid.css') }}">
-  <script src="{{ static_url('uicn/js/jquery.js') }}"></script>
-  <script src="{{ static_url('uicn/js/md5.min.js') }}"></script>
-</head>
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/static/shuttle/img/touch/apple-touch-icon-144x144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/static/shuttle/img/touch/apple-touch-icon-114x114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/static/shuttle/img/touch/apple-touch-icon-72x72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="/static/shuttle/img/touch/apple-touch-icon-57x57-precomposed.png">
+    <link rel="shortcut icon" sizes="196x196" href="/static/shuttle/img/touch/touch-icon-196x196.png">
+    <link rel="shortcut icon" href="/static/shuttle/img/touch/apple-touch-icon.png">
 
-<body>
-  <div id="ajax-hook"></div>
-  <div class="wp cl">
-    <div class="log-wrap cl">
-      <div class="log-hd">
-        <div class="wpl cl">
-          <div class="log-row cl">
-            <div class="log-logo">
-              <a href="http://www.ui.cn"> <img src="http://s8.ui.cn/img/log-logo.png" srcset="http://s8.ui.cn/img/@2x/log-logo@2x.png 2x" /> </a>
-            </div>
-            <div class="log-title">
-              <strong>欢迎来到UI中国</strong>
-              <p>UI中国 专业界面设计平台</p>
-            </div>
+    <!-- Tile icon for Win8 (144x144 + tile color) -->
+    <meta name="msapplication-TileImage" content="/static/shuttle/img/touch/apple-touch-icon-144x144-precomposed.png">
+    <meta name="msapplication-TileColor" content="#222222">
 
-            <ul class="log-nav">
-              <li><a href="http://www.ui.cn" target="_blank">首页</a> </li>
-              <li><a href="http://www.ui.cn/list.html" target="_blank">作品</a> </li>
-              <li><a href="http://www.ui.cn/exp.html" target="_blank">学习</a> </li>
-              <li><a href="http://peixun.ui.cn" target="_blank">培训</a> </li>
-              <li><a href="http://idea.ui.cn" target="_blank">灵感</a> </li>
-              <li><a href="http://activity.ui.cn" target="_blank">活动</a> </li>
-              <li><a href="http://read.ui.cn" target="_blank">阅读</a> </li>
-              <li><a href="http://tool.ui.cn" target="_blank">工具</a> </li>
-              <li><a href="http://zhaopin.ui.cn" target="_blank">招聘</a> </li>
-              <li><a href="http://talk.ui.cn" target="_blank">话题</a> </li>
-            </ul>
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <!-- SEO: If mobile URL is different from desktop URL, add a canonical link to the desktop page -->
+    <!--
+    <link rel="canonical" href="http://www.example.com/" >
+    -->
+
+    <!-- For iOS web apps. Delete if not needed. https://github.com/h5bp/mobile-boilerplate/issues/94 -->
+    <!--
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="">
+    -->
+
+    <!-- Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,700,100' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>
+    <!-- Icons -->
+    <link href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" media="all" rel="stylesheet" type="text/css">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="{{ static_url('shuttle/css/animate.css') }}">
+    <link rel="stylesheet" href="{{ static_url('shuttle/css/materialize.min.css') }}">
+    <link rel="stylesheet" href="{{ static_url('shuttle/css/swipebox.min.css') }}">
+    <link rel="stylesheet" href="{{ static_url('shuttle/css/swiper.min.css') }}">
+    <link rel="stylesheet" href="{{ static_url('shuttle/css/normalize.css') }}">
+    <link rel="stylesheet" href="{{ static_url('shuttle/css/main.css') }}">
+  </head>
+
+  <body>
+
+    <!-- Main Container -->
+    <div id="main" class="main">
+
+      <!-- Toolbar -->
+      <div id="toolbar" class="primary-color tool-login">
+        <div class="open-left" id="open-left" data-activates="slide-out-left">
+          <i class="ion-android-menu white-text"></i>
+        </div>
+      </div>
+      <!-- End of Toolbar -->
+
+      <!-- Page Contents -->
+      <div class="page fullscreen grey lighten-4">
+
+        <form id="login-form" method="POST" action="/webapp/auth/login">
+        <div class="login-form z-depth-1">
+          <h1>Login</h1>
+          <div class="input-field">
+            <i class="ion-android-contact prefix"></i>
+            <input class="validate" id="lg_phone" name="lg_phone" type="text">
+            <label for="lg_phone">Username</label>
           </div>
-        </div>
-      </div>
-      <div class="log-content cl">
-        <div class="wpl pos cl">
-          <div class="log-row-cx cl">
-            <div class="login_left">
-              <div class="lr_title_txt">
-                <h2>欢迎回来</h2>
-                <span>还没有账号？<a href="/auth/reg">立即注册</a></span>
-              </div>
-              <form id="LoginForm" action="" method="post">
-                <label class="login-icon pos">
-                  <i class="icon-user-line fss log-i"></i>
-                  <input style="display:none"><!-- for disable autocomplete on chrome -->
-                  <input id="username" type="text" name="username" class="log-input login-name mls" placeholder="请输入用户名/邮箱" autocomplete="off" />
-                </label>
-                <label class="login-icon pos">
-                  <i class="icon-lock-line fss log-i"></i>
-                  <!-- <input type="text" name="placeholderpwd" class="log-input mls" value="请输入密码" style="display: none;"> -->
-                  <input style="display:none"><!-- for disable autocomplete on chrome -->
-                  <input id="password" type="password" name="password" autocomplete="off" class="log-input login-pwd mls" placeholder="请输入密码"/>
-                </label>
-                <div class="hide" id='verify'>
-                  <label class="login-icon fg-code pos">
-                    <i class="icon-captcha fss log-i"></i>
-                    <input type="text" name="code" autocomplete="off" class="log-input login-pwd mls" style="width: 180px;" placeholder="请输入验证码">
-                  </label>
-                  <div class="fg-code-wp">
-                    <span class="fg-code-pic">
-                      <img src="/code" onclick="this.src='/code?'+Math.random()" alt="换一张">
-                    </span>
-                    <a class="fg-code-t" href="javascript:;" onclick="$('.fg-code-pic img').attr('src','/code?'+Math.random())">换一张</a>
-                  </div>
-                </div>
-                <button id="login-button" class="lang-btn lang-btn-huge mtw lang-btn-fixed-Large">
-                  <span class="lang-btn-content">登录</span>
-                </button>
-                <p class="login-msg"><a class="y login-forget" href="/auth/getpass" target="_blank">忘记密码?</a> 如登录出现异常,请清理浏览器缓存后再尝试。</p>
-              </form>
-            </div>
-            <div class="login-wrap-party z">
-              <h2>第三方账号登录</h2>
-              <div class="login-party cl">
-                <a href="http://ui.cn/oauth/sina/" class="log-sina">
-                  <span><i class="icon-sina"></i><p>新浪微博登录</p></span>
-                </a>
-                <a href="http://ui.cn/oauth/qq/" class="log-qq">
-                  <span><i class="icon-qq"></i><p>QQ帐号登录</p></span>
-                </a>
-                <a href="http://ui.cn/oauth/mi/" class="log-mi">
-                  <span><i class="icon-mi"></i><p>小米帐号登录</p></span>
-                </a>
-              </div>
-            </div>
+
+          <div class="input-field" style="margin-bottom:20px;">
+            <i class="ion-android-lock prefix"></i>
+            <input class="validate" id="lg_pwd" name="lg_pwd" type="password">
+            <label for="lg_pwd">Password</label>
           </div>
+
+          <button type="submit" class="waves-effect waves-light btn-large accent-color block m-b-20 animated bouncein delay-2">Login</button>
+          <span>Don't have an account? <a class="primary-text" href="signup.html">Sign Up</a></span>
         </div>
+        </form>
+
       </div>
+      <!-- End of Page Contents -->
+
+      <!-- Sidebars -->
+      <!-- left sidebar -->
+      {% module Template("shuttle/block-left-sidebar.html") %}
+      <!-- /left sidebar -->
+
+      <!-- right sidebar -->
+      {% module Template("shuttle/block-right-sidebar.html") %}
+      <!-- /right sidebar -->
+      <!-- End of Sidebars -->
+
     </div>
-    <div class="log-footer cl">
-      <div class="wpl cl">
-        <div class="log-row cl">
-          <p style="display:block;width:100%;text-align:center;">京ICP备14007358号-1 \ 京公网安备11010802014104号 \ Powered by © 2008-2016 aplan.com</p>
-        </div>
-      </div>
-    </div>
-    <div style="display:none">
-      <script src="http://s6.cnzz.com/stat.php?id=5726673&web_id=5726673" language="JavaScript"></script>
-    </div>
-    <script type="text/javascript" src="{{ static_url('uicn/js/login.js') }}"></script>
-    <script type="text/javascript">
+    <!-- End of Main Container -->
+
+    <!-- Scripts -->
+    <script src="{{ static_url('shuttle/js/vendor/jquery-2.1.0.min.js') }}"></script>
+    <script src="{{ static_url('shuttle/js/helper.js') }}"></script>
+    <script src="{{ static_url('shuttle/js/vendor/HeadsUp.js') }}"></script>
+    <script src="{{ static_url('shuttle/js/vendor/jquery.smoothState.js') }}"></script>
+    <script src="{{ static_url('shuttle/js/vendor/chart.min.js') }}"></script>
+    <script src="{{ static_url('shuttle/js/vendor/jquery.mixitup.min.js') }}"></script>
+    <script src="{{ static_url('shuttle/js/vendor/jquery.swipebox.min.js') }}"></script>
+    <script src="{{ static_url('shuttle/js/vendor/masonry.min.js') }}"></script>
+    <script src="{{ static_url('shuttle/js/vendor/swiper.min.js') }}"></script>
+    <script src="{{ static_url('shuttle/js/vendor/materialize.min.js') }}"></script>
+    <script src="{{ static_url('shuttle/js/main.js') }}"></script>
+
+    <script type="text/javascript" src="{{ static_url('js/jquery.validate.min.js') }}"></script>
+    <script type="text/javascript" src="{{ static_url('js/localization/messages_zh.min.js') }}"></script>
+    <script type="text/javascript" src="{{ static_url('upyun/js/spark-md5.min.js') }}"></script>
+    <script type="text/javascript" src="{{ static_url('js/json2.js') }}"></script>
+
+    <script>
       $(function() {
-        if (1 == 0) {
-          verify = true;
-          $('#verify').removeClass('hide');
-        }
-      })
+        // 字符验证
+        jQuery.validator.addMethod("stringCheck", function(value, element) {
+          return this.optional(element) || /^[\u0391-\uFFE5\w]+$/.test(value);
+        }, "只能包括中文字、英文字母、数字和下划线");
+
+        // 中文字两个字节
+        jQuery.validator.addMethod("byteRangeLength", function(value, element, param) {
+          var length = value.length;
+          for (var i = 0; i < value.length; i++) {
+            if (value.charCodeAt(i) > 127) {
+              length++;
+            }
+          }
+          return this.optional(element) || (length >= param[0] && length <= param[1]);
+        }, "请确保输入的值在3-15个字节之间(一个中文字算2个字节)");
+
+        // 手机号码验证
+        jQuery.validator.addMethod("mobile", function(value, element) {
+          var length = value.length;
+          var mobile = /^(((13[0-9]{1})|(15[0-9]{1})|(17[0-9]{1})|(18[0-9]{1})|(19[0-9]{1}))+\d{8})$/;
+          return this.optional(element) || (length == 11 && mobile.test(value));
+        }, "请正确填写您的手机号码");
+
+        // 电话号码验证
+        jQuery.validator.addMethod("tel", function(value, element) {
+          var tel = /^\d{3,4}-?\d{7,9}$/; //电话号码格式010-12345678
+          return this.optional(element) || (tel.test(value));
+        }, "请正确填写您的电话号码");
+
+        // 邮政编码验证
+        jQuery.validator.addMethod("zipCode", function(value, element) {
+          var tel = /^[0-9]{6}$/;
+          return this.optional(element) || (tel.test(value));
+        }, "请正确填写您的邮政编码");
+
+        // 身份证号码验证
+        jQuery.validator.addMethod("idCardNo", function(value, element) {
+          return this.optional(element) || idCardNoUtil.checkIdCardNo(value);
+        }, "请正确输入您的身份证号码");
+
+        //护照编号验证
+        jQuery.validator.addMethod("passport", function(value, element) {
+          return this.optional(element) || checknumber(value);
+        }, "请正确输入您的护照编号");
+
+        // Login Form
+        //----------------------------------------------
+        // Validation
+        $("#login-form").validate({
+          rules: {
+            lg_phone: {
+              minlength: 11,
+              maxlength: 11,
+              required: true,
+              mobile: true
+            },
+            lg_pwd: {
+              required: true,
+              minlength: 6
+            },
+          },
+          errorClass: "form-invalid",
+          submitHandler: function(form) {
+            var pwd = $("#lg_pwd").val();
+            var md5pwd = SparkMD5.hash(pwd);
+            $("#lg_pwd").val(md5pwd);
+            form.submit();
+          }
+        });
+      });
     </script>
-    <script type="text/javascript" src="{{ static_url('uicn/js/msgTip.js') }}"></script>
-  </div>
 
-
-</body>
-
+  </body>
 </html>

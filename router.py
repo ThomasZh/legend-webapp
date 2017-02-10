@@ -9,7 +9,9 @@ import tornado.web
 
 from foo import comm
 from foo.auth import auth_email
+from foo.auth import auth_phone
 from foo.portal import shuttle
+from foo.portal import demo
 
 
 def map():
@@ -17,7 +19,15 @@ def map():
     config = [
 
         # homepage
-        (r'/', getattr(shuttle, 'ShuttleIndexHandler')),
+        (r'/', getattr(demo, 'DemoIndexHandler')),
+        (r'/webapp/demo/index', getattr(demo, 'DemoIndexHandler')),
+        (r'/webapp/demo/articles', getattr(demo, 'DemoArticlesHandler')),
+        (r'/webapp/demo/articles/([a-z0-9]*)', getattr(demo, 'DemoArticleHandler')),
+        (r'/webapp/demo/moments', getattr(demo, 'DemoMomentsHandler')),
+        (r'/webapp/demo/add-moment', getattr(demo, 'DemoAddMomentHandler')),
+
+        (r'/webapp/auth/login', getattr(auth_phone, 'AuthLoginHandler')),
+
         (r'/webapp', getattr(shuttle, 'ShuttleIndexHandler')),
         (r'/webapp/index', getattr(shuttle, 'ShuttleIndexHandler')),
         (r'/webapp/index-sliced', getattr(shuttle, 'ShuttleIndexSlicedHandler')),
