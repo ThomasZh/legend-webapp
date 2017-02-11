@@ -129,7 +129,7 @@
             {% for comment in lastest_comments %}
             <div class="swiper-slide center">
               <p class="testimonial">"{{ comment['comment'] }}"</p>
-              <img src="{{ comment['avatar'] }}" alt="" class="avatar">
+              <img src="{{ comment['avatar'] }}!100x100" alt="" class="avatar">
               <h6 class="m-0">{{ comment['nickname'] }}</h6>
             </div>
             {% end %}
