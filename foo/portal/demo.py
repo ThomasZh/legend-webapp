@@ -37,7 +37,35 @@ class DemoIndexHandler(tornado.web.RequestHandler):
     def get(self):
         logging.info(self.request)
 
-        self.render('demo/index.html')
+        # multimedia
+        params = {"filter":"club", "club_id":CLUB_ID, "idx":0, "limit":3}
+        url = url_concat("http://api.7x24hs.com/api/multimedias", params)
+        http_client = HTTPClient()
+        response = http_client.fetch(url, method="GET")
+        logging.info("got response %r", response.body)
+        multimedias = json_decode(response.body)
+
+        # articles
+        params = {"filter":"club", "club_id":CLUB_ID, "status":"publish", "type":0, "idx":0, "limit":20}
+        url = url_concat("http://api.7x24hs.com/api/articles", params)
+        http_client = HTTPClient()
+        response = http_client.fetch(url, method="GET")
+        logging.info("got response %r", response.body)
+        articles = json_decode(response.body)
+        logging.info("got articles=[%r]", articles)
+
+        # lastest comments(最新的评论)
+        params = {"filter":"club", "club_id":CLUB_ID, "idx":0, "limit":3}
+        url = url_concat("http://api.7x24hs.com/api/last-comments", params)
+        http_client = HTTPClient()
+        response = http_client.fetch(url, method="GET")
+        logging.info("got response %r", response.body)
+        lastest_comments = json_decode(response.body)
+
+        self.render('demo/index.html',
+                multimedias=multimedias,
+                lastest_comments=lastest_comments,
+                articles=articles)
 
 
 class DemoAddMomentHandler(AuthorizationHandler):

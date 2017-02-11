@@ -65,30 +65,15 @@
         <!-- Slider -->
         <div class="swiper-container swiper-slider">
           <div class="swiper-wrapper">
+            {% for multimedia in multimedias %}
             <div class="swiper-slide">
-              <img src="/static/shuttle/img/4.jpg" alt="">
-              <div class="opacity-overlay"></div>
+              <img src="{{ multimedia['url'] }}!700x467" alt="">
               <div class="bottom center">
                 <h4 class="white-text m-0"><strong>Shuttle is There!</strong></h4>
                 <p class="text-flow white-text m-0">A mobile focused template</p>
               </div>
             </div>
-            <div class="swiper-slide">
-              <img src="/static/shuttle/img/5.jpg" alt="">
-              <div class="opacity-overlay"></div>
-              <div class="bottom left-align">
-                <h4 class="white-text m-0"><strong>Shuttle is There!</strong></h4>
-                <p class="text-flow white-text m-0">A mobile focused template</p>
-              </div>
-            </div>
-            <div class="swiper-slide">
-              <img src="/static/shuttle/img/3.jpg" alt="">
-              <div class="opacity-overlay"></div>
-              <div class="bottom right-align">
-                <h4 class="white-text m-0"><strong>Shuttle is There!</strong></h4>
-                <p class="text-flow white-text m-0">A mobile focused template</p>
-              </div>
-            </div>
+            {% end %}
           </div>
           <!-- Add Pagination -->
           <div class="swiper-pagination"></div>
@@ -134,31 +119,20 @@
         <div class="section featured center grey lighten-5">
           <h2 class="heading">App Centric</h2>
           <p>Shuttle isn't just a website, it comes with tons of App Pages!</p>
-          <img src="/static/shuttle/img/featured.png" alt="">
+          <img src="https://tripc2c-club-title.b0.upaiyun.com/multimedia/2017/2/11/8ba46724-2e2a-4c5d-8441-c0c6f67853be!700x467" alt="">
         </div>
 
         <!-- Testimonials Slider -->
         <!-- Slider -->
         <div class="swiper-container testimonials">
           <div class="swiper-wrapper">
+            {% for comment in lastest_comments %}
             <div class="swiper-slide center">
-              <p class="testimonial">"It wasn't a dream. His room, a proper human room although a little too small, lay peacefully between its four familiar walls. A collection of textile samples lay spread out on the table - Samsa was a travelling salesman - and above it there hung a picture that he had recently cut out of an illustrated magazine and housed in a nice, gilded frame."</p>
-              <img src="/static/shuttle/img/user2.jpg" alt="" class="avatar">
-              <h6 class="m-0">Jane Lobster</h6>
-              <p class="small">Art Director, BeeQuee</p>
+              <p class="testimonial">"{{ comment['comment'] }}"</p>
+              <img src="{{ comment['avatar'] }}" alt="" class="avatar">
+              <h6 class="m-0">{{ comment['nickname'] }}</h6>
             </div>
-            <div class="swiper-slide center">
-              <p class="testimonial">"It wasn't a dream. His room, a proper human room although a little too small, lay peacefully between its four familiar walls. A collection of textile samples lay spread out on the table - Samsa was a travelling salesman - and above it there hung a picture that he had recently cut out of an illustrated magazine and housed in a nice, gilded frame."</p>
-              <img src="/static/shuttle/img/user4.jpg" alt="" class="avatar">
-              <h6 class="m-0">Rick Bell</h6>
-              <p class="small">Photograper, Larey-q</p>
-            </div>
-            <div class="swiper-slide center">
-              <p class="testimonial">"It wasn't a dream. His room, a proper human room although a little too small, lay peacefully between its four familiar walls. A collection of textile samples lay spread out on the table - Samsa was a travelling salesman - and above it there hung a picture that he had recently cut out of an illustrated magazine and housed in a nice, gilded frame."</p>
-              <img src="/static/shuttle/img/user6.jpg" alt="" class="avatar">
-              <h6 class="m-0">Dora Moore</h6>
-              <p class="small">Illustrator, Arque</p>
-            </div>
+            {% end %}
           </div>
           <!-- Add Pagination -->
           <div class="swiper-pagination"></div>
@@ -186,9 +160,9 @@
         <div class="controls right-align p-20 animated fadeinup delay-2">
           <button id="ChangeLayout" class="left">List</button>
           <button class="filter" data-filter="all">All</button>
-          <button class="filter" data-filter=".category-1">Art</button>
-          <button class="filter" data-filter=".category-2">Ink</button>
-          <button class="filter" data-filter=".category-3">Pop</button>
+          <button class="filter" data-filter=".景点">Scenery</button>
+          <button class="filter" data-filter=".游记">Journey</button>
+          <button class="filter" data-filter=".新闻">News</button>
         </div>
 
         <!-- Images -->
@@ -197,36 +171,15 @@
           <section id="image-filter">
             <div class="wrap small-width">
               <div data-pswp-uid="1" id="demo-gallery" class="demo-gallery">
-                <a href="/webapp/project" class="mix category-3">
-                  <img src="/static/shuttle/img/1.jpg" alt="image">
+                {% for article in articles %}
+                <a href="/webapp/project" class="mix
+                {% for category in article['categories'] %}
+                  {{ category['title'] }}
+                {% end %}
+                ">
+                  <img src="{{ article['img'] }}!700x467" alt="image">
                 </a>
-                <a href="/webapp/project" class="mix category-2">
-                  <img src="/static/shuttle/img/2.jpg" alt="image">
-                </a>
-                <a href="/webapp/project" class="mix category-1">
-                  <img src="/static/shuttle/img/3.jpg" alt="image">
-                </a>
-                <a href="/webapp/project" class="mix category-2">
-                  <img src="/static/shuttle/img/4.jpg" alt="image">
-                </a>
-                <a href="/webapp/project" class="mix category-3">
-                  <img src="/static/shuttle/img/5.jpg" alt="image">
-                </a>
-                <a href="/webapp/project" class="mix category-1">
-                  <img src="/static/shuttle/img/6.jpg" alt="image">
-                </a>
-                <a href="/webapp/project" class="mix category-3">
-                  <img src="/static/shuttle/img/7.jpg" alt="image">
-                </a>
-                <a href="/webapp/project" class="mix category-1">
-                  <img src="/static/shuttle/img/8.jpg" alt="image">
-                </a>
-                <a href="/webapp/project" class="mix category-2">
-                  <img src="/static/shuttle/img/9.jpg" alt="image">
-                </a>
-                <a href="/webapp/project" class="mix category-2">
-                  <img src="/static/shuttle/img/10.jpg" alt="image">
-                </a>
+                {% end %}
               </div>
             </div>
           </section> <!-- End of Swipebox Contents -->
