@@ -53,7 +53,7 @@ class DemoMomentsHandler(tornado.web.RequestHandler):
         logging.info(self.request)
 
         # moments(精彩瞬间)
-        params = {"filter":"club", "club_id":CLUB_ID, "status":"all", "category":CATEGORY_MOMENT_ID, "idx":0, "limit":20}
+        params = {"filter":"club", "club_id":CLUB_ID, "status":"all", "type":10, "idx":0, "limit":20}
         url = url_concat("http://api.7x24hs.com/api/articles", params)
         http_client = HTTPClient()
         response = http_client.fetch(url, method="GET")
