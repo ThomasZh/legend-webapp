@@ -48,7 +48,7 @@
     <link rel="stylesheet" href="{{ static_url('shuttle/css/swiper.min.css') }}">
     <link rel="stylesheet" href="{{ static_url('shuttle/css/normalize.css') }}">
     <link rel="stylesheet" href="{{ static_url('shuttle/css/main.css') }}">
-    <script src="{{ static_url('shuttle/js/vendor/modernizr-2.7.1.min.js') }}"></script>
+    <link rel="stylesheet" href="{{ static_url('weui/lib/weui.min.css') }}">
   </head>
 
   <body>
@@ -141,8 +141,10 @@
             </div>
           </div>
 
-          <!-- More comments button -->
-          <a class="waves-effect waves-light btn primary-color">More comments</a>
+          <!-- more comments button -->
+          <div class="controls right-align animated fadeinup delay-2">
+            <button class="filter" data-filter=".category-3">More comments...</button>
+          </div>
         </div>
 
 
@@ -183,7 +185,16 @@
     <script src="{{ static_url('shuttle/js/vendor/swiper.min.js') }}"></script>
     <script src="{{ static_url('shuttle/js/vendor/materialize.min.js') }}"></script>
     <script src="{{ static_url('shuttle/js/main.js') }}"></script>
-    <script src="{{ static_url('js/json2.js') }}" type="text/javascript" ></script>
+
+    <!-- fileinput -->
+  	<script src="{{ static_url("upyun/js/spark-md5.min.js") }}"></script>
+  	<script src="{{ static_url("upyun/js/async.js") }}"></script>
+  	<script src="{{ static_url("upyun/js/upyun-mu.js") }}"></script>
+
+    <!-- customer js files -->
+    <script src='{{ static_url("js/exif.js") }}' type="text/javascript"></script>
+    <script src='{{ static_url("js/mobileBUGFix.mini.js") }}' type="text/javascript"></script>
+    <script src='{{ static_url("js/json2.js") }}' type='text/javascript'></script>
     <script src="{{ static_url('js/vue-2.1.4.js') }}" type="text/javascript"></script>
 
     <script>
