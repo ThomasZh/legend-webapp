@@ -46,7 +46,7 @@ class DemoIndexHandler(tornado.web.RequestHandler):
         multimedias = json_decode(response.body)
 
         # articles
-        params = {"filter":"club", "club_id":CLUB_ID, "status":"publish", "type":0, "idx":0, "limit":20}
+        params = {"filter":"club", "club_id":CLUB_ID, "status":"publish", "idx":0, "limit":20}
         url = url_concat("http://api.7x24hs.com/api/articles", params)
         http_client = HTTPClient()
         response = http_client.fetch(url, method="GET")
@@ -81,8 +81,8 @@ class DemoMomentsHandler(tornado.web.RequestHandler):
         logging.info(self.request)
 
         # moments(精彩瞬间)
-        params = {"filter":"club", "club_id":CLUB_ID, "status":"all", "type":10, "idx":0, "limit":20}
-        url = url_concat("http://api.7x24hs.com/api/articles", params)
+        params = {"filter":"club", "club_id":CLUB_ID, "idx":0, "limit":20}
+        url = url_concat("http://api.7x24hs.com/api/moments", params)
         http_client = HTTPClient()
         response = http_client.fetch(url, method="GET")
         logging.info("got response %r", response.body)
@@ -100,7 +100,7 @@ class DemoArticlesHandler(tornado.web.RequestHandler):
         logging.info(self.request)
 
         # all articles of club
-        params = {"filter":"club", "club_id":CLUB_ID, "status":"publish", "category":"all", "idx":0, "limit":20}
+        params = {"filter":"club", "club_id":CLUB_ID, "idx":0, "limit":20}
         url = url_concat("http://api.7x24hs.com/api/articles", params)
         http_client = HTTPClient()
         response = http_client.fetch(url, method="GET")
