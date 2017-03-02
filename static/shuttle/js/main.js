@@ -7,7 +7,7 @@ Version: 1.0
 License: Regular or Extended from ThemeForest only
 Plugin Licenses: GPL or MIT
 Last change: first release
-Primary use: App & Mobile Website  
+Primary use: App & Mobile Website
 -------------------------------------------------------------------*/
 
 // Adding strict mode
@@ -65,7 +65,7 @@ function initiate_plugins() {
 
     // Body class fix
     $('body').removeClass('menu-open');
-   
+
     // Tabs
     $('ul.tabs').tabs();
 
@@ -93,7 +93,7 @@ function initiate_plugins() {
         edge: 'left', // Choose the horizontal origin
         closeOnClick: true // Closes side-nav on <a> clicks, useful for Angular/Meteor
     });
-  
+
     // Swipebox
     $('.swipebox').swipebox();
 
@@ -102,7 +102,7 @@ function initiate_plugins() {
         itemSelector: '.grid-item'
     });
 
-    // Reinitialize masonry inside each panel after the relative tab link is clicked - 
+    // Reinitialize masonry inside each panel after the relative tab link is clicked -
     $('.tab a').on('click', function() {
       // do async to allow menu to open
       setTimeout( function() {
@@ -233,7 +233,7 @@ function initiate_plugins() {
                 $container.mixItUp('changeLayout', {
                     containerClass: layout // change the container class to "grid"
                 });
-                // Else if the current layout is a grid, change to list:  
+                // Else if the current layout is a grid, change to list:
             } else {
                 layout = 'grid';
                 $changeLayout.text('List'); // Update the button text
@@ -285,7 +285,7 @@ $('.grid').masonry({
     itemSelector: '.grid-item'
 });
 
-// Reinitialize masonry inside each panel after the relative tab link is clicked - 
+// Reinitialize masonry inside each panel after the relative tab link is clicked -
 $('.tab a').on('click', function() {
   // do async to allow menu to open
   setTimeout( function() {
@@ -413,7 +413,7 @@ $(function () {
             $container.mixItUp('changeLayout', {
                 containerClass: layout // change the container class to "grid"
             });
-            // Else if the current layout is a grid, change to list:  
+            // Else if the current layout is a grid, change to list:
         } else {
             layout = 'grid';
             $changeLayout.text('List'); // Update the button text
@@ -422,7 +422,7 @@ $(function () {
             });
         }
     });
-  
+
     // init swiper layout
     window.onload = function () {
         setTimeout(function () {
