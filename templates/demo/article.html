@@ -79,15 +79,21 @@
               {% end %}
             </div>
           </div>
+
+          <div class="fixed-action-btn">
+            <a class="btn-floating btn-large waves-effect waves-light accent-color" v-on:click="sendLike"><i class="ion-ios-heart-outline"></i></a>
+            <!-- <a class="btn-floating btn-large waves-effect waves-light accent-color modal-trigger" v-on:click="sendComment"><i class="ion-chatbubble-working"></i></a> -->
+          </div>
         </div>
 
         <div class="card-feedback">
           <div class="card-users">
             <i class="ion-eye"></i> <span>{{ article['view_num'] }}</span>
-            <i class="ion-ios-heart-outline accent-text"></i> <span>{{ article['like_num'] }}</span>
-            <i class="ion-chatbubble-working"></i> <span>{{ article['comment_num'] }}</span>
+            <i class="ion-ios-heart-outline accent-text" id="like-icon"></i> <span id="like-num">{{ article['like_num'] }}</span>
+            <i class="ion-chatbubble-working" id="comment-icon"></i> <span id="comment-num">{{ article['comment_num'] }}</span>
           </div>
         </div>
+
 
         <!-- Event Content -->
         <div class="p-20">
@@ -100,8 +106,8 @@
 
         <!-- Comments -->
         <div id="comments" class="comments grey lighten-4">
-          <h5>{{! comment_num }} Comments</h5>
-          <div v-for="comment in comments" class="media-top-object animated fadeinright delay-2">
+          <h5>{{! comment_total }} Comments</h5>
+          <div v-for="comment in comments" class="media-top-object animated delay-2">
             <img v-bind:src="comment.avatar" alt="" class="media-left avatar">
             <div class="media-body">
               <span>{{! comment.nickname }}</span>
@@ -112,22 +118,17 @@
           <!-- more comments button -->
 
           <div class="controls right-align animated fadeinup delay-2">
-            <button class="filter" data-filter=".category-3" id="loadMoreBtn">More comments...</button>
+            <button class="filter" data-filter=".category-3" id="loadMoreBtn" v-on:click="loadMore">More comments...</button>
           </div>
           <br/>
 
-          <div class="col-xs-12">
-            <textarea class="rst-pageinput" name="" id="comment" cols="30" rows="5" placeholder="Add your comment" ></textarea>
-            <div class="send-ok-message"></div>
-            <input class="rst-pagebutton" type="button" v-on:click="sendComment" value="评论"/>
+          <div class="input-field animated fadeinright delay-5">
+            <textarea class="materialize-textarea" id="comment"></textarea>
+            <label for="comment">Write your comment here</label>
           </div>
 
-
-
-          <div class="fixed-action-btn">
-            <a class="btn-floating btn-large waves-effect waves-light accent-color" v-on:click="sendLike()"><i class="ion-ios-heart-outline"></i></a>
-            <!-- <a class="btn-floating btn-large waves-effect waves-light accent-color modal-trigger" v-on:click="sendComment"><i class="ion-chatbubble-working"></i></a> -->
-          </div>
+          <a class="waves-effect waves-light btn-large primary-color block animated bouncein delay-6"
+           v-on:click="sendComment">Send</a>
 
         </div>
         <!-- footer -->
@@ -177,11 +178,12 @@
     <script>
 
       new Vue({
-        el: '#comments',
+        el: '#mainContainer',
         data: {
           comments: [],
           comment_num: 0,
-          limlt: 20
+          comment_total:{{ article['comment_num'] }},
+          limlt: 5
         },
         created: function() {
           this.queryComments(0, this.limlt);
@@ -196,12 +198,15 @@
               contentType: 'application/json',
               success: function(data, status, xhr) {
                 console.log(data);
-                $("#like-icons").removeClass("fa-heart-o").addClass("fa-heart");
+                // 喜欢后心满 数加
+                $("#like-icon").removeClass("ion-ios-heart-outline").addClass("ion-ios-heart");
+                $("#like-num").text(parseInt($("#like-num").text())+1);
               },
               error: function(XMLHttpRequest, textStatus, errorThrown) {
                 console.log("XMLHttpRequest.status:" + XMLHttpRequest.status);
                 if (XMLHttpRequest.status == 200) {
-                  $("#like-icons").removeClass("fa-heart-o").addClass("fa-heart");
+                  $("#like-icon").removeClass("ion-ios-heart-outline").addClass("ion-ios-heart");
+                  $("#like-num").text(parseInt($("#like-num").text())+1);
                 }
               },
               complete: function(XMLHttpRequest, textStatus) {
@@ -229,12 +234,21 @@
                 console.log(data);
                 $("#comment").val("");
                 _self.queryNewComment();
+                _self.comment_num += 1;
+                // 评论后加1
+                _self.comment_total += 1;
+                $("#comment-num").text(parseInt($("#comment-num").text())+1);
+
               },
               error: function(XMLHttpRequest, textStatus, errorThrown) {
                 console.log("XMLHttpRequest.status:" + XMLHttpRequest.status);
                 if (XMLHttpRequest.status == 200) {
                   $("#comment").val("");
                   _self.queryNewComment();
+                  _self.comment_num += 1;
+                  _self.comment_total += 1;
+                  $("#comment-num").text(parseInt($("#comment-num").text())+1);
+
                 }
               },
               complete: function(XMLHttpRequest, textStatus) {
@@ -271,9 +285,9 @@
                   _self.comments.push(datas[i]);
                   _self.comment_num += 1;
                 }
-                // if(_self.comment_num == 0 || datas.length < limit){
-                //   $("#loadMoreBtn").css('display','none');
-                // }
+                if(datas.length < limit){
+                  $("#loadMoreBtn").css('display','none');
+                }
               },
               error: function(XMLHttpRequest, textStatus, errorThrown) {
                 console.log("XMLHttpRequest.status:" + XMLHttpRequest.status);
