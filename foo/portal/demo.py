@@ -92,6 +92,7 @@ class DemoMomentsHandler(tornado.web.RequestHandler):
         logging.info("got moments=[%r]", moments)
 
         self.render('demo/moments.html',
+                CLUB_ID=CLUB_ID,
                 moments=moments)
 
 

@@ -191,6 +191,8 @@
         methods: {
           sendLike: function() {
             console.log('like');
+            $("#like-icon").removeClass("ion-ios-heart-outline").addClass("ion-ios-heart");
+            $("#like-num").text(parseInt($("#like-num").text())+1);
             $.ajax({
               type: "POST",
               url: "/api/articles/{{ article['_id'] }}/like",
@@ -199,14 +201,12 @@
               success: function(data, status, xhr) {
                 console.log(data);
                 // 喜欢后心满 数加
-                $("#like-icon").removeClass("ion-ios-heart-outline").addClass("ion-ios-heart");
-                $("#like-num").text(parseInt($("#like-num").text())+1);
               },
               error: function(XMLHttpRequest, textStatus, errorThrown) {
                 console.log("XMLHttpRequest.status:" + XMLHttpRequest.status);
                 if (XMLHttpRequest.status == 200) {
-                  $("#like-icon").removeClass("ion-ios-heart-outline").addClass("ion-ios-heart");
-                  $("#like-num").text(parseInt($("#like-num").text())+1);
+                  // $("#like-icon").removeClass("ion-ios-heart-outline").addClass("ion-ios-heart");
+                  // $("#like-num").text(parseInt($("#like-num").text())+1);
                 }
               },
               complete: function(XMLHttpRequest, textStatus) {
@@ -214,6 +214,7 @@
               }
             });
           },
+
           sendComment: function() {
             var _self = this;
             var comment = $("#comment").val();
@@ -238,7 +239,6 @@
                 // 评论后加1
                 _self.comment_total += 1;
                 $("#comment-num").text(parseInt($("#comment-num").text())+1);
-
               },
               error: function(XMLHttpRequest, textStatus, errorThrown) {
                 console.log("XMLHttpRequest.status:" + XMLHttpRequest.status);
@@ -248,7 +248,6 @@
                   _self.comment_num += 1;
                   _self.comment_total += 1;
                   $("#comment-num").text(parseInt($("#comment-num").text())+1);
-
                 }
               },
               complete: function(XMLHttpRequest, textStatus) {
@@ -256,6 +255,7 @@
               }
             });
           },
+
           loadMore: function() {
             var _self = this;
             $("#loadMoreBtn").text('Loading...');
@@ -271,6 +271,7 @@
             //   $("#loadMoreBtn").css('display','none');
             // }, 1000);
           },
+
           queryComments: function(idx, limit) {
             var _self = this;
             $.ajax({
@@ -297,6 +298,7 @@
               }
             });
           },
+          
           queryNewComment: function() {
             var _self = this;
             $.ajax({

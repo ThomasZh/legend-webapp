@@ -63,7 +63,6 @@
 
       <!-- Page Contents -->
       <div class="page animated fadeinup">
-
         <!-- Hero Header -->
         <div class="hero-header hero-big bg-3 animated fadeindown">
           <div class="hero-author">
@@ -82,97 +81,19 @@
           <div class="opacity-overlay-gradient"></div>
         </div>
 
-        {% for moment in moments %}
-        <div class="card fullscreen">
-          <!-- Contents -->
-          <div class="p-20">
-            <div class="grid m-t-20">
-              {% for img in moment['imgs'] %}
-              <div class="grid-item">
-                <a href="{{ img }}" class="swipebox no-smoothState" title="">
-                  <img src="{{ img }}!700x467" alt="image">
-                </a>
-              </div>
-              {% end %}
-            </div>
-          </div>
+        <!-- moment -->
+        <div id="moment-form">
+          <ul class="">
+            <li
+              is="oneMoment"
+              v-for="(moment, idx) in moments"
+              v-bind:moment="moment"
+              v-bind:idx="idx"
+            ></li>
+            <li style="text-align:center" id="getMoreBtn"><a v-on:click="getMore">加载更多</a></li>
+          </ul>
 
-          <div class="card-feedback">
-            <div class="card-users">
-              <i class="ion-eye"></i> <span>{{ moment['view_num'] }}</span>
-              <i class="ion-ios-heart accent-text"></i> <span>{{ moment['like_num'] }}</span>
-              <i class="ion-chatbubble-working"></i> <span>{{ moment['comment_num'] }}</span>
-            </div>
-          </div>
-
-          <div class="card-content">
-            <h5><strong>
-              {% if moment.has_key('subtitle') %}
-                {{ moment['subtitle'] }}
-              {% end %}
-            </strong></h5>
-          </div>
-
-          <div class="card-author">
-            <div class="media-top-object middle">
-              <img src="{{ moment['avatar'] }}!100x100" alt="" class="media-left avatar small">
-              <div class="media-body">
-                <span class="small">{{ moment['nickname'] }}
-              </div>
-            </div>
-          </div>
-
-          <!-- Comments -->
-          <div class="comments grey lighten-4">
-            <h5>5 Comments</h5>
-            <div class="media-top-object animated fadeinright delay-2">
-              <img src="/static/shuttle/img/user4.jpg" alt="" class="media-left avatar">
-              <div class="media-body">
-                <span>Luke Noel</span>
-                <span class="small">Awesome work!!</span>
-              </div>
-            </div>
-
-            <div class="media-top-object animated fadeinright delay-3">
-              <img src="/static/shuttle/img/user5.jpg" alt="" class="media-left avatar">
-              <div class="media-body">
-                <span>Luke Noel</span>
-                <span class="small">You have done a great job there :)</span>
-              </div>
-            </div>
-
-            <div class="media-top-object animated fadeinright delay-4">
-              <img src="/static/shuttle/img/user6.jpg" alt="" class="media-left avatar">
-              <div class="media-body">
-                <span>Joel Roksin</span>
-                <span class="small">Keep going!</span>
-              </div>
-            </div>
-
-            <div class="media-top-object animated fadeinright delay-5">
-              <img src="/static/shuttle/img/user7.jpg" alt="" class="media-left avatar">
-              <div class="media-body">
-                <span>Mike White</span>
-                <span class="small">That's pretty good!</span>
-              </div>
-            </div>
-
-            <div class="media-top-object animated fadeinright delay-6">
-              <img src="/static/shuttle/img/user8.jpg" alt="" class="media-left avatar">
-              <div class="media-body">
-                <span>Robb Swan</span>
-                <span class="small">Love your works! Asalways!</span>
-              </div>
-            </div>
-
-            <!-- more comments button -->
-            <div class="controls right-align animated fadeinup delay-2">
-              <button class="left">Add comment</button>
-              <button class="filter" data-filter=".category-3">More comments...</button>
-            </div>
-          </div>
         </div>
-        {% end %}
 
         <!-- footer -->
         {% module Template("shuttle/block-footer.html") %}
@@ -182,7 +103,9 @@
       <!-- End of Page Contents -->
 
       <div class="fixed-action-btn">
-        <a class="btn-floating btn-large waves-effect waves-light accent-color modal-trigger" href="/webapp/demo/add-moment"><i class="ion-android-add"></i></a>
+        <a class="btn-floating btn-large waves-effect waves-light accent-color modal-trigger"
+           href="/webapp/demo/add-moment">
+          <i class="ion-android-add"></i></a>
       </div>
 
       <!-- Sidebars -->
@@ -222,5 +145,308 @@
     <script src='{{ static_url("js/json2.js") }}' type='text/javascript'></script>
     <script src="{{ static_url('js/vue-2.1.4.js') }}" type="text/javascript"></script>
 
+    <script>
+      Vue.component('oneImage', {
+        template: '\
+          <div class="grid-item">\
+            <a v-bind:href="imageUrl" class="swipebox no-smoothState" title="">\
+              <img v-bind:src="imageUrl" alt="image">\
+            </a>\
+          </div>\
+        ',
+        props: ['idx','imageUrl'],
+      })
+
+      Vue.component('oneComment', {
+        template: '\
+          <div class="media-top-object animated delay-3">\
+            <img v-bind:src="comment.avatar" alt="" class="media-left avatar">\
+            <div class="media-body">\
+              <span>{{! comment.nickname }}</span>\
+              <span class="small">{{! comment.comment }}</span>\
+            </div>\
+          </div>\
+        ',
+        props: ['idx','comment'],
+        methods: {
+        }
+      })
+
+      Vue.component('oneMoment', {
+        template: '\
+        <div class="card fullscreen">\
+          <div class="p-20">\
+            <div class="grid m-t-20">\
+              <div is="oneImage"\
+                v-for="(imageUrl, idx) in moment.imgs"\
+                v-bind:imageUrl="imageUrl"\
+                v-bind:idx="idx"\
+              ></div>\
+            </div>\
+          </div>\
+          <div class="card-feedback">\
+            <div class="card-users" v-if="moment.zan==true">\
+              <i class="ion-eye"></i> <span>{{! moment.view_num  }}</span>\
+              <i id="like-icon" class="ion-ios-heart accent-text"></i> <span>{{! moment.like_num }}</span>\
+              <i class="ion-chatbubble-working"></i> <span>{{! moment.comment_num }}</span>\
+            </div>\
+            <div class="card-users" v-if="moment.zan==false">\
+              <i class="ion-eye"></i> <span>{{! moment.view_num  }}</span>\
+              <i id="like-icon" v-on:click="onLike(idx)" class="ion-ios-heart-outline accent-text"></i> <span>{{! moment.like_num }}</span>\
+              <i class="ion-chatbubble-working"></i> <span>{{! moment.comment_num }}</span>\
+            </div>\
+          </div>\
+          <div class="card-content">\
+            <h5><strong>{{! moment.subtitle }}</strong></h5>\
+          </div>\
+          <div class="card-author">\
+            <div class="media-top-object middle">\
+              <img v-bind:src="moment.avatar" alt="" class="media-left avatar small">\
+              <div class="media-body">\
+                <span class="small">{{! moment.nickname }}\
+                </span>\
+              </div>\
+            </div>\
+          </div>\
+          <div class="comments grey lighten-4">\
+            <a v-on:click="showComments(idx)" class="accent-text">{{! moment.comment_num }} 条评论</a>\
+            <div is="oneComment"\
+              v-for="(comment, idx) in moment.resComments"\
+              v-bind:comment="comment"\
+              v-bind:idx="idx"\
+            ></div>\
+            <div class="controls right-align animated fadeinup delay-2">\
+              <button class="left"  v-on:click="onComment(idx)">发评论</button>\
+              <button class="filter" id="loadMoreBtn"\
+                v-on:click="loadMore(idx)" data-filter=".category-3">更多...</button>\
+            </div>\
+           </div>\
+         </div>\
+        ',
+        props: ['idx','moment'],
+        methods: {
+          onLike: function(idx) {
+
+            var moments = this.$parent.moments;
+            // console.log(moments);
+            var moment = moments[idx];
+            var momentId = moment._id;
+
+            moment.zan = true;
+            moment.like_num += 1;
+
+            $.ajax({
+              type: "POST",
+              url: "/api/moments/"+momentId+"/like",
+              data: "",
+              dataType: "json",
+              contentType: 'application/json',
+              success: function(data, status, xhr) {
+                // moment.zan = true;
+                // moment.like_num += 1;
+              },
+              error: function(XMLHttpRequest, textStatus, errorThrown) {
+                // $.alert(XMLHttpRequest.status + ": 操作失败!");
+                if (XMLHttpRequest.status == 200) {
+                  // moment.zan = true;
+                  // moment.like_num += 1;
+                  // $.alert("error:200");
+                } else if (XMLHttpRequest.status == 404) {
+                  // $.alert("error:404");
+                }else{
+                  $.alert("error: "+XMLHttpRequest.status);
+                }
+              },
+              complete: function(XMLHttpRequest, textStatus) {
+                this; // 调用本次AJAX请求时传递的options参数
+              }
+            });
+          },
+
+          onComment: function(idx){
+            var str=prompt("发表评论","");
+              if(str){
+                // alert("您刚输入的是："+ str)
+                this.addComment(idx,str);
+              }
+          },
+
+          addComment: function(idx,str) {
+            var moments = this.$parent.moments;
+            // console.log(moments);
+            var moment = moments[idx];
+            var momentId = moment._id;
+            var data = {
+              "comment": str,
+            };
+            var json = JSON.stringify(data);
+            console.log(json);
+
+            $.ajax({
+              type: "POST",
+              url: "/api/moments/"+momentId+"/comment",
+              data: json,
+              dataType: "json",
+              contentType: 'application/json',
+              success: function(data, status, xhr) {
+                console.log(data);
+                moment.comment_num += 1;
+                moment.resComments.splice(0,0,data)
+
+                // _self.queryNewComment(idx);
+                // comment = {'avatar':data.avatar,'comment':data.comment,'nickname':data.nickname}
+                // moment.resComments.splice(0,0,comment);
+              },
+              error: function(XMLHttpRequest, textStatus, errorThrown) {
+                // $.alert(XMLHttpRequest.status + ": 操作失败!");
+                if (XMLHttpRequest.status == 200) {
+                  moment.comment_num += 1;
+                  moment.resComments.splice(0,0,data)
+
+                  // $.alert("error:200");
+                } else if (XMLHttpRequest.status == 404) {
+                  // $.alert("error:404");
+                }else{
+                  // $.alert("error: "+XMLHttpRequest.status);
+                }
+              },
+              complete: function(XMLHttpRequest, textStatus) {
+                this; // 调用本次AJAX请求时传递的options参数
+              }
+            });
+          },
+
+          showComments: function(idx){
+            var _self = this;
+            _self.queryComments(idx,3);
+          },
+
+          loadMore: function(idx) {
+            var _self = this;
+            var moments = this.$parent.moments;
+            // console.log(moments);
+            var moment = moments[idx];
+            $("#loadMoreBtn").text('Loading...');
+
+            _self.queryComments(idx, 3);
+
+            setTimeout(function(){
+              if (_self.comment_num % _self.limlt == 0){
+                $("#loadMoreBtn").text('More comments');
+              } else {
+                // $("#loadMoreBtn").css('display','none');
+              }
+            }, 1000);
+            // setTimeout(function(){
+            //   $("#loadMoreBtn").css('display','none');
+            // }, 1000);
+          },
+
+          queryComments: function(idx, limit) {
+            var _self = this;
+            var moments = this.$parent.moments;
+            // console.log(moments);
+            var moment = moments[idx];
+            var momentId = moment._id;
+            // 记录一个moment的comments当前的加载位置
+            var comment_idx = moment.resComments.length;
+
+            $.ajax({
+              type: "GET",
+              url: "/api/moments/"+momentId+"/comment?idx=" + comment_idx + "&limit=" + limit,
+              async: false,
+              dataType: "json",
+              contentType: 'application/json',
+              success: function(datas, status, xhr) {
+                console.log(datas);
+                for(var i = 0, l = datas.length; i < l; i++) {
+                  moment.resComments.push(datas[i]);
+                }
+                if(datas.length < limit){
+                  // $("#loadMoreBtn").css('display','none');
+                }
+              },
+              error: function(XMLHttpRequest, textStatus, errorThrown) {
+                console.log("XMLHttpRequest.status:" + XMLHttpRequest.status);
+              },
+              complete: function(XMLHttpRequest, textStatus) {
+                this; // 调用本次AJAX请求时传递的options参数
+              }
+            });
+          },
+
+        }
+      })
+
+      new Vue({
+       el: '#moment-form',
+       data: {
+         moments: [],
+         moment_num: 0,
+         limit: 5
+       },
+       created: function () {
+          this.queryMoments(0,this.limit);
+          setTimeout(function(){
+            // Masonry
+            $('.grid').masonry({
+              itemSelector: '.grid-item'
+            });
+          },100);
+       },
+       updated: function(){
+         console.log("===============updated");
+         setTimeout(function(){
+           // Masonry
+           $('.grid').masonry({
+             itemSelector: '.grid-item'
+           });
+         });
+       },
+       methods: {
+         getMore: function() {
+           var _self = this;
+           $("#getMoreBtn").text('Loading...');
+           _self.queryMoments(_self.moment_num, _self.limit);
+           setTimeout(function(){
+             if (_self.comment_num % _self.limit == 0){
+               $("#getMoreBtn").text('More moments');
+             } else {
+               $("#getMoreBtn").css('display','none');
+             }
+           }, 1000);
+         },
+
+         queryMoments: function(idx,limit) {
+           _self = this;
+          // http://api.7x24hs.com/api/moments
+           $.ajax({
+             type: "GET",
+             url: "/api/moments?idx=" + idx + "&limit=" + limit+"&filter=club&club_id={{CLUB_ID}}",
+             async: false,
+             dataType: "json",
+             contentType: 'application/json',
+             success: function(datas, status, xhr) {
+               for(var i = 0, l = datas.length; i < l; i++) {
+                 datas[i].resComments = [];
+                 datas[i].zan = false;
+                 _self.moments.push(datas[i]);
+                 _self.moment_num += 1;
+               }
+               if(datas.length < limit){
+                 $("#getMoreBtn").css('display','none');
+               }
+             },
+             error: function(XMLHttpRequest, textStatus, errorThrown) {
+               console.log("XMLHttpRequest.status:" + XMLHttpRequest.status);
+             },
+             complete: function(XMLHttpRequest, textStatus) {
+               this; // 调用本次AJAX请求时传递的options参数
+             }
+           });
+         },
+       }
+     })
+   </script>
   </body>
 </html>
