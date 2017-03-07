@@ -39,7 +39,7 @@
     <link href='https://fonts.googleapis.com/css?family=Roboto:400,700,100' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>
     <!-- Icons -->
-    <!-- <link href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" media="all" rel="stylesheet" type="text/css"> --> -->
+    <link href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" media="all" rel="stylesheet" type="text/css"> -->
 
     <!-- Stylesheets -->
     <link rel="stylesheet" href="{{ static_url('shuttle/css/animate.css') }}">
@@ -68,22 +68,24 @@
 
         <form id="login-form" method="POST" action="/webapp/auth/login">
         <div class="login-form z-depth-1">
-          <h1>Login</h1>
+          <h1>登录</h1>
           <div class="input-field">
             <i class="ion-android-contact prefix"></i>
             <input class="validate" id="lg_phone" name="lg_phone" type="text">
-            <label for="lg_phone">Username</label>
+            <label for="lg_phone">电话</label>
           </div>
 
           <div class="input-field" style="margin-bottom:20px;">
             <i class="ion-android-lock prefix"></i>
             <input class="validate" id="lg_pwd" name="lg_pwd" type="password">
-            <label for="lg_pwd">Password</label>
+            <label for="lg_pwd">密码</label>
           </div>
 
-          <button type="submit" class="waves-effect waves-light btn-large accent-color block m-b-20 animated bouncein delay-2">Login</button>
-          <div>Don't have an account? <a class="primary-text" href="regist">Sign Up</a></div>
-          <div>Forgot password? <a class="primary-text" href="forget">Forgot Password</a></div>
+          <span id="err_msg" style="color:red;">{{ err_msg }}</span>
+          <a class="waves-effect waves-light btn-large accent-color block m-b-20 animated bouncein delay-2"
+           href="#" name="submit" onclick="login()">登录</a>
+          <div>没有账号? <a class="primary-text" href="regist">注册</a></div>
+          <div>忘记密码? <a class="primary-text" href="forget">找回</a></div>
         </div>
         </form>
 
@@ -186,13 +188,20 @@
           },
           errorClass: "form-invalid",
           submitHandler: function(form) {
-            var pwd = $("#lg_pwd").val();
-            var md5pwd = SparkMD5.hash(pwd);
-            $("#lg_pwd").val(md5pwd);
+            // var pwd = $("#lg_pwd").val();
+            // var md5pwd = SparkMD5.hash(pwd);
+            // $("#lg_pwd").val(md5pwd);
             form.submit();
           }
         });
       });
+
+      function login(){
+        var pwd = $("#lg_pwd").val();
+        var md5pwd = SparkMD5.hash(pwd);
+        $("#lg_pwd").val(md5pwd);
+        $("#login-form").submit();
+      }
     </script>
 
   </body>

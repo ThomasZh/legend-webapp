@@ -71,26 +71,27 @@
           <h1>找回密码</h1>
           <div class="input-field">
             <i class="ion-android-contact prefix"></i>
-            <input class="validate" id="lg_phone" name="lg_phone" type="text">
-            <label for="lg_phone">Phonenum</label>
-            <button type="submit" onclick="SmsVerifyCode();"
-             class="waves-effect waves-light btn-default accent-color block m-b-20">获取验证码</button>
+            <input class="validate" id="lp_phone" name="lp_phone" type="text">
+            <label for="lp_phone">手机号</label>
+          </div>
 
-          </div>
           <div class="input-field" style="position:relative;">
-            <i class="ion-android-clipboard prefix"></i>
-            <input class="validate" id="lg_phone" name="lg_phone" type="text">
-            <label for="lg_phone">验证码</label>
-            <!-- <input id="lp_verify_code" name="lp_verify_code" class="rst-pageinput" type="text" placeholder="验证码" />
-            <input type="button" onclick="SmsVerifyCode();" id="code-button" class="rst-pagebutton" value="获取验证码"></button> -->
+            <i class="ion-android-chat prefix"></i>
+            <input class="validate" id="lp_verify_code" name="lp_verify_code" placeholder="验证码"  type="text">
+            <input type="button" onclick="SmsVerifyCode();" id="code-btn" value="获取验证码"
+                style="position:absolute;right:0;top:5px;width:90px;border:1px;">
+            <label for="lp_verify_code">验证码</label>
           </div>
+
           <div class="input-field" style="margin-bottom:20px;">
             <i class="ion-android-lock prefix"></i>
-            <input class="validate" id="lg_pwd" name="lg_pwd" type="password">
-            <label for="lg_pwd">Password</label>
+            <input class="validate" id="lp_pwd" name="lp_pwd" type="password">
+            <label for="lp_pwd">密码</label>
           </div>
 
-          <button type="submit" class="waves-effect waves-light btn-large accent-color block m-b-20 animated bouncein delay-2">Submit</button>
+          <div class="lostpwd-form-main-message"></div>
+          <button type="submit" class="waves-effect waves-light btn-large accent-color block m-b-20 animated bouncein delay-2">提交</button>
+          <div><a class="primary-text" href="login">登录</a></div>
         </div>
         </form>
 
@@ -168,14 +169,14 @@
             dataType: "json",
             contentType: 'application/json',
             success: function(data, status, xhr) {
-              var btn = document.getElementById("code-button");
+              var btn = document.getElementById("code-btn");
               time(btn);
               $('.lostpwd-verify-code-message').addClass('show error').html("验证码已通过短信发出, 注意查收! 5分钟内有效。");
             },
             error: function(XMLHttpRequest, textStatus, errorThrown) {
               console.log("XMLHttpRequest.status:" + XMLHttpRequest.status);
               if (XMLHttpRequest.status == 200) {
-                var btn = document.getElementById("code-button");
+                var btn = document.getElementById("code-btn");
                 time(btn);
                 $('.lostpwd-verify-code-message').addClass('show error').html("验证码已通过短信发出, 注意查收! 5分钟内有效。");
               } else if (XMLHttpRequest.status == 401) {
@@ -256,7 +257,8 @@
               login_type: 'phone',
               phone: $('#lp_phone').val(),
               verify_code: $('#lp_verify_code').val(),
-              pwd: $.md5($('#lp_pwd').val()),
+              // pwd: $.md5($('#lp_pwd').val()),
+              pwd: SparkMD5.hash($('#lp_pwd').val()),
             };
             var json = JSON.stringify(data);
             console.log(json);

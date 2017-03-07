@@ -29,6 +29,8 @@ def map():
         (r'/webapp/auth/login', getattr(auth_phone, 'AuthLoginHandler')),
         (r'/webapp/auth/regist', getattr(auth_phone, 'AuthRegistHandler')),
         (r'/webapp/auth/forget', getattr(auth_phone, 'AuthForgotPwdHandler')),
+        (r'/webapp/login-next', getattr(auth_phone, 'WebappLoginNextHandler')),
+
 
 
         (r'/webapp', getattr(shuttle, 'ShuttleIndexHandler')),

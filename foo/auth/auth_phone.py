@@ -40,12 +40,18 @@ from bson import json_util
 from comm import *
 from global_const import *
 
+class WebappLoginNextHandler(BaseHandler):
+    def get(self):
+        login_next = self.get_secure_cookie("login_next")
+        if login_next:
+            self.redirect(login_next)
+        else:
+            self.redirect("/webapp/demo/moments")
 
 class AuthLoginHandler(BaseHandler):
     def get(self):
         logging.info(self.request)
-        self.render('auth/login.html')
-
+        self.render('auth/login.html',err_msg="")
 
     def post(self):
         logging.info(self.request)
