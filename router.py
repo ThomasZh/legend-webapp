@@ -27,6 +27,9 @@ def map():
         (r'/webapp/demo/add-moment', getattr(demo, 'DemoAddMomentHandler')),
 
         (r'/webapp/auth/login', getattr(auth_phone, 'AuthLoginHandler')),
+        (r'/webapp/auth/regist', getattr(auth_phone, 'AuthRegistHandler')),
+        (r'/webapp/auth/forget', getattr(auth_phone, 'AuthForgotPwdHandler')),
+
 
         (r'/webapp', getattr(shuttle, 'ShuttleIndexHandler')),
         (r'/webapp/index', getattr(shuttle, 'ShuttleIndexHandler')),

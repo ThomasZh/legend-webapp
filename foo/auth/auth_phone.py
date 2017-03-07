@@ -99,3 +99,20 @@ class AuthLoginHandler(BaseHandler):
         if not login_next:
             login_next = "/"
         self.redirect(login_next)
+
+
+
+class AuthRegistHandler(BaseHandler):
+    def get(self):
+        logging.info(self.request)
+        self.render('auth/regist.html')
+
+    # def post(self):
+
+
+class AuthForgotPwdHandler(BaseHandler):
+    def get(self):
+        logging.info(self.request)
+        self.render('auth/forget.html')
+
+    # def post(self):

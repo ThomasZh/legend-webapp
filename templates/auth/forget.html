@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html class="no-js">
+  <head>
+    <meta charset="utf-8">
+    <title>Shuttle - Material Design Mobile Template</title>
+    <meta name="description" content="Material Design Mobile Template">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
+
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/static/shuttle/img/touch/apple-touch-icon-144x144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/static/shuttle/img/touch/apple-touch-icon-114x114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/static/shuttle/img/touch/apple-touch-icon-72x72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="/static/shuttle/img/touch/apple-touch-icon-57x57-precomposed.png">
+    <link rel="shortcut icon" sizes="196x196" href="/static/shuttle/img/touch/touch-icon-196x196.png">
+    <link rel="shortcut icon" href="/static/shuttle/img/touch/apple-touch-icon.png">
+
+    <!-- Tile icon for Win8 (144x144 + tile color) -->
+    <meta name="msapplication-TileImage" content="/static/shuttle/img/touch/apple-touch-icon-144x144-precomposed.png">
+    <meta name="msapplication-TileColor" content="#222222">
+
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <!-- SEO: If mobile URL is different from desktop URL, add a canonical link to the desktop page -->
+    <!--
+    <link rel="canonical" href="http://www.example.com/" >
+    -->
+
+    <!-- For iOS web apps. Delete if not needed. https://github.com/h5bp/mobile-boilerplate/issues/94 -->
+    <!--
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="">
+    -->
+
+    <!-- Fonts -->
+    <!-- <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,700,100' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'> -->
+    <!-- Icons -->
+    <link href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" media="all" rel="stylesheet" type="text/css">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="{{ static_url('shuttle/css/animate.css') }}">
+    <link rel="stylesheet" href="{{ static_url('shuttle/css/materialize.min.css') }}">
+    <link rel="stylesheet" href="{{ static_url('shuttle/css/swipebox.min.css') }}">
+    <link rel="stylesheet" href="{{ static_url('shuttle/css/swiper.min.css') }}">
+    <link rel="stylesheet" href="{{ static_url('shuttle/css/normalize.css') }}">
+    <link rel="stylesheet" href="{{ static_url('shuttle/css/main.css') }}">
+  </head>
+
+  <body>
+
+    <!-- Main Container -->
+    <div id="main" class="main">
+
+      <!-- Toolbar -->
+      <div id="toolbar" class="primary-color tool-login">
+        <div class="open-left" id="open-left" data-activates="slide-out-left">
+          <i class="ion-android-menu white-text"></i>
+        </div>
+      </div>
+      <!-- End of Toolbar -->
+
+      <!-- Page Contents -->
+      <div class="page fullscreen grey lighten-4">
+
+        <form id="lostpwd-form" onsubmit="return false;">
+        <div class="login-form z-depth-1">
+          <h1>找回密码</h1>
+          <div class="input-field">
+            <i class="ion-android-contact prefix"></i>
+            <input class="validate" id="lg_phone" name="lg_phone" type="text">
+            <label for="lg_phone">Phonenum</label>
+            <button type="submit" onclick="SmsVerifyCode();"
+             class="waves-effect waves-light btn-default accent-color block m-b-20">获取验证码</button>
+
+          </div>
+          <div class="input-field" style="position:relative;">
+            <i class="ion-android-clipboard prefix"></i>
+            <input class="validate" id="lg_phone" name="lg_phone" type="text">
+            <label for="lg_phone">验证码</label>
+            <!-- <input id="lp_verify_code" name="lp_verify_code" class="rst-pageinput" type="text" placeholder="验证码" />
+            <input type="button" onclick="SmsVerifyCode();" id="code-button" class="rst-pagebutton" value="获取验证码"></button> -->
+          </div>
+          <div class="input-field" style="margin-bottom:20px;">
+            <i class="ion-android-lock prefix"></i>
+            <input class="validate" id="lg_pwd" name="lg_pwd" type="password">
+            <label for="lg_pwd">Password</label>
+          </div>
+
+          <button type="submit" class="waves-effect waves-light btn-large accent-color block m-b-20 animated bouncein delay-2">Submit</button>
+        </div>
+        </form>
+
+      </div>
+      <!-- End of Page Contents -->
+
+      <!-- Sidebars -->
+      <!-- left sidebar -->
+      {% module Template("shuttle/block-left-sidebar.html") %}
+      <!-- /left sidebar -->
+
+      <!-- right sidebar -->
+      {% module Template("shuttle/block-right-sidebar.html") %}
+      <!-- /right sidebar -->
+      <!-- End of Sidebars -->
+
+    </div>
+    <!-- End of Main Container -->
+
+    <!-- Scripts -->
+    <script src="{{ static_url('shuttle/js/vendor/jquery-2.1.0.min.js') }}"></script>
+    <script src="{{ static_url('shuttle/js/helper.js') }}"></script>
+    <script src="{{ static_url('shuttle/js/vendor/HeadsUp.js') }}"></script>
+    <script src="{{ static_url('shuttle/js/vendor/jquery.smoothState.js') }}"></script>
+    <script src="{{ static_url('shuttle/js/vendor/chart.min.js') }}"></script>
+    <script src="{{ static_url('shuttle/js/vendor/jquery.mixitup.min.js') }}"></script>
+    <script src="{{ static_url('shuttle/js/vendor/jquery.swipebox.min.js') }}"></script>
+    <script src="{{ static_url('shuttle/js/vendor/masonry.min.js') }}"></script>
+    <script src="{{ static_url('shuttle/js/vendor/swiper.min.js') }}"></script>
+    <script src="{{ static_url('shuttle/js/vendor/materialize.min.js') }}"></script>
+    <script src="{{ static_url('shuttle/js/main.js') }}"></script>
+
+    <script type="text/javascript" src="{{ static_url('js/jquery.validate.min.js') }}"></script>
+    <script type="text/javascript" src="{{ static_url('js/localization/messages_zh.min.js') }}"></script>
+    <script type="text/javascript" src="{{ static_url('upyun/js/spark-md5.min.js') }}"></script>
+    <script type="text/javascript" src="{{ static_url('js/json2.js') }}"></script>
+
+    <script type="text/javascript">
+      function SmsVerifyCode() {
+        var wait = 300; // 5分钟
+        function time(t) {
+          if (wait == 0) {
+            t.removeAttribute("disabled");
+            t.value = "获取验证码";
+            wait = 300; // 5分钟
+          } else {
+            t.setAttribute("disabled", true);
+            t.value = "" + wait + "秒";
+            wait--;
+            setTimeout(function() {
+              time(t)
+            }, 1000)
+          }
+        }
+
+        var validator = $("#lostpwd-form").validate();
+        if (validator.element("#lp_phone")) {
+          var phone = $("#lp_phone").val();
+          console.log(phone);
+          var data = {
+            "action": "lost-pwd",
+            "login_type": "phone",
+            "phone": phone,
+          };
+          var json = JSON.stringify(data);
+          console.log(json);
+
+          $.ajax({
+            type: "POST",
+            url: "/api/auth/verify-codes", //  http://api.7x24hs.com
+            headers: {
+              "Authorization": "Bearer eHfWk+OqSWaR7FhDTkW/d7TIZqP3q0W3nVGXKZY5A8Q="
+            },
+            data: json,
+            dataType: "json",
+            contentType: 'application/json',
+            success: function(data, status, xhr) {
+              var btn = document.getElementById("code-button");
+              time(btn);
+              $('.lostpwd-verify-code-message').addClass('show error').html("验证码已通过短信发出, 注意查收! 5分钟内有效。");
+            },
+            error: function(XMLHttpRequest, textStatus, errorThrown) {
+              console.log("XMLHttpRequest.status:" + XMLHttpRequest.status);
+              if (XMLHttpRequest.status == 200) {
+                var btn = document.getElementById("code-button");
+                time(btn);
+                $('.lostpwd-verify-code-message').addClass('show error').html("验证码已通过短信发出, 注意查收! 5分钟内有效。");
+              } else if (XMLHttpRequest.status == 401) {
+                $('.lostpwd-verify-code-message').addClass('show error').html("验证码不正确!");
+              } else if (XMLHttpRequest.status == 404) {
+                $('.lostpwd-verify-code-message').addClass('show error').html("此手机号码未注册!");
+              } else if (XMLHttpRequest.status == 202) {
+                $('.lostpwd-verify-code-message').addClass('show error').html("短信验证码5分钟内有效, 不必获取新的!");
+              } else {
+                $('.lostpwd-verify-code-message').addClass('show error').html(XMLHttpRequest.status + ": 服务器异常,请稍后重试!");
+              }
+            },
+            complete: function(XMLHttpRequest, textStatus) {
+              this; // 调用本次AJAX请求时传递的options参数
+            }
+          });
+        } else {
+          return false;
+        }
+      }
+
+
+      $(function() {
+        // 手机号码验证
+        jQuery.validator.addMethod("mobile", function(value, element) {
+          var length = value.length;
+          var mobile = /^(((13[0-9]{1})|(15[0-9]{1})|(17[0-9]{1})|(18[0-9]{1})|(19[0-9]{1}))+\d{8})$/;
+          return this.optional(element) || (length == 11 && mobile.test(value));
+        }, "请正确填写您的手机号码");
+
+
+        // 验证码
+        jQuery.validator.addMethod("code", function(value, element) {
+          var length = value.length;
+          var code = /^[0-9]{4}$/;
+          return this.optional(element) || (length == 4 && code.test(value));
+        }, "请正确填写验证码");
+
+
+
+        // Lost password Form
+        //----------------------------------------------
+        // Validation
+        $("#lostpwd-form").validate({
+          rules: {
+            lp_phone: {
+              minlength: 11,
+              maxlength: 11,
+              required: true,
+              mobile: true
+            },
+            lp_verify_code: {
+              required: true,
+              minlength: 4,
+              maxlength: 4,
+              code: true
+            },
+            lp_pwd: {
+              required: true,
+              minlength: 6
+            },
+          },
+          messages:{
+            lp_phone:"请输入正确的手机号码！",
+            lp_verify_code: {
+              required: "请输入验证码！",
+              minlength: "验证码至少4位",
+            },
+            lp_pwd:{
+              required: "请输入密码！",
+              minlength: "密码长度至少6位"
+            },
+          },
+          errorClass: "error",
+          submitHandler: function(form) {
+            var data = {
+              action: 'reset-pwd',
+              login_type: 'phone',
+              phone: $('#lp_phone').val(),
+              verify_code: $('#lp_verify_code').val(),
+              pwd: $.md5($('#lp_pwd').val()),
+            };
+            var json = JSON.stringify(data);
+            console.log(json);
+
+            $.ajax({
+              type: "PUT",
+              url: "/api/auth/pwds",
+              headers: {
+                "Authorization": "Bearer eHfWk+OqSWaR7FhDTkW/d7TIZqP3q0W3nVGXKZY5A8Q="
+              },
+              data: json,
+              dataType: "json",
+              contentType: 'application/json',
+              success: function(data, status, xhr) {
+                console.log(data);
+                $('.lostpwd-form-main-message').addClass('show error').html('密码已经重置，请重新登录!');
+              },
+              error: function(XMLHttpRequest, textStatus, errorThrown) {
+                console.log("XMLHttpRequest.status: " + XMLHttpRequest.status);
+                if (XMLHttpRequest.status == 200) {
+                  $('.lostpwd-form-main-message').addClass('show error').html('密码已经重置，请重新登录!');
+                } else if (XMLHttpRequest.status == 408) {
+                  $('.lostpwd-form-main-message').addClass('show error').html('验证码已经超时, 请重新申请');
+                } else {
+                  $('.lostpwd-form-main-message').addClass('show error').html('网络异常,刷新重试');
+                }
+              },
+              complete: function(XMLHttpRequest, textStatus) {
+                this; // 调用本次AJAX请求时传递的options参数
+              }
+            });
+          }
+        });
+
+      });
+    </script>
+
+  </body>
+</html>

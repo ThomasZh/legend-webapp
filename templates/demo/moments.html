@@ -204,12 +204,14 @@
               <img v-bind:src="moment.avatar" alt="" class="media-left avatar small">\
               <div class="media-body">\
                 <span class="small">{{! moment.nickname }}\
+                <a href="#!" class="accent-text">\
+                  &nbsp;{{! moment.friendlyTime }}</a>\
                 </span>\
               </div>\
             </div>\
           </div>\
           <div class="comments grey lighten-4">\
-            <a v-on:click="showComments(idx)" class="accent-text">{{! moment.comment_num }} 条评论</a>\
+            <h5>{{! moment.comment_num }} 条评论</h5>\
             <div is="oneComment"\
               v-for="(comment, idx) in moment.resComments"\
               v-bind:comment="comment"\
@@ -217,8 +219,8 @@
             ></div>\
             <div class="controls right-align animated fadeinup delay-2">\
               <button class="left"  v-on:click="onComment(idx)">发评论</button>\
-              <button class="filter" id="loadMoreBtn"\
-                v-on:click="loadMore(idx)" data-filter=".category-3">更多...</button>\
+              <button class="filter" v-bind:id="idx"\
+                v-on:click="showComments(idx)" data-filter=".category-3">展开</button>\
             </div>\
            </div>\
          </div>\
@@ -321,27 +323,6 @@
             _self.queryComments(idx,3);
           },
 
-          loadMore: function(idx) {
-            var _self = this;
-            var moments = this.$parent.moments;
-            // console.log(moments);
-            var moment = moments[idx];
-            $("#loadMoreBtn").text('Loading...');
-
-            _self.queryComments(idx, 3);
-
-            setTimeout(function(){
-              if (_self.comment_num % _self.limlt == 0){
-                $("#loadMoreBtn").text('More comments');
-              } else {
-                // $("#loadMoreBtn").css('display','none');
-              }
-            }, 1000);
-            // setTimeout(function(){
-            //   $("#loadMoreBtn").css('display','none');
-            // }, 1000);
-          },
-
           queryComments: function(idx, limit) {
             var _self = this;
             var moments = this.$parent.moments;
@@ -350,6 +331,9 @@
             var momentId = moment._id;
             // 记录一个moment的comments当前的加载位置
             var comment_idx = moment.resComments.length;
+
+            // $("#loadMoreBtn").text('Loading...');
+            $("#"+idx).text('Loading...');
 
             $.ajax({
               type: "GET",
@@ -362,8 +346,12 @@
                 for(var i = 0, l = datas.length; i < l; i++) {
                   moment.resComments.push(datas[i]);
                 }
-                if(datas.length < limit){
-                  // $("#loadMoreBtn").css('display','none');
+                // $("#loadMoreBtn").text('更多...');
+                $("#"+idx).text('更多...');
+
+                if(datas.length < limit || datas.length == 0){
+                  // $("#loadMoreBtn").text('没了！');
+                  $("#"+idx).text('没了！');
                 }
               },
               error: function(XMLHttpRequest, textStatus, errorThrown) {
@@ -430,6 +418,7 @@
                for(var i = 0, l = datas.length; i < l; i++) {
                  datas[i].resComments = [];
                  datas[i].zan = false;
+                 datas[i].friendlyTime =_self.getFriendlyTime(datas[i].create_time);
                  _self.moments.push(datas[i]);
                  _self.moment_num += 1;
                }
@@ -445,8 +434,14 @@
              }
            });
          },
+
+         getFriendlyTime(nS) { //时间戳转换
+              console.log(nS);
+              return new Date(parseInt(nS) * 1000).toLocaleString().replace(/:\d{1,2}$/,' ');
+          },
        }
      })
    </script>
+
   </body>
 </html>
