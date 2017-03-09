@@ -6,7 +6,9 @@
     <meta name="description" content="Material Design Mobile Template">
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
-    <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui"> -->
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport" />
+
 
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/static/shuttle/img/touch/apple-touch-icon-144x144-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/static/shuttle/img/touch/apple-touch-icon-114x114-precomposed.png">
@@ -35,9 +37,9 @@
     -->
 
     <!-- Fonts -->
-    <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+    <!-- <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Roboto:400,700,100' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'> -->
     <!-- Icons -->
     <link href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" media="all" rel="stylesheet" type="text/css">
 
@@ -61,8 +63,8 @@
       <!-- End of Toolbar -->
 
       <!-- Page Contents -->
+      <div class="page">
       <div class="animated fadeinup">
-
         <!-- Event Fullscreen Header -->
         <div class="event-header" style="background: url({{ article['img'] }}!700x467) no-repeat center / cover !important;"></div>
         <div class="opacity-overlay"></div>
@@ -81,7 +83,8 @@
           </div>
 
           <div class="fixed-action-btn">
-            <a class="btn-floating btn-large waves-effect waves-light accent-color" v-on:click="sendLike"><i class="ion-ios-heart-outline"></i></a>
+            <a class="btn-floating btn-large waves-effect waves-light accent-color" v-on:click="sendLike">
+              <i class="ion-ios-heart-outline"></i></a>
             <!-- <a class="btn-floating btn-large waves-effect waves-light accent-color modal-trigger" v-on:click="sendComment"><i class="ion-chatbubble-working"></i></a> -->
           </div>
         </div>
@@ -116,7 +119,6 @@
           </div>
 
           <!-- more comments button -->
-
           <div class="controls right-align animated fadeinup delay-2">
             <button class="filter" data-filter=".category-3" id="loadMoreBtn" v-on:click="loadMore">More comments...</button>
           </div>
@@ -128,7 +130,7 @@
           </div>
 
           <a class="waves-effect waves-light btn-large primary-color block animated bouncein delay-6"
-           v-on:click="sendComment">Send</a>
+           v-on:click="sendComment()">Send</a>
 
         </div>
         <!-- footer -->
@@ -298,7 +300,7 @@
               }
             });
           },
-          
+
           queryNewComment: function() {
             var _self = this;
             $.ajax({

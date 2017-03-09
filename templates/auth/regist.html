@@ -35,9 +35,9 @@
     -->
 
     <!-- Fonts -->
-    <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+    <!-- <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Roboto:400,700,100' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'> -->
     <!-- Icons -->
     <link href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" media="all" rel="stylesheet" type="text/css">
 
@@ -82,7 +82,9 @@
           </div>
 
           <div class="register-form-main-message" style="color:red;"></div>
-          <button type="submit" class="waves-effect waves-light btn-large accent-color block m-b-20 animated bouncein delay-2">注册</button>
+          <a class="waves-effect waves-light btn-large primary-color block m-b-20 animated bouncein delay-2"
+            href="#" name="submit" onclick="regist()">注册</a>
+          <!-- <button type="submit" class="waves-effect waves-light btn-large accent-color block m-b-20 animated bouncein delay-2">注册</button> -->
         </div>
         </form>
 
@@ -236,6 +238,10 @@
         });
 
       });
+
+      function regist(){
+        $("#register-form").submit();
+      }
     </script>
 
   </body>
