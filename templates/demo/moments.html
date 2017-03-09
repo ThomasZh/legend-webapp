@@ -218,7 +218,9 @@
               v-bind:idx="idx"\
             ></div>\
             <div class="controls right-align animated fadeinup delay-2">\
-              <button class="left"  v-on:click="onComment(idx)">发评论</button>\
+              <textarea class="materialize-textarea" v-bind:id="idx" \
+                placeholder="Write your comment here"></textarea>\
+              <button class="left"  v-bind:id="idx" v-on:click="addComment(idx)">发评论</button>\
               <button class="filter" v-bind:id="idx"\
                 v-on:click="showComments(idx)" data-filter=".category-3">展开</button>\
             </div>\
@@ -265,19 +267,19 @@
             });
           },
 
-          onComment: function(idx){
-            var str=prompt("发表评论","");
-              if(str){
-                // alert("您刚输入的是："+ str)
-                this.addComment(idx,str);
-              }
-          },
-
-          addComment: function(idx,str) {
+          addComment: function(idx) {
             var moments = this.$parent.moments;
             // console.log(moments);
             var moment = moments[idx];
             var momentId = moment._id;
+
+            var str = $('#'+idx).val();
+            // alert(str);
+            if(str == null || str == "" || str.length == 0){
+              $('#'+idx).focus();
+              return;
+            }
+
             var data = {
               "comment": str,
             };
@@ -294,7 +296,7 @@
                 console.log(data);
                 moment.comment_num += 1;
                 moment.resComments.splice(0,0,data)
-
+                $('#'+idx).val("");
                 // _self.queryNewComment(idx);
                 // comment = {'avatar':data.avatar,'comment':data.comment,'nickname':data.nickname}
                 // moment.resComments.splice(0,0,comment);
@@ -304,7 +306,7 @@
                 if (XMLHttpRequest.status == 200) {
                   moment.comment_num += 1;
                   moment.resComments.splice(0,0,data)
-
+                  $('#'+idx).val("")
                   // $.alert("error:200");
                 } else if (XMLHttpRequest.status == 404) {
                   // $.alert("error:404");
@@ -333,8 +335,7 @@
             var comment_idx = moment.resComments.length;
 
             // $("#loadMoreBtn").text('Loading...');
-            $("#"+idx).text('Loading...');
-
+            // $("#"+idx).text('Loading...');
             $.ajax({
               type: "GET",
               url: "/api/moments/"+momentId+"/comment?idx=" + comment_idx + "&limit=" + limit,
@@ -347,11 +348,11 @@
                   moment.resComments.push(datas[i]);
                 }
                 // $("#loadMoreBtn").text('更多...');
-                $("#"+idx).text('更多...');
+                // $("#"+idx).text('更多...');
 
                 if(datas.length < limit || datas.length == 0){
                   // $("#loadMoreBtn").text('没了！');
-                  $("#"+idx).text('没了！');
+                  // $("#"+idx).text('没了！');
                 }
               },
               error: function(XMLHttpRequest, textStatus, errorThrown) {
@@ -389,7 +390,7 @@
            $('.grid').masonry({
              itemSelector: '.grid-item'
            });
-         });
+         },100);
        },
        methods: {
          getMore: function() {
