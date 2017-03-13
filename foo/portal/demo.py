@@ -35,10 +35,15 @@ from global_const import *
 
 class DemoIndexHandler(tornado.web.RequestHandler):
     def get(self):
+        self.redirect("/webapp/clubs/"+CLUB_ID+"/index")
+
+class DemoClubIndexHandler(tornado.web.RequestHandler):
+    def get(self,club_id):
         logging.info(self.request)
+        logging.info("got club_id %r--------", club_id)
 
         # multimedia
-        params = {"filter":"club", "club_id":CLUB_ID, "idx":0, "limit":3}
+        params = {"filter":"club", "club_id":club_id, "idx":0, "limit":3}
         url = url_concat("http://api.7x24hs.com/api/multimedias", params)
         http_client = HTTPClient()
         response = http_client.fetch(url, method="GET")
@@ -46,7 +51,7 @@ class DemoIndexHandler(tornado.web.RequestHandler):
         multimedias = json_decode(response.body)
 
         # articles
-        params = {"filter":"club", "club_id":CLUB_ID, "status":"publish", "idx":0, "limit":20}
+        params = {"filter":"club", "club_id":club_id, "status":"publish", "idx":0, "limit":20}
         url = url_concat("http://api.7x24hs.com/api/articles", params)
         http_client = HTTPClient()
         response = http_client.fetch(url, method="GET")
@@ -55,7 +60,7 @@ class DemoIndexHandler(tornado.web.RequestHandler):
         logging.info("got articles=[%r]", articles)
 
         # lastest comments(最新的评论)
-        params = {"filter":"club", "club_id":CLUB_ID, "idx":0, "limit":3}
+        params = {"filter":"club", "club_id":club_id, "idx":0, "limit":3}
         url = url_concat("http://api.7x24hs.com/api/last-comments", params)
         http_client = HTTPClient()
         response = http_client.fetch(url, method="GET")
@@ -63,6 +68,7 @@ class DemoIndexHandler(tornado.web.RequestHandler):
         lastest_comments = json_decode(response.body)
 
         self.render('demo/index.html',
+                club_id=club_id,
                 multimedias=multimedias,
                 lastest_comments=lastest_comments,
                 articles=articles)
@@ -70,18 +76,19 @@ class DemoIndexHandler(tornado.web.RequestHandler):
 
 class DemoAddMomentHandler(AuthorizationHandler):
     @tornado.web.authenticated  # if no session, redirect to login page
-    def get(self):
+    def get(self,club_id):
         logging.info(self.request)
 
-        self.render('demo/add-moment.html')
+        self.render('demo/add-moment.html',
+                        club_id=club_id)
 
 
 class DemoMomentsHandler(tornado.web.RequestHandler):
-    def get(self):
+    def get(self,club_id):
         logging.info(self.request)
 
         # moments(精彩瞬间)
-        params = {"filter":"club", "club_id":CLUB_ID, "idx":0, "limit":20}
+        params = {"filter":"club", "club_id":club_id, "idx":0, "limit":20}
         url = url_concat("http://api.7x24hs.com/api/moments", params)
         http_client = HTTPClient()
         response = http_client.fetch(url, method="GET")
@@ -92,16 +99,16 @@ class DemoMomentsHandler(tornado.web.RequestHandler):
         logging.info("got moments=[%r]", moments)
 
         self.render('demo/moments.html',
-                CLUB_ID=CLUB_ID,
+                club_id=club_id,
                 moments=moments)
 
 
 class DemoArticlesHandler(tornado.web.RequestHandler):
-    def get(self):
+    def get(self,club_id):
         logging.info(self.request)
 
         # all articles of club
-        params = {"filter":"club", "club_id":CLUB_ID, "idx":0, "limit":20}
+        params = {"filter":"club", "club_id":club_id, "idx":0, "limit":20}
         url = url_concat("http://api.7x24hs.com/api/articles", params)
         http_client = HTTPClient()
         response = http_client.fetch(url, method="GET")
@@ -111,11 +118,12 @@ class DemoArticlesHandler(tornado.web.RequestHandler):
             article['publish_time'] = timestamp_friendly_date(article['publish_time'])
 
         self.render('demo/articles.html',
+                club_id=club_id,
                 articles=articles)
 
 
 class DemoArticleHandler(tornado.web.RequestHandler):
-    def get(self, article_id):
+    def get(self, club_id, article_id):
         logging.info(self.request)
         logging.info("got article_id %r in uri", article_id)
 
@@ -137,4 +145,5 @@ class DemoArticleHandler(tornado.web.RequestHandler):
         logging.info("got update view_num response %r", response.body)
 
         self.render('demo/article.html',
+                club_id=club_id,
                 article=article)

@@ -82,7 +82,7 @@
 
         <!-- First Section -->
         <div class="section center">
-          <a href="/webapp/demo/moments"><i class="ion-aperture infograph"></i></a>
+          <a href="/webapp/clubs/{{ club_id }}/moments"><i class="ion-aperture infograph"></i></a>
           <h2 class="heading">Awesome Looks & Functionality</h2>
           <p>Create a mobile expirience that you are gonna be proud of. With Shuttle you can create Mobile Websites and Apps.</p>
         </div>
@@ -96,7 +96,7 @@
 
         <!-- Third Section -->
         <div class="section center">
-          <a href="/webapp/demo/articles"><i class="ion-android-color-palette infograph"></i></a>
+          <a href="/webapp/clubs/{{ club_id }}/articles"><i class="ion-android-color-palette infograph"></i></a>
           <h2 class="heading">Customizable Colors</h2>
           <p>Create a mobile expirience that you are gonna be proud of. With Shuttle you can create Mobile Websites and Apps.</p>
         </div>
@@ -172,11 +172,7 @@
             <div class="wrap small-width">
               <div data-pswp-uid="1" id="demo-gallery" class="demo-gallery">
                 {% for article in articles %}
-                <a href="/webapp/demo/articles/{{ article['_id'] }}" class="mix
-                {% for category in article['categories'] %}
-                  {{ category['title'] }}
-                {% end %}
-                ">
+                <a href="/webapp/clubs/{{ club_id }}/articles/{{ article['_id'] }}" class="mix">
                   <img src="{{ article['img'] }}!700x467" alt="image">
                 </a>
                 {% end %}

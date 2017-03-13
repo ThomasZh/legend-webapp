@@ -20,17 +20,16 @@ def map():
 
         # homepage
         (r'/', getattr(demo, 'DemoIndexHandler')),
-        (r'/webapp/demo/index', getattr(demo, 'DemoIndexHandler')),
-        (r'/webapp/demo/articles', getattr(demo, 'DemoArticlesHandler')),
-        (r'/webapp/demo/articles/([a-z0-9]*)', getattr(demo, 'DemoArticleHandler')),
-        (r'/webapp/demo/moments', getattr(demo, 'DemoMomentsHandler')),
-        (r'/webapp/demo/add-moment', getattr(demo, 'DemoAddMomentHandler')),
+        (r'/webapp/clubs/([a-z0-9]*)/index', getattr(demo, 'DemoClubIndexHandler')),
+        (r'/webapp/clubs/([a-z0-9]*)/articles', getattr(demo, 'DemoArticlesHandler')),
+        (r'/webapp/clubs/([a-z0-9]*)/articles/([a-z0-9]*)', getattr(demo, 'DemoArticleHandler')),
+        (r'/webapp/clubs/([a-z0-9]*)/moments', getattr(demo, 'DemoMomentsHandler')),
+        (r'/webapp/clubs/([a-z0-9]*)/add-moment', getattr(demo, 'DemoAddMomentHandler')),
 
         (r'/webapp/auth/login', getattr(auth_phone, 'AuthLoginHandler')),
         (r'/webapp/auth/regist', getattr(auth_phone, 'AuthRegistHandler')),
         (r'/webapp/auth/forget', getattr(auth_phone, 'AuthForgotPwdHandler')),
         (r'/webapp/login-next', getattr(auth_phone, 'WebappLoginNextHandler')),
-
 
 
         (r'/webapp', getattr(shuttle, 'ShuttleIndexHandler')),

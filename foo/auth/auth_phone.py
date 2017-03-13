@@ -46,7 +46,7 @@ class WebappLoginNextHandler(BaseHandler):
         if login_next:
             self.redirect(login_next)
         else:
-            self.redirect("/webapp/demo/moments")
+            self.redirect("/")
 
 class AuthLoginHandler(BaseHandler):
     def get(self):

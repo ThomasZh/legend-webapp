@@ -104,7 +104,7 @@
 
       <div class="fixed-action-btn">
         <a class="btn-floating btn-large waves-effect waves-light accent-color modal-trigger"
-           href="/webapp/demo/add-moment">
+           href="/webapp/clubs/{{ club_id }}/add-moment">
           <i class="ion-android-add"></i></a>
       </div>
 
@@ -411,7 +411,7 @@
           // http://api.7x24hs.com/api/moments
            $.ajax({
              type: "GET",
-             url: "/api/moments?idx=" + idx + "&limit=" + limit+"&filter=club&club_id={{CLUB_ID}}",
+             url: "/api/moments?idx=" + idx + "&limit=" + limit+"&filter=club&club_id={{ club_id }}",
              async: false,
              dataType: "json",
              contentType: 'application/json',

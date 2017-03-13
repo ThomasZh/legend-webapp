@@ -216,12 +216,12 @@
           dataType: "json",
           contentType: 'application/json',
           success: function(data, status, xhr) {
-            location.href = "/webapp/demo/moments";
+            location.href = "/webapp/clubs/{{ club_id }}/moments";
           },
           error: function(XMLHttpRequest, textStatus, errorThrown) {
             console.log("XMLHttpRequest.status:" + XMLHttpRequest.status);
             if (XMLHttpRequest.status == 200) {
-              location.href = "/webapp/demo/moments";
+              location.href = "/webapp/clubs/{{ club_id }}/moments";
             }
           },
           complete: function(XMLHttpRequest, textStatus) {
