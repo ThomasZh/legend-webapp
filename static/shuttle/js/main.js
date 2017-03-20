@@ -56,7 +56,6 @@ var options = {
         initiate_plugins(); // All onAfter calls goes inside this function
     }
 };
-var smoothState = $('#main').smoothState(options).data('smoothState');
 
 /*------------------------------------------------------------------
     Call all function for Ajax
