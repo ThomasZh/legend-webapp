@@ -96,15 +96,14 @@ class WxArticleHandler(tornado.web.RequestHandler):
         rs = json_decode(response.body)
         club = rs['rs']
 
-        # recently articles
-        params = {"filter":"club", "club_id":club_id, "status":"publish", "idx":0, "limit":4}
-        url = url_concat("http://api.7x24hs.com/api/articles", params)
+        # multimedia
+        params = {"filter":"club", "club_id":club_id, "idx":0, "limit":4}
+        url = url_concat("http://api.7x24hs.com/api/multimedias", params)
         http_client = HTTPClient()
         response = http_client.fetch(url, method="GET")
         logging.info("got response %r", response.body)
         rs = json_decode(response.body)
-        recently_articles = rs['rs']
-        logging.info("got recently_articles=[%r]", recently_articles)
+        multimedias = rs['rs']
 
         # article
         url = "http://api.7x24hs.com/api/articles/"+article_id
@@ -156,4 +155,4 @@ class WxArticleHandler(tornado.web.RequestHandler):
                 club=club,
                 article=article,
                 comments=comments,
-                recently_articles=recently_articles)
+                multimedias=multimedias)

@@ -124,21 +124,30 @@
         </div>
       </div>
       {% end %}
+
+      <div class="controls right-align animated fadeinup delay-2">
+        <textarea class="materialize-textarea" placeholder="填写评论内容"></textarea>
+        <button class="left">发表评论</button>
+        <button class="filter">查看更多...</button>
+      </div>
+
     </div>
 
     <!-- footer -->
     <footer class="page-footer primary-color">
-      <div class="section center">
-        <div id="two" class="grid m-t-20">
-          {% for recently_article in recently_articles %}
-          <div class="grid-item gallery-item-card">
-            <a href="/wx/clubs/{{ club['_id'] }}/articles/{{ recently_article['_id'] }}" title="{{ recently_article['title'] }}">
-              <img src="{{ recently_article['img'] }}!700x467" alt="image">
+      <!-- Contents -->
+      <div class="p-20">
+        <div class="grid m-t-20">
+          {% for multimedia in multimedias %}
+          <div class="grid-item">
+            <a href="{{ multimedia['url'] }}" class="swipebox no-smoothState" title="{{ multimedia['publish_time'] }}">
+              <img src="{{ multimedia['url'] }}!700x467" alt="image">
             </a>
           </div>
           {% end %}
         </div>
       </div>
+
       <div class="footer-copyright">
         <div class="container center">
           <a href="/wx/clubs/{{ club['_id'] }}/index" class="card-users white-text">
