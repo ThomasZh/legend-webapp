@@ -17,7 +17,7 @@
   <link rel="shortcut icon" href="/static/shuttle/img/touch/apple-touch-icon.png">
 
   <!-- Tile icon for Win8 (144x144 + tile color) -->
-  <meta name="msapplication-TileImage" content="{{ article['img'] }}!200x200">
+  <meta name="msapplication-TileImage" content="{{ club['img'] }}!200x200">
   <meta name="msapplication-TileColor" content="#222222">
 
   <!-- Add to homescreen for Chrome on Android -->
@@ -58,7 +58,7 @@
     <div class="animated fadeinup">
 
       <!-- Hero Header -->
-      <div class="hero-header hero-big bg-3 animated fadeindown" style="background: url({{ article['img'] }}!700x467) no-repeat center / cover !important;">
+      <div class="hero-header hero-big bg-3 animated fadeindown" style="background: url({{ club['img'] }}!700x467) no-repeat center / cover !important;">
         <div class="fixed-action-btn floating-button animated bouncein delay-3 horizontal click-to-toggle">
           <a href="#!" class="btn-floating btn-large accent-color">
             <i class="ion-android-share-alt"></i>
@@ -70,15 +70,15 @@
             <li><a class="btn-floating blue"><i class="ion-android-share-alt"></i></a></li>
           </ul>
         </div>
-
         <div class="hero-author">
           <div class="media-top-object">
-            <img src="{{ article['avatar'] }}!100x100" alt="" class="media-left avatar">
             <div class="media-body left-align">
-              <span class="white-text small"><em>{{ article['nickname'] }}</em></span>
+              <p class="white-text">{{ club['name'] }}</p>
+              <span class="white-text small"><em>{{ club['phone'] }}</em></span>
               <div class="card-feedback">
                 <div class="card-users white-text">
-                  {{ article['title'] }}
+                  <i class="ion-ios-heart accent-text"></i> <span>346</span>
+                  <i class="ion-android-person-add"></i> <span>205</span>
                 </div>
               </div>
             </div>
@@ -88,107 +88,94 @@
       </div>
 
       <div class="card-feedback">
-        <div class="card-users">
-          <i class="ion-eye"></i> <span>{{ article['read_num'] }}</span>
-          <i class="ion-ios-heart accent-text"></i> <span>{{ article['like_num'] }}</span>
-          <i class="ion-chatbubble-working"></i> <span>{{ article['comment_num'] }}</span>
-          <i class="ion-android-calendar white-text"></i> <span>{{ article['publish_time'] }}</span>
-        </div>
-        <!-- <div class="card-share">
-          <span>{{ article['publish_time'] }}</span>
-        </div> -->
-      </div>
-    </div>
-
-    <!-- Article Content -->
-    <div class="animated fadeinup delay-1">
-      <div class="p-20">
-        <blockquote class="accent-border">{{ article['subtitle'] }}</blockquote>
-        <p class="text-flow">{% raw article['paragraphs'] %}</p>
-      </div>
-    </div>
-
-    <!-- Like -->
-    <div class="p-20 center-align">
-      <a href="#!" class="btn-floating btn-large accent-color">
-        <i class="ion-ios-heart-outline"></i>
-      </a>
-    </div>
-
-    <!-- Comments -->
-    <div class="comments grey lighten-4">
-      <h5>{{ article['comment_num'] }} 条评论</h5> {% for comment in comments %}
-      <div class="media-top-object animated fadeinright delay-2">
-        <img src="{{ comment['avatar'] }}" alt="" class="media-left avatar">
-        <div class="media-body">
-          <span>{{ comment['nickname'] }}</span>
-          <span class="small">{{ comment['comment'] }}</span>
+        <div class="card-users white-text">
+          <i class="accent-text"></i> <span>346</span>
+          <i class="ion-chatbubble-working"></i> <span>205</span>
         </div>
       </div>
-      {% end %}
 
-      <div class="controls right-align animated fadeinup delay-2">
-        <textarea class="materialize-textarea" placeholder="填写评论内容"></textarea>
-        <button class="left">发表评论</button>
-        <button class="filter">查看更多...</button>
-      </div>
-
-    </div>
-
-    <!-- footer -->
-    <footer class="page-footer primary-color">
-      <div class="animated fadeinup delay-1">
-        <div class="shop-banner animated fadeinup delay-1">
-          <a href="/wx/clubs/{{ club['_id'] }}/products">
-            <img src="http://tripc2c-club-title.b0.upaiyun.com/default/cake_104.jpg!492x1023" alt="">
-            <div class="opacity-overlay valign-wrapper">
-              <div class="valign center width-100">
-                <h3 class="white-text">热销中</h3>
-                <p class="white-text">438</p>
+      <!-- Gallery One -->
+      <div class="grid m-t-20">
+        {% for i in range(len(articles)) %}
+        <div class="grid-item gallery-item-card">
+          <a href="/wx/clubs/{{ club['_id'] }}/products/{{ articles[i]['_id'] }}" title="This is dummy caption.">
+            {% if i == 1 or i == 4 or i == 5 or i == 8 %}
+            <img src="{{ articles[i]['img'] }}!700x1050" alt="image">
+            {% else %}
+            <img src="{{ articles[i]['img'] }}!700x467" alt="image">
+            {% end %}
+            <div class="gallery-item-header">
+              <div class="gallery-item-author">
+                <span>{{ articles[i]['title'] }}</span>
+                <span class="small">$ 199.99</span>
               </div>
             </div>
           </a>
         </div>
+        {% end %}
+      </div>
 
-        <div class="shop-banner animated fadeinup delay-2">
-          <a href="/wx/clubs/{{ club['_id'] }}/blogs">
-            <img src="http://tripc2c-club-title.b0.upaiyun.com/default/cake_102.jpg!492x512" alt="">
-            <div class="opacity-overlay valign-wrapper">
-              <div class="valign center width-100">
-                <h3 class="white-text">博客</h3>
-                <p class="white-text">86k</p>
-              </div>
-            </div>
-          </a>
-        </div>
-
-        <div class="shop-banner animated fadeinup delay-3">
-          <a href="/wx/clubs/{{ club['_id'] }}/multimedias">
-            <img src="http://tripc2c-club-title.b0.upaiyun.com/default/cake_109.jpg!492x512" alt="">
-            <div class="opacity-overlay valign-wrapper">
-              <div class="valign center width-100">
-                <h3 class="white-text">精彩瞬间</h3>
-                <p class="white-text">1.6k</p>
-              </div>
-            </div>
-          </a>
-        </div>
+      <!-- load more... -->
+      <div class="controls right-align p-20 animated fadeinup delay-2">
+        <button class="center">加载更多...</button>
       </div>
 
       <div class="clr"></div>
 
-      <div class="footer-copyright">
-        <div class="container center">
-          <a href="/wx/clubs/{{ club['_id'] }}/index" class="card-users white-text">
-            <i class="ion-android-home">{{ club['name'] }}</i>
-          </a>
-        </div>
-      </div>
-    </footer>
-    <!-- /footer -->
+      <!-- footer -->
+      <footer class="page-footer primary-color">
+        <div class="animated fadeinup delay-1">
+          <div class="shop-banner animated fadeinup delay-1">
+            <a href="/wx/clubs/{{ club['_id'] }}/products">
+              <img src="http://tripc2c-club-title.b0.upaiyun.com/default/cake_104.jpg!492x1023" alt="">
+              <div class="opacity-overlay valign-wrapper">
+                <div class="valign center width-100">
+                  <h3 class="white-text">热销中</h3>
+                  <p class="white-text">438</p>
+                </div>
+              </div>
+            </a>
+          </div>
 
-  </div>
-  <!-- End of Page Contents -->
+          <div class="shop-banner animated fadeinup delay-2">
+            <a href="/wx/clubs/{{ club['_id'] }}/blogs">
+              <img src="http://tripc2c-club-title.b0.upaiyun.com/default/cake_102.jpg!492x512" alt="">
+              <div class="opacity-overlay valign-wrapper">
+                <div class="valign center width-100">
+                  <h3 class="white-text">博客</h3>
+                  <p class="white-text">86k</p>
+                </div>
+              </div>
+            </a>
+          </div>
+
+          <div class="shop-banner animated fadeinup delay-3">
+            <a href="/wx/clubs/{{ club['_id'] }}/multimedias">
+              <img src="http://tripc2c-club-title.b0.upaiyun.com/default/cake_109.jpg!492x512" alt="">
+              <div class="opacity-overlay valign-wrapper">
+                <div class="valign center width-100">
+                  <h3 class="white-text">精彩瞬间</h3>
+                  <p class="white-text">1.6k</p>
+                </div>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <div class="clr"></div>
+
+        <div class="footer-copyright">
+          <div class="container center">
+            <a href="/wx/clubs/{{ club['_id'] }}/index" class="card-users white-text">
+              <i class="ion-android-home">{{ club['name'] }}</i>
+            </a>
+          </div>
+        </div>
+      </footer>
+      <!-- /footer -->
+
+    </div>
+    <!-- End of Page Contents -->
 
   </div>
   <!-- End of Main Container -->

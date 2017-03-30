@@ -21,7 +21,11 @@ def map():
 
         (r'/wx', getattr(wx, 'WxHomeHandler')),
         (r'/wx/clubs/([a-z0-9]*)/index', getattr(wx, 'WxIndexHandler')),
+        (r'/wx/clubs/([a-z0-9]*)/blogs', getattr(wx, 'WxBlogHandler')),
+        (r'/wx/clubs/([a-z0-9]*)/products', getattr(wx, 'WxProductIndexHandler')),
+        (r'/wx/clubs/([a-z0-9]*)/multimedias', getattr(wx, 'WxMultimediaIndexHandler')),
         (r'/wx/clubs/([a-z0-9]*)/articles/([a-z0-9]*)', getattr(wx, 'WxArticleHandler')),
+        (r'/wx/clubs/([a-z0-9]*)/products/([a-z0-9]*)', getattr(wx, 'WxProductHandler')),
 
         # homepage
         (r'/', getattr(demo, 'DemoIndexHandler')),

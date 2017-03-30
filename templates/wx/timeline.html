@@ -64,10 +64,10 @@
             <i class="ion-android-share-alt"></i>
           </a>
           <ul>
-            <li><a class="btn-floating blue darken-4"><i class="ion-social-facebook"></i></a></li>
-            <li><a class="btn-floating light-blue"><i class="ion-social-twitter"></i></a></li>
-            <li><a class="btn-floating pink"><i class="ion-social-dribbble"></i></a></li>
-            <li><a class="btn-floating red darken-1"><i class="ion-social-pinterest"></i></a></li>
+            <li><a class="btn-floating red"><i class="ion-ios-heart"></i></a></li>
+            <li><a class="btn-floating yellow darken-1"><i class="ion-android-star"></i></a></li>
+            <li><a class="btn-floating green"><i class="ion-thumbsup"></i></a></li>
+            <li><a class="btn-floating blue"><i class="ion-android-share-alt"></i></a></li>
           </ul>
         </div>
         <div class="hero-author">
@@ -96,11 +96,32 @@
 
       <!-- Tabs -->
       <ul class="tabs m-b-20">
-        <li class="tab"><a class="active" href="#one">博客文章</a></li>
-        <li class="tab"><a href="#two">精彩瞬间</a></li>
+        <li class="tab"><a class="active" href="#one">热销中</a></li>
+        <li class="tab"><a href="#two">博客</a></li>
+        <li class="tab"><a href="#three">精彩瞬间</a></li>
       </ul>
 
       <div id="one">
+        {% for article in articles %}
+        <div class="product half">
+          <a href="/wx/clubs/{{ club['_id'] }}/products/{{ article['_id'] }}"><img src="{{ article['img'] }}!370x320" alt=""></a>
+          <div class="product-info">
+            <h5 class="m-0"><strong>{{ article['title'] }}</strong></h5>
+            <p class="m-0">$ 199.99</p>
+            <!-- Rating -->
+            <div class="rating">
+              <i class="ion-star active"></i>
+              <i class="ion-star active"></i>
+              <i class="ion-star active"></i>
+              <i class="ion-star active"></i>
+              <i class="ion-star active"></i>
+            </div>
+          </div>
+        </div>
+        {% end %}
+      </div>
+
+      <div id="two">
         {% for article in articles %}
         <div class="card fullscreen">
           <div class="card-image">
@@ -112,11 +133,14 @@
               <i class="ion-ios-heart accent-text"></i> <span>{{ article['like_num'] }}</span>
               <i class="ion-chatbubble-working"></i> <span>{{ article['comment_num'] }}</span>
             </div>
+            <div class="card-share">
+              <i class="ion-android-calendar white-text"></i> <span>{{ article['publish_time'] }}</span>
+            </div>
           </div>
           <div class="card-content">
             <h5><strong>{{ article['title'] }}</strong></h5>
           </div>
-          <div class="card-author">
+          <!-- <div class="card-author">
             <div class="media-top-object middle">
               <img src="{{ article['avatar'] }}" alt="" class="media-left avatar small">
               <div class="media-body">
@@ -125,7 +149,7 @@
                 </span>
               </div>
             </div>
-          </div>
+          </div> -->
         </div>
         {% end %}
 
@@ -136,12 +160,12 @@
 
       </div>
 
-      <div id="two" class="grid m-t-20">
+      <div id="three" class="grid m-t-20">
         {% for i in range(len(multimedias)) %}
         <div class="grid-item gallery-item-card">
           <a href="{{ multimedias[i]['url'] }}" class="swipebox no-smoothState" title="This is dummy caption.">
-            {% if i%3 == 0 %}
-            <img src="{{ multimedias[i]['url'] }}!800x640" alt="image">
+            {% if i == 1 or i == 4 or i == 5 or i == 8 %}
+            <img src="{{ multimedias[i]['url'] }}!700x1050" alt="image">
             {% else %}
             <img src="{{ multimedias[i]['url'] }}!700x467" alt="image">
             {% end %}
