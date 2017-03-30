@@ -25,6 +25,7 @@ import uuid
 import smtplib
 import json as JSON # 启用别名，不会跟方法里的局部变量混淆
 from bson import json_util
+import re
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "../"))
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "../dao"))
@@ -33,87 +34,28 @@ from comm import *
 from global_const import *
 
 
-class DemoIndexHandler(tornado.web.RequestHandler):
+class WxHomeHandler(tornado.web.RequestHandler):
     def get(self):
-        self.redirect("/webapp/clubs/"+CLUB_ID+"/index")
+        logging.info(self.request)
+
+        self.redirect("/wx/clubs/"+CLUB_ID+"/index")
 
 
-class DemoClubIndexHandler(tornado.web.RequestHandler):
-    def get(self,club_id):
+class WxIndexHandler(tornado.web.RequestHandler):
+    def get(self, club_id):
         logging.info(self.request)
         logging.info("got club_id %r--------", club_id)
 
-        # multimedia
-        params = {"filter":"club", "club_id":club_id, "idx":0, "limit":3}
-        url = url_concat("http://api.7x24hs.com/api/multimedias", params)
+        # club
+        url = "http://api.7x24hs.com/api/clubs/"+club_id
         http_client = HTTPClient()
         response = http_client.fetch(url, method="GET")
         logging.info("got response %r", response.body)
         rs = json_decode(response.body)
-        multimedias = rs['rs']
+        club = rs['rs']
 
         # articles
-        params = {"filter":"club", "club_id":club_id, "status":"publish", "idx":0, "limit":20}
-        url = url_concat("http://api.7x24hs.com/api/articles", params)
-        http_client = HTTPClient()
-        response = http_client.fetch(url, method="GET")
-        logging.info("got response %r", response.body)
-        rs = json_decode(response.body)
-        articles = rs['rs']
-        logging.info("got articles=[%r]", articles)
-
-        # lastest comments(最新的评论)
-        params = {"filter":"club", "club_id":club_id, "idx":0, "limit":3}
-        url = url_concat("http://api.7x24hs.com/api/last-comments", params)
-        http_client = HTTPClient()
-        response = http_client.fetch(url, method="GET")
-        logging.info("got response %r", response.body)
-        rs = json_decode(response.body)
-        lastest_comments = rs['rs']
-
-        self.render('demo/index.html',
-                club_id=club_id,
-                multimedias=multimedias,
-                lastest_comments=lastest_comments,
-                articles=articles)
-
-
-class DemoAddMomentHandler(AuthorizationHandler):
-    @tornado.web.authenticated  # if no session, redirect to login page
-    def get(self,club_id):
-        logging.info(self.request)
-
-        self.render('demo/add-moment.html',
-                club_id=club_id)
-
-
-class DemoMomentsHandler(tornado.web.RequestHandler):
-    def get(self,club_id):
-        logging.info(self.request)
-
-        # moments(精彩瞬间)
-        params = {"filter":"club", "club_id":club_id, "idx":0, "limit":20}
-        url = url_concat("http://api.7x24hs.com/api/moments", params)
-        http_client = HTTPClient()
-        response = http_client.fetch(url, method="GET")
-        logging.info("got response %r", response.body)
-        rs = json_decode(response.body)
-        moments = rs['rs']
-        for article in moments:
-            article['publish_time'] = timestamp_friendly_date(article['publish_time'])
-        logging.info("got moments=[%r]", moments)
-
-        self.render('demo/moments.html',
-                club_id=club_id,
-                moments=moments)
-
-
-class DemoArticlesHandler(tornado.web.RequestHandler):
-    def get(self,club_id):
-        logging.info(self.request)
-
-        # all articles of club
-        params = {"filter":"club", "club_id":club_id, "idx":0, "limit":20}
+        params = {"filter":"club", "club_id":club_id, "status":"publish", "idx":0, "limit":10}
         url = url_concat("http://api.7x24hs.com/api/articles", params)
         http_client = HTTPClient()
         response = http_client.fetch(url, method="GET")
@@ -122,16 +64,47 @@ class DemoArticlesHandler(tornado.web.RequestHandler):
         articles = rs['rs']
         for article in articles:
             article['publish_time'] = timestamp_friendly_date(article['publish_time'])
+        logging.info("got articles=[%r]", articles)
 
-        self.render('demo/articles.html',
-                club_id=club_id,
+        # multimedia
+        params = {"filter":"club", "club_id":club_id, "idx":0, "limit":20}
+        url = url_concat("http://api.7x24hs.com/api/multimedias", params)
+        http_client = HTTPClient()
+        response = http_client.fetch(url, method="GET")
+        logging.info("got response %r", response.body)
+        rs = json_decode(response.body)
+        multimedias = rs['rs']
+        for multimedia in multimedias:
+            multimedia['publish_time'] = timestamp_friendly_date(multimedia['publish_time'])
+
+        self.render('wx/timeline.html',
+                club=club,
+                multimedias=multimedias,
                 articles=articles)
 
 
-class DemoArticleHandler(tornado.web.RequestHandler):
+class WxArticleHandler(tornado.web.RequestHandler):
     def get(self, club_id, article_id):
         logging.info(self.request)
         logging.info("got article_id %r in uri", article_id)
+
+        # club
+        url = "http://api.7x24hs.com/api/clubs/"+club_id
+        http_client = HTTPClient()
+        response = http_client.fetch(url, method="GET")
+        logging.info("got response %r", response.body)
+        rs = json_decode(response.body)
+        club = rs['rs']
+
+        # recently articles
+        params = {"filter":"club", "club_id":club_id, "status":"publish", "idx":0, "limit":4}
+        url = url_concat("http://api.7x24hs.com/api/articles", params)
+        http_client = HTTPClient()
+        response = http_client.fetch(url, method="GET")
+        logging.info("got response %r", response.body)
+        rs = json_decode(response.body)
+        recently_articles = rs['rs']
+        logging.info("got recently_articles=[%r]", recently_articles)
 
         # article
         url = "http://api.7x24hs.com/api/articles/"+article_id
@@ -142,6 +115,34 @@ class DemoArticleHandler(tornado.web.RequestHandler):
         article = rs['rs']
         article['publish_time'] = timestamp_friendly_date(article['publish_time'])
 
+        html = article['paragraphs']
+        # 为图片延迟加载准备数据
+        # <img alt="" src="http://bighorn.b0.upaiyun.com/blog/2016/11/2/758f7478-d406-4f2e-9566-306a963fb979" />
+        # <img data-original="真实图片" src="占位符图片">
+        ptn="(<img src=\"http[s]*://[\w\.\/\-]+\" />)"
+        img_ptn = re.compile(ptn)
+        imgs = img_ptn.findall(html)
+        for img in imgs:
+            logging.info("got img %r", img)
+            ptn="<img src=\"(http[s]*://[\w\.\/\-]+)\" />"
+            url_ptn = re.compile(ptn)
+            urls = url_ptn.findall(html)
+            url = urls[0]
+            logging.info("got url %r", url)
+            #html = html.replace(img, "<img class=\"lazy\" data-original=\""+url+"\" src=\"/static/images/weui.png\" width=\"100%\" height=\"480\" />")
+            html = html.replace(img, "<img width='100%' src='"+url+"!794w' />")
+        logging.info("got html %r", html)
+        article['paragraphs'] = html
+
+        # article's last comments
+        params = {"idx":0, "limit":10}
+        url = url_concat("http://api.7x24hs.com/api/articles/"+article_id+"/comment", params)
+        http_client = HTTPClient()
+        response = http_client.fetch(url, method="GET")
+        logging.info("got article response %r", response.body)
+        rs = json_decode(response.body)
+        comments = rs['rs']
+
         # update read_num
         read_num = article['read_num']
         url = "http://api.7x24hs.com/api/articles/"+article_id+"/read"
@@ -151,6 +152,8 @@ class DemoArticleHandler(tornado.web.RequestHandler):
         response = http_client.fetch(url, method="POST", body=_json)
         logging.info("got update read_num response %r", response.body)
 
-        self.render('demo/article.html',
-                club_id=club_id,
-                article=article)
+        self.render('wx/article.html',
+                club=club,
+                article=article,
+                comments=comments,
+                recently_articles=recently_articles)

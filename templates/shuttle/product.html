@@ -1,196 +1,196 @@
 <!DOCTYPE html>
 <html class="no-js">
-  <head>
-    <meta charset="utf-8">
-    <title>Shuttle - Material Design Mobile Template</title>
-    <meta name="description" content="Material Design Mobile Template">
-    <meta name="HandheldFriendly" content="True">
-    <meta name="MobileOptimized" content="320">
-    <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
 
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/static/shuttle/img/touch/apple-touch-icon-144x144-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/static/shuttle/img/touch/apple-touch-icon-114x114-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/static/shuttle/img/touch/apple-touch-icon-72x72-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" href="/static/shuttle/img/touch/apple-touch-icon-57x57-precomposed.png">
-    <link rel="shortcut icon" sizes="196x196" href="/static/shuttle/img/touch/touch-icon-196x196.png">
-    <link rel="shortcut icon" href="/static/shuttle/img/touch/apple-touch-icon.png">
+<head>
+  <meta charset="utf-8">
+  <title>Shuttle - Material Design Mobile Template</title>
+  <meta name="description" content="Material Design Mobile Template">
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
 
-    <!-- Tile icon for Win8 (144x144 + tile color) -->
-    <meta name="msapplication-TileImage" content="/static/shuttle/img/touch/apple-touch-icon-144x144-precomposed.png">
-    <meta name="msapplication-TileColor" content="#222222">
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/static/shuttle/img/touch/apple-touch-icon-144x144-precomposed.png">
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/static/shuttle/img/touch/apple-touch-icon-114x114-precomposed.png">
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/static/shuttle/img/touch/apple-touch-icon-72x72-precomposed.png">
+  <link rel="apple-touch-icon-precomposed" href="/static/shuttle/img/touch/apple-touch-icon-57x57-precomposed.png">
+  <link rel="shortcut icon" sizes="196x196" href="/static/shuttle/img/touch/touch-icon-196x196.png">
+  <link rel="shortcut icon" href="/static/shuttle/img/touch/apple-touch-icon.png">
 
-    <!-- Add to homescreen for Chrome on Android -->
-    <meta name="mobile-web-app-capable" content="yes">
+  <!-- Tile icon for Win8 (144x144 + tile color) -->
+  <meta name="msapplication-TileImage" content="/static/shuttle/img/touch/apple-touch-icon-144x144-precomposed.png">
+  <meta name="msapplication-TileColor" content="#222222">
 
-    <!-- SEO: If mobile URL is different from desktop URL, add a canonical link to the desktop page -->
-    <!--
+  <!-- Add to homescreen for Chrome on Android -->
+  <meta name="mobile-web-app-capable" content="yes">
+
+  <!-- SEO: If mobile URL is different from desktop URL, add a canonical link to the desktop page -->
+  <!--
     <link rel="canonical" href="http://www.example.com/" >
     -->
 
-    <!-- For iOS web apps. Delete if not needed. https://github.com/h5bp/mobile-boilerplate/issues/94 -->
-    <!--
+  <!-- For iOS web apps. Delete if not needed. https://github.com/h5bp/mobile-boilerplate/issues/94 -->
+  <!--
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <meta name="apple-mobile-web-app-title" content="">
     -->
 
-    <!-- Fonts -->
-    <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Roboto:400,700,100' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>
-    <!-- Icons -->
-    <link href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" media="all" rel="stylesheet" type="text/css">
+  <!-- Icons -->
+  <link href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" media="all" rel="stylesheet" type="text/css">
 
-    <!-- Stylesheets -->
-    <link rel="stylesheet" href="{{ static_url('shuttle/css/animate.css') }}">
-    <link rel="stylesheet" href="{{ static_url('shuttle/css/materialize.min.css') }}">
-    <link rel="stylesheet" href="{{ static_url('shuttle/css/swipebox.min.css') }}">
-    <link rel="stylesheet" href="{{ static_url('shuttle/css/swiper.min.css') }}">
-    <link rel="stylesheet" href="{{ static_url('shuttle/css/normalize.css') }}">
-    <link rel="stylesheet" href="{{ static_url('shuttle/css/main.css') }}">
-    <script src="{{ static_url('shuttle/js/vendor/modernizr-2.7.1.min.js') }}"></script>
-  </head>
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="{{ static_url('shuttle/css/animate.css') }}">
+  <link rel="stylesheet" href="{{ static_url('shuttle/css/materialize.min.css') }}">
+  <link rel="stylesheet" href="{{ static_url('shuttle/css/swipebox.min.css') }}">
+  <link rel="stylesheet" href="{{ static_url('shuttle/css/swiper.min.css') }}">
+  <link rel="stylesheet" href="{{ static_url('shuttle/css/normalize.css') }}">
+  <link rel="stylesheet" href="{{ static_url('shuttle/css/main.css') }}">
+  <script src="{{ static_url('shuttle/js/vendor/modernizr-2.7.1.min.js') }}"></script>
+</head>
 
-  <body>
+<body>
 
-    <!-- Main Container -->
-    <div id="main" class="main">
+  <!-- Main Container -->
+  <div id="main" class="main">
 
-      <!-- Toolbar -->
-      {% module Template("shuttle/block-toolbar.html") %}
-      <!-- End of Toolbar -->
+    <!-- Toolbar -->
+    {% module Template("shuttle/block-toolbar.html") %}
+    <!-- End of Toolbar -->
 
-      <!-- Page Contents -->
-      <div class="page animated fadeinup">
+    <!-- Page Contents -->
+    <div class="page animated fadeinup">
 
-        <!-- Hero Header -->
-        <div class="hero-header animated fadein">
-          <!-- Slider -->
-          <div class="swiper-container swiper-slider">
-            <div class="swiper-wrapper">
-              <div class="swiper-slide">
-                <a href="product.html"><img src="/static/shuttle/img/product3.jpg" alt=""></a>
-              </div>
-              <div class="swiper-slide">
-                <a href="product.html"><img src="/static/shuttle/img/product.jpg" alt=""></a>
-              </div>
-              <div class="swiper-slide">
-                <a href="product.html"><img src="/static/shuttle/img/product2.jpg" alt=""></a>
-              </div>
+      <!-- Hero Header -->
+      <div class="hero-header animated fadein">
+        <!-- Slider -->
+        <div class="swiper-container swiper-slider">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide">
+              <a href="product.html"><img src="/static/shuttle/img/product3.jpg" alt=""></a>
             </div>
-            <!-- Add Pagination -->
-            <div class="swiper-pagination"></div>
+            <div class="swiper-slide">
+              <a href="product.html"><img src="/static/shuttle/img/product.jpg" alt=""></a>
+            </div>
+            <div class="swiper-slide">
+              <a href="product.html"><img src="/static/shuttle/img/product2.jpg" alt=""></a>
+            </div>
           </div>
-          <!-- End of Slider -->
-
-          <!-- Floating Action Button -->
-          <div class="floating-button animated bouncein delay-3">
-            <a href="checkout.html" class="btn-floating btn-large waves-effect waves-light accent-color btn z-depth-1">
-              <i class="ion-ios-cart"></i>
-            </a>
-          </div>
+          <!-- Add Pagination -->
+          <div class="swiper-pagination"></div>
         </div>
+        <!-- End of Slider -->
 
-        <!-- Product Title -->
-        <div class="center-align p-20">
-          <span class="small grey-text">Technology</span>
-          <h3 class="m-0"><strong>Smart Watch</strong></h3>
-          <h4>$ 199.99</h4>
+        <!-- Floating Action Button -->
+        <div class="floating-button animated bouncein delay-3">
+          <a href="checkout.html" class="btn-floating btn-large waves-effect waves-light accent-color btn z-depth-1">
+            <i class="ion-ios-cart"></i>
+          </a>
         </div>
+      </div>
 
-        <!-- Prduct Description -->
-        <div class="product-description">
-          <ul class="tabs">
-            <li class="tab col s3"><a class="active" href="#product1">Info</a></li>
-            <li class="tab col s3"><a href="#product2">About</a></li>
-          </ul>
+      <!-- Product Title -->
+      <div class="center-align p-20">
+        <span class="small grey-text">Technology</span>
+        <h3 class="m-0"><strong>Smart Watch</strong></h3>
+        <h4>$ 199.99</h4>
+      </div>
 
-          <div id="product1" class="p-20">
-            <p class="text-flow">It showed a lady fitted out with a fur hat and fur boa who sat upright, raising a heavy fur muff that covered the whole of her lower arm towards the viewer. Gregor then turned to look out the window at the dull weather. Drops of rain could be heard hitting the pane, which made him feel quite sad.</p>
-          </div>
-          <div id="product2" class="p-20">
-            <p class="text-flow">what a strenuous career it is that I've chosen! Travelling day in and day out. Doing business like this takes much more effort than doing your own business at home, and on top of that there's the curse of travelling, worries about making train connections, bad and irregular food, contact with different people all the time so that you can never get to know anyone or become friendly with them. It can all go to Hell!</p>
-          </div>
+      <!-- Prduct Description -->
+      <div class="product-description">
+        <ul class="tabs">
+          <li class="tab col s3"><a class="active" href="#product1">Info</a></li>
+          <li class="tab col s3"><a href="#product2">About</a></li>
+        </ul>
+
+        <div id="product1" class="p-20">
+          <p class="text-flow">It showed a lady fitted out with a fur hat and fur boa who sat upright, raising a heavy fur muff that covered the whole of her lower arm towards the viewer. Gregor then turned to look out the window at the dull weather. Drops of rain could be
+            heard hitting the pane, which made him feel quite sad.</p>
         </div>
-
-        <div class="product-variation">
-          <h5><strong>Choose a color:</strong></h5>
-          <form action="#">
-            <p>
-              <input name="group1" type="radio" id="test1" />
-              <label for="test1">Red</label>
-            </p>
-            <p>
-              <input name="group1" type="radio" id="test2" />
-              <label for="test2">Yellow</label>
-            </p>
-            <p>
-              <input name="group1" type="radio" id="test3"  />
-              <label for="test3">Green</label>
-            </p>
-              <p>
-                <input name="group1" type="radio" id="test4" />
-                <label for="test4">Brown</label>
-            </p>
-          </form>
+        <div id="product2" class="p-20">
+          <p class="text-flow">what a strenuous career it is that I've chosen! Travelling day in and day out. Doing business like this takes much more effort than doing your own business at home, and on top of that there's the curse of travelling, worries about making train
+            connections, bad and irregular food, contact with different people all the time so that you can never get to know anyone or become friendly with them. It can all go to Hell!</p>
         </div>
+      </div>
 
-        <div class="product-variation">
-          <h5><strong>Choose a size:</strong></h5>
-          <div class="sizes p-b-20">
-            <span class="size">xs</span>
-            <span class="size">s</span>
-            <span class="size">m</span>
-            <span class="size">l</span>
-            <span class="size">xl</span>
-          </div>
+      <div class="product-variation">
+        <h5><strong>Choose a color:</strong></h5>
+        <form action="#">
+          <p>
+            <input name="group1" type="radio" id="test1" />
+            <label for="test1">Red</label>
+          </p>
+          <p>
+            <input name="group1" type="radio" id="test2" />
+            <label for="test2">Yellow</label>
+          </p>
+          <p>
+            <input name="group1" type="radio" id="test3" />
+            <label for="test3">Green</label>
+          </p>
+          <p>
+            <input name="group1" type="radio" id="test4" />
+            <label for="test4">Brown</label>
+          </p>
+        </form>
+      </div>
+
+      <div class="product-variation">
+        <h5><strong>Choose a size:</strong></h5>
+        <div class="sizes p-b-20">
+          <span class="size">xs</span>
+          <span class="size">s</span>
+          <span class="size">m</span>
+          <span class="size">l</span>
+          <span class="size">xl</span>
         </div>
+      </div>
 
-        <div class="product-variation">
-          <h5><strong>Choose a shipping method:</strong></h5>
-          <select class="browser-default">
+      <div class="product-variation">
+        <h5><strong>Choose a shipping method:</strong></h5>
+        <select class="browser-default">
             <option value="" disabled selected>Choose your option</option>
             <option value="1">Credit Card</option>
             <option value="2">Cash on Delivery</option>
             <option value="3">Online Payment</option>
           </select>
-        </div>
-
-        <div class="product-variation">
-          <a class="waves-effect waves-light btn-large modal-trigger accent-color block m-20" href="checkout.html">Add to Cart</a>
-        </div>
-
-        <!-- footer -->
-        {% module Template("shuttle/block-footer.html") %}
-        <!-- /footer -->
-
       </div>
-      <!-- End of Page Contents -->
 
-      <!-- Sidebars -->
-      <!-- left sidebar -->
-      {% module Template("shuttle/block-left-sidebar.html") %}
-      <!-- /left sidebar -->
+      <div class="product-variation">
+        <a class="waves-effect waves-light btn-large modal-trigger accent-color block m-20" href="checkout.html">Add to Cart</a>
+      </div>
 
-      <!-- right sidebar -->
-      {% module Template("shuttle/block-right-sidebar.html") %}
-      <!-- /right sidebar -->
-      <!-- End of Sidebars -->
+      <!-- footer -->
+      {% module Template("shuttle/block-footer.html") %}
+      <!-- /footer -->
 
     </div>
-    <!-- End of Main Container -->
+    <!-- End of Page Contents -->
 
-    <!-- Scripts -->
-    <script src="{{ static_url('shuttle/js/vendor/jquery-2.1.0.min.js') }}"></script>
-    <script src="{{ static_url('shuttle/js/helper.js') }}"></script>
-    <script src="{{ static_url('shuttle/js/vendor/HeadsUp.js') }}"></script>
-    <script src="{{ static_url('shuttle/js/vendor/jquery.smoothState.js') }}"></script>
-    <script src="{{ static_url('shuttle/js/vendor/chart.min.js') }}"></script>
-    <script src="{{ static_url('shuttle/js/vendor/jquery.mixitup.min.js') }}"></script>
-    <script src="{{ static_url('shuttle/js/vendor/jquery.swipebox.min.js') }}"></script>
-    <script src="{{ static_url('shuttle/js/vendor/masonry.min.js') }}"></script>
-    <script src="{{ static_url('shuttle/js/vendor/swiper.min.js') }}"></script>
-    <script src="{{ static_url('shuttle/js/vendor/materialize.min.js') }}"></script>
-    <script src="{{ static_url('shuttle/js/main.js') }}"></script>
-  </body>
+    <!-- Sidebars -->
+    <!-- left sidebar -->
+    {% module Template("shuttle/block-left-sidebar.html") %}
+    <!-- /left sidebar -->
+
+    <!-- right sidebar -->
+    {% module Template("shuttle/block-right-sidebar.html") %}
+    <!-- /right sidebar -->
+    <!-- End of Sidebars -->
+
+  </div>
+  <!-- End of Main Container -->
+
+  <!-- Scripts -->
+  <script src="{{ static_url('shuttle/js/vendor/jquery-2.1.0.min.js') }}"></script>
+  <script src="{{ static_url('shuttle/js/helper.js') }}"></script>
+  <script src="{{ static_url('shuttle/js/vendor/HeadsUp.js') }}"></script>
+  <script src="{{ static_url('shuttle/js/vendor/jquery.smoothState.js') }}"></script>
+  <script src="{{ static_url('shuttle/js/vendor/chart.min.js') }}"></script>
+  <script src="{{ static_url('shuttle/js/vendor/jquery.mixitup.min.js') }}"></script>
+  <script src="{{ static_url('shuttle/js/vendor/jquery.swipebox.min.js') }}"></script>
+  <script src="{{ static_url('shuttle/js/vendor/masonry.min.js') }}"></script>
+  <script src="{{ static_url('shuttle/js/vendor/swiper.min.js') }}"></script>
+  <script src="{{ static_url('shuttle/js/vendor/materialize.min.js') }}"></script>
+  <script src="{{ static_url('shuttle/js/main.js') }}"></script>
+</body>
+
 </html>

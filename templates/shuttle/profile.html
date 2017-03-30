@@ -1,211 +1,209 @@
 <!DOCTYPE html>
 <html class="no-js">
-  <head>
-    <meta charset="utf-8">
-    <title>Shuttle - Material Design Mobile Template</title>
-    <meta name="description" content="Material Design Mobile Template">
-    <meta name="HandheldFriendly" content="True">
-    <meta name="MobileOptimized" content="320">
-    <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
 
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/static/shuttle/img/touch/apple-touch-icon-144x144-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/static/shuttle/img/touch/apple-touch-icon-114x114-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/static/shuttle/img/touch/apple-touch-icon-72x72-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" href="/static/shuttle/img/touch/apple-touch-icon-57x57-precomposed.png">
-    <link rel="shortcut icon" sizes="196x196" href="/static/shuttle/img/touch/touch-icon-196x196.png">
-    <link rel="shortcut icon" href="/static/shuttle/img/touch/apple-touch-icon.png">
+<head>
+  <meta charset="utf-8">
+  <title>Shuttle - Material Design Mobile Template</title>
+  <meta name="description" content="Material Design Mobile Template">
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
 
-    <!-- Tile icon for Win8 (144x144 + tile color) -->
-    <meta name="msapplication-TileImage" content="/static/shuttle/img/touch/apple-touch-icon-144x144-precomposed.png">
-    <meta name="msapplication-TileColor" content="#222222">
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/static/shuttle/img/touch/apple-touch-icon-144x144-precomposed.png">
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/static/shuttle/img/touch/apple-touch-icon-114x114-precomposed.png">
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/static/shuttle/img/touch/apple-touch-icon-72x72-precomposed.png">
+  <link rel="apple-touch-icon-precomposed" href="/static/shuttle/img/touch/apple-touch-icon-57x57-precomposed.png">
+  <link rel="shortcut icon" sizes="196x196" href="/static/shuttle/img/touch/touch-icon-196x196.png">
+  <link rel="shortcut icon" href="/static/shuttle/img/touch/apple-touch-icon.png">
 
-    <!-- Add to homescreen for Chrome on Android -->
-    <meta name="mobile-web-app-capable" content="yes">
+  <!-- Tile icon for Win8 (144x144 + tile color) -->
+  <meta name="msapplication-TileImage" content="/static/shuttle/img/touch/apple-touch-icon-144x144-precomposed.png">
+  <meta name="msapplication-TileColor" content="#222222">
 
-    <!-- SEO: If mobile URL is different from desktop URL, add a canonical link to the desktop page -->
-    <!--
+  <!-- Add to homescreen for Chrome on Android -->
+  <meta name="mobile-web-app-capable" content="yes">
+
+  <!-- SEO: If mobile URL is different from desktop URL, add a canonical link to the desktop page -->
+  <!--
     <link rel="canonical" href="http://www.example.com/" >
     -->
 
-    <!-- For iOS web apps. Delete if not needed. https://github.com/h5bp/mobile-boilerplate/issues/94 -->
-    <!--
+  <!-- For iOS web apps. Delete if not needed. https://github.com/h5bp/mobile-boilerplate/issues/94 -->
+  <!--
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <meta name="apple-mobile-web-app-title" content="">
     -->
 
-    <!-- Fonts -->
-    <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Roboto:400,700,100' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>
-    <!-- Icons -->
-    <link href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" media="all" rel="stylesheet" type="text/css">
+  <!-- Icons -->
+  <link href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" media="all" rel="stylesheet" type="text/css">
 
-    <!-- Stylesheets -->
-    <link rel="stylesheet" href="{{ static_url('shuttle/css/animate.css') }}">
-    <link rel="stylesheet" href="{{ static_url('shuttle/css/materialize.min.css') }}">
-    <link rel="stylesheet" href="{{ static_url('shuttle/css/swipebox.min.css') }}">
-    <link rel="stylesheet" href="{{ static_url('shuttle/css/swiper.min.css') }}">
-    <link rel="stylesheet" href="{{ static_url('shuttle/css/normalize.css') }}">
-    <link rel="stylesheet" href="{{ static_url('shuttle/css/main.css') }}">
-    <script src="{{ static_url('shuttle/js/vendor/modernizr-2.7.1.min.js') }}"></script>
-  </head>
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="{{ static_url('shuttle/css/animate.css') }}">
+  <link rel="stylesheet" href="{{ static_url('shuttle/css/materialize.min.css') }}">
+  <link rel="stylesheet" href="{{ static_url('shuttle/css/swipebox.min.css') }}">
+  <link rel="stylesheet" href="{{ static_url('shuttle/css/swiper.min.css') }}">
+  <link rel="stylesheet" href="{{ static_url('shuttle/css/normalize.css') }}">
+  <link rel="stylesheet" href="{{ static_url('shuttle/css/main.css') }}">
+  <script src="{{ static_url('shuttle/js/vendor/modernizr-2.7.1.min.js') }}"></script>
+</head>
 
-  <body>
+<body>
 
-    <!-- Main Container -->
-    <div id="main" class="main">
+  <!-- Main Container -->
+  <div id="main" class="main">
 
-      <!-- Toolbar -->
-      {% module Template("shuttle/block-toolbar.html") %}
-      <!-- End of Toolbar -->
+    <!-- Toolbar -->
+    {% module Template("shuttle/block-toolbar.html") %}
+    <!-- End of Toolbar -->
 
-      <!-- Page Contents -->
-      <div class="animated fadeinup">
+    <!-- Page Contents -->
+    <div class="animated fadeinup">
 
-        <!-- Hero Header -->
-        <div class="hero-header hero-big bg-3 animated fadeindown">
-          <div class="hero-author">
-            <img src="/static/shuttle/img/user4.jpg" alt="" class="center avatar big">
-            <div class="center">
-              <h2 class="white-text m-0">Luke Noel</h2>
-              <span class="white-text small"><em>Freelancer @Envato</em></span>
-            </div>
-          </div>
-          <div class="opacity-overlay-gradient"></div>
-        </div>
-
-        <div class="share-counter">
-          <div>
-            <h3>438</h3>
-            <p class="grey-text">Post</p>
-          </div>
-          <div>
-            <h3>86k</h3>
-            <p class="grey-text">Follower</p>
-          </div>
-          <div>
-            <h3>1.6k</h3>
-            <p class="grey-text">Following</p>
+      <!-- Hero Header -->
+      <div class="hero-header hero-big bg-3 animated fadeindown">
+        <div class="hero-author">
+          <img src="/static/shuttle/img/user4.jpg" alt="" class="center avatar big">
+          <div class="center">
+            <h2 class="white-text m-0">Luke Noel</h2>
+            <span class="white-text small"><em>Freelancer @Envato</em></span>
           </div>
         </div>
-
-        <!-- Contents -->
-        <div class="p-20">
-          <p>I am alone, and feel the charm of existence in this spot, which was created for the bliss of souls like mine. I am so happy, my dear friend.</p>
-
-          <div class="grid m-t-20">
-            <div class="grid-item">
-              <a href="/static/shuttle/img/1.jpg" class="swipebox no-smoothState" title="This is dummy caption.">
-                <img src="/static/shuttle/img/1.jpg" alt="image">
-              </a>
-            </div>
-            <div class="grid-item">
-              <a href="/static/shuttle/img/v1.jpg" class="swipebox no-smoothState" title="This is dummy caption.">
-                <img src="/static/shuttle/img/v1.jpg" alt="image">
-              </a>
-            </div>
-            <div class="grid-item">
-              <a href="/static/shuttle/img/v2.jpg" class="swipebox no-smoothState" title="This is dummy caption.">
-                <img src="/static/shuttle/img/v2.jpg" alt="image">
-              </a>
-            </div>
-            <div class="grid-item">
-              <a href="/static/shuttle/img/3.jpg" class="swipebox no-smoothState" title="This is dummy caption.">
-                <img src="/static/shuttle/img/3.jpg" alt="image">
-              </a>
-            </div>
-            <div class="grid-item">
-              <a href="/static/shuttle/img/4.jpg" class="swipebox no-smoothState" title="This is dummy caption.">
-                <img src="/static/shuttle/img/4.jpg" alt="image">
-              </a>
-            </div>
-            <div class="grid-item">
-              <a href="/static/shuttle/img/v3.jpg" class="swipebox no-smoothState" title="This is dummy caption.">
-                <img src="/static/shuttle/img/v3.jpg" alt="image">
-              </a>
-            </div>
-            <div class="grid-item">
-              <a href="/static/shuttle/img/7.jpg" class="swipebox no-smoothState" title="This is dummy caption.">
-                <img src="/static/shuttle/img/7.jpg" alt="image">
-              </a>
-            </div>
-            <div class="grid-item">
-              <a href="/static/shuttle/img/v5.jpg" class="swipebox no-smoothState" title="This is dummy caption.">
-                <img src="/static/shuttle/img/v5.jpg" alt="image">
-              </a>
-            </div>
-            <div class="grid-item">
-              <a href="/static/shuttle/img/5.jpg" class="swipebox no-smoothState" title="This is dummy caption.">
-                <img src="/static/shuttle/img/5.jpg" alt="image">
-              </a>
-            </div>
-            <div class="grid-item">
-              <a href="/static/shuttle/img/3.jpg" class="swipebox no-smoothState" title="This is dummy caption.">
-                <img src="/static/shuttle/img/3.jpg" alt="image">
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <!-- footer -->
-        {% module Template("shuttle/block-footer.html") %}
-        <!-- /footer -->
-
+        <div class="opacity-overlay-gradient"></div>
       </div>
-      <!-- End of Page Contents -->
 
-      <div class="fixed-action-btn">
-        <a class="btn-floating btn-large waves-effect waves-light accent-color modal-trigger" href="#modal1"><i class="ion-android-add"></i></a>
+      <div class="share-counter">
+        <div>
+          <h3>438</h3>
+          <p class="grey-text">Post</p>
+        </div>
+        <div>
+          <h3>86k</h3>
+          <p class="grey-text">Follower</p>
+        </div>
+        <div>
+          <h3>1.6k</h3>
+          <p class="grey-text">Following</p>
+        </div>
       </div>
-      <!-- Modal Structure -->
-      <div id="modal1" class="modal bottom-sheet features">
-        <div class="modal-content">
-          <div class="row">
-            <div class="col s3">
-              <i class="ion-android-upload"></i>
-              <p>Upload</p>
-            </div>
-            <div class="col s3">
-              <i class="ion-android-download"></i>
-              <p>Download</p>
-            </div>
-            <div class="col s3">
-              <i class="ion-image"></i>
-              <p>Image</p>
-            </div>
-            <div class="col s3">
-              <i class="ion-android-camera"></i>
-              <p>Camera</p>
-            </div>
+
+      <!-- Contents -->
+      <div class="p-20">
+        <p>I am alone, and feel the charm of existence in this spot, which was created for the bliss of souls like mine. I am so happy, my dear friend.</p>
+
+        <div class="grid m-t-20">
+          <div class="grid-item">
+            <a href="/static/shuttle/img/1.jpg" class="swipebox no-smoothState" title="This is dummy caption.">
+              <img src="/static/shuttle/img/1.jpg" alt="image">
+            </a>
+          </div>
+          <div class="grid-item">
+            <a href="/static/shuttle/img/v1.jpg" class="swipebox no-smoothState" title="This is dummy caption.">
+              <img src="/static/shuttle/img/v1.jpg" alt="image">
+            </a>
+          </div>
+          <div class="grid-item">
+            <a href="/static/shuttle/img/v2.jpg" class="swipebox no-smoothState" title="This is dummy caption.">
+              <img src="/static/shuttle/img/v2.jpg" alt="image">
+            </a>
+          </div>
+          <div class="grid-item">
+            <a href="/static/shuttle/img/3.jpg" class="swipebox no-smoothState" title="This is dummy caption.">
+              <img src="/static/shuttle/img/3.jpg" alt="image">
+            </a>
+          </div>
+          <div class="grid-item">
+            <a href="/static/shuttle/img/4.jpg" class="swipebox no-smoothState" title="This is dummy caption.">
+              <img src="/static/shuttle/img/4.jpg" alt="image">
+            </a>
+          </div>
+          <div class="grid-item">
+            <a href="/static/shuttle/img/v3.jpg" class="swipebox no-smoothState" title="This is dummy caption.">
+              <img src="/static/shuttle/img/v3.jpg" alt="image">
+            </a>
+          </div>
+          <div class="grid-item">
+            <a href="/static/shuttle/img/7.jpg" class="swipebox no-smoothState" title="This is dummy caption.">
+              <img src="/static/shuttle/img/7.jpg" alt="image">
+            </a>
+          </div>
+          <div class="grid-item">
+            <a href="/static/shuttle/img/v5.jpg" class="swipebox no-smoothState" title="This is dummy caption.">
+              <img src="/static/shuttle/img/v5.jpg" alt="image">
+            </a>
+          </div>
+          <div class="grid-item">
+            <a href="/static/shuttle/img/5.jpg" class="swipebox no-smoothState" title="This is dummy caption.">
+              <img src="/static/shuttle/img/5.jpg" alt="image">
+            </a>
+          </div>
+          <div class="grid-item">
+            <a href="/static/shuttle/img/3.jpg" class="swipebox no-smoothState" title="This is dummy caption.">
+              <img src="/static/shuttle/img/3.jpg" alt="image">
+            </a>
           </div>
         </div>
       </div>
 
-      <!-- Sidebars -->
-      <!-- left sidebar -->
-      {% module Template("shuttle/block-left-sidebar.html") %}
-      <!-- /left sidebar -->
-
-      <!-- right sidebar -->
-      {% module Template("shuttle/block-right-sidebar.html") %}
-      <!-- /right sidebar -->
-      <!-- End of Sidebars -->
+      <!-- footer -->
+      {% module Template("shuttle/block-footer.html") %}
+      <!-- /footer -->
 
     </div>
-    <!-- End of Main Container -->
+    <!-- End of Page Contents -->
 
-    <!-- Scripts -->
-    <script src="{{ static_url('shuttle/js/vendor/jquery-2.1.0.min.js') }}"></script>
-    <script src="{{ static_url('shuttle/js/helper.js') }}"></script>
-    <script src="{{ static_url('shuttle/js/vendor/HeadsUp.js') }}"></script>
-    <script src="{{ static_url('shuttle/js/vendor/jquery.smoothState.js') }}"></script>
-    <script src="{{ static_url('shuttle/js/vendor/chart.min.js') }}"></script>
-    <script src="{{ static_url('shuttle/js/vendor/jquery.mixitup.min.js') }}"></script>
-    <script src="{{ static_url('shuttle/js/vendor/jquery.swipebox.min.js') }}"></script>
-    <script src="{{ static_url('shuttle/js/vendor/masonry.min.js') }}"></script>
-    <script src="{{ static_url('shuttle/js/vendor/swiper.min.js') }}"></script>
-    <script src="{{ static_url('shuttle/js/vendor/materialize.min.js') }}"></script>
-    <script src="{{ static_url('shuttle/js/main.js') }}"></script>
-  </body>
+    <div class="fixed-action-btn">
+      <a class="btn-floating btn-large waves-effect waves-light accent-color modal-trigger" href="#modal1"><i class="ion-android-add"></i></a>
+    </div>
+    <!-- Modal Structure -->
+    <div id="modal1" class="modal bottom-sheet features">
+      <div class="modal-content">
+        <div class="row">
+          <div class="col s3">
+            <i class="ion-android-upload"></i>
+            <p>Upload</p>
+          </div>
+          <div class="col s3">
+            <i class="ion-android-download"></i>
+            <p>Download</p>
+          </div>
+          <div class="col s3">
+            <i class="ion-image"></i>
+            <p>Image</p>
+          </div>
+          <div class="col s3">
+            <i class="ion-android-camera"></i>
+            <p>Camera</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sidebars -->
+    <!-- left sidebar -->
+    {% module Template("shuttle/block-left-sidebar.html") %}
+    <!-- /left sidebar -->
+
+    <!-- right sidebar -->
+    {% module Template("shuttle/block-right-sidebar.html") %}
+    <!-- /right sidebar -->
+    <!-- End of Sidebars -->
+
+  </div>
+  <!-- End of Main Container -->
+
+  <!-- Scripts -->
+  <script src="{{ static_url('shuttle/js/vendor/jquery-2.1.0.min.js') }}"></script>
+  <script src="{{ static_url('shuttle/js/helper.js') }}"></script>
+  <script src="{{ static_url('shuttle/js/vendor/HeadsUp.js') }}"></script>
+  <script src="{{ static_url('shuttle/js/vendor/jquery.smoothState.js') }}"></script>
+  <script src="{{ static_url('shuttle/js/vendor/chart.min.js') }}"></script>
+  <script src="{{ static_url('shuttle/js/vendor/jquery.mixitup.min.js') }}"></script>
+  <script src="{{ static_url('shuttle/js/vendor/jquery.swipebox.min.js') }}"></script>
+  <script src="{{ static_url('shuttle/js/vendor/masonry.min.js') }}"></script>
+  <script src="{{ static_url('shuttle/js/vendor/swiper.min.js') }}"></script>
+  <script src="{{ static_url('shuttle/js/vendor/materialize.min.js') }}"></script>
+  <script src="{{ static_url('shuttle/js/main.js') }}"></script>
+</body>
+
 </html>

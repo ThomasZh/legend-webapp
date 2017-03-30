@@ -12,11 +12,16 @@ from foo.auth import auth_email
 from foo.auth import auth_phone
 from foo.portal import shuttle
 from foo.portal import demo
+from foo.portal import wx
 
 
 def map():
 
     config = [
+
+        (r'/wx', getattr(wx, 'WxHomeHandler')),
+        (r'/wx/clubs/([a-z0-9]*)/index', getattr(wx, 'WxIndexHandler')),
+        (r'/wx/clubs/([a-z0-9]*)/articles/([a-z0-9]*)', getattr(wx, 'WxArticleHandler')),
 
         # homepage
         (r'/', getattr(demo, 'DemoIndexHandler')),
@@ -30,7 +35,6 @@ def map():
         (r'/webapp/auth/regist', getattr(auth_phone, 'AuthRegistHandler')),
         (r'/webapp/auth/forget', getattr(auth_phone, 'AuthForgotPwdHandler')),
         (r'/webapp/login-next', getattr(auth_phone, 'WebappLoginNextHandler')),
-
 
         (r'/webapp', getattr(shuttle, 'ShuttleIndexHandler')),
         (r'/webapp/index', getattr(shuttle, 'ShuttleIndexHandler')),

@@ -1,155 +1,152 @@
 <!DOCTYPE html>
 <html class="no-js">
-  <head>
-    <meta charset="utf-8">
-    <title>Shuttle - Material Design Mobile Template</title>
-    <meta name="description" content="Material Design Mobile Template">
-    <meta name="HandheldFriendly" content="True">
-    <meta name="MobileOptimized" content="320">
-    <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
 
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/static/shuttle/img/touch/apple-touch-icon-144x144-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/static/shuttle/img/touch/apple-touch-icon-114x114-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/static/shuttle/img/touch/apple-touch-icon-72x72-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" href="/static/shuttle/img/touch/apple-touch-icon-57x57-precomposed.png">
-    <link rel="shortcut icon" sizes="196x196" href="/static/shuttle/img/touch/touch-icon-196x196.png">
-    <link rel="shortcut icon" href="/static/shuttle/img/touch/apple-touch-icon.png">
+<head>
+  <meta charset="utf-8">
+  <title>Shuttle - Material Design Mobile Template</title>
+  <meta name="description" content="Material Design Mobile Template">
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
 
-    <!-- Tile icon for Win8 (144x144 + tile color) -->
-    <meta name="msapplication-TileImage" content="/static/shuttle/img/touch/apple-touch-icon-144x144-precomposed.png">
-    <meta name="msapplication-TileColor" content="#222222">
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/static/shuttle/img/touch/apple-touch-icon-144x144-precomposed.png">
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/static/shuttle/img/touch/apple-touch-icon-114x114-precomposed.png">
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/static/shuttle/img/touch/apple-touch-icon-72x72-precomposed.png">
+  <link rel="apple-touch-icon-precomposed" href="/static/shuttle/img/touch/apple-touch-icon-57x57-precomposed.png">
+  <link rel="shortcut icon" sizes="196x196" href="/static/shuttle/img/touch/touch-icon-196x196.png">
+  <link rel="shortcut icon" href="/static/shuttle/img/touch/apple-touch-icon.png">
 
-    <!-- Add to homescreen for Chrome on Android -->
-    <meta name="mobile-web-app-capable" content="yes">
+  <!-- Tile icon for Win8 (144x144 + tile color) -->
+  <meta name="msapplication-TileImage" content="/static/shuttle/img/touch/apple-touch-icon-144x144-precomposed.png">
+  <meta name="msapplication-TileColor" content="#222222">
 
-    <!-- SEO: If mobile URL is different from desktop URL, add a canonical link to the desktop page -->
-    <!--
+  <!-- Add to homescreen for Chrome on Android -->
+  <meta name="mobile-web-app-capable" content="yes">
+
+  <!-- SEO: If mobile URL is different from desktop URL, add a canonical link to the desktop page -->
+  <!--
     <link rel="canonical" href="http://www.example.com/" >
     -->
 
-    <!-- For iOS web apps. Delete if not needed. https://github.com/h5bp/mobile-boilerplate/issues/94 -->
-    <!--
+  <!-- For iOS web apps. Delete if not needed. https://github.com/h5bp/mobile-boilerplate/issues/94 -->
+  <!--
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <meta name="apple-mobile-web-app-title" content="">
     -->
 
-    <!-- Fonts -->
-    <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Roboto:400,700,100' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>
-    <!-- Icons -->
-    <link href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" media="all" rel="stylesheet" type="text/css">
+  <!-- Icons -->
+  <link href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" media="all" rel="stylesheet" type="text/css">
 
-    <!-- Stylesheets -->
-    <link rel="stylesheet" href="{{ static_url('shuttle/css/animate.css') }}">
-    <link rel="stylesheet" href="{{ static_url('shuttle/css/materialize.min.css') }}">
-    <link rel="stylesheet" href="{{ static_url('shuttle/css/swipebox.min.css') }}">
-    <link rel="stylesheet" href="{{ static_url('shuttle/css/swiper.min.css') }}">
-    <link rel="stylesheet" href="{{ static_url('shuttle/css/normalize.css') }}">
-    <link rel="stylesheet" href="{{ static_url('shuttle/css/main.css') }}">
-    <script src="{{ static_url('shuttle/js/vendor/modernizr-2.7.1.min.js') }}"></script>
-  </head>
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="{{ static_url('shuttle/css/animate.css') }}">
+  <link rel="stylesheet" href="{{ static_url('shuttle/css/materialize.min.css') }}">
+  <link rel="stylesheet" href="{{ static_url('shuttle/css/swipebox.min.css') }}">
+  <link rel="stylesheet" href="{{ static_url('shuttle/css/swiper.min.css') }}">
+  <link rel="stylesheet" href="{{ static_url('shuttle/css/normalize.css') }}">
+  <link rel="stylesheet" href="{{ static_url('shuttle/css/main.css') }}">
+  <script src="{{ static_url('shuttle/js/vendor/modernizr-2.7.1.min.js') }}"></script>
+</head>
 
-  <body>
+<body>
 
-    <!-- Main Container -->
-    <div id="main" class="main">
+  <!-- Main Container -->
+  <div id="main" class="main">
 
-      <!-- Toolbar -->
-      {% module Template("shuttle/block-toolbar.html") %}
-      <!-- End of Toolbar -->
+    <!-- Toolbar -->
+    {% module Template("shuttle/block-toolbar.html") %}
+    <!-- End of Toolbar -->
 
-      <!-- Page Contents -->
-      <div class="page animated fadeinup">
+    <!-- Page Contents -->
+    <div class="page animated fadeinup">
 
-        <!-- Order Recap -->
-        <ul class="collapsible checkout-header animated fadeindown delay-2" data-collapsible="accordion">
-          <li>
-            <div class="collapsible-header">
-              Show order summary
-              <i class="ion-android-arrow-dropdown"></i>
-              <span class="checkout-price right">$240.00</span>
+      <!-- Order Recap -->
+      <ul class="collapsible checkout-header animated fadeindown delay-2" data-collapsible="accordion">
+        <li>
+          <div class="collapsible-header">
+            Show order summary
+            <i class="ion-android-arrow-dropdown"></i>
+            <span class="checkout-price right">$240.00</span>
+          </div>
+          <div class="collapsible-body z-depth-1">
+
+            <!-- Products in cart -->
+            <div class="checkout-details">
+              <img class="checkout-image" src="/static/shuttle/img/user2.jpg" alt="">
+              <div class="checkout-product-title">
+                <h6>Pair of Shoes <span class="right">$220.00</span></h6>
+                <span>43 - 44</span>
+              </div>
             </div>
-            <div class="collapsible-body z-depth-1">
 
-              <!-- Products in cart -->
-              <div class="checkout-details">
-                <img class="checkout-image" src="/static/shuttle/img/user2.jpg" alt="">
-                <div class="checkout-product-title">
-                  <h6>Pair of Shoes <span class="right">$220.00</span></h6>
-                  <span>43 - 44</span>
+            <!-- Discount -->
+            <form class="discount">
+              <div class="input-field">
+                <input id="code" type="text" class="validate">
+                <label for="code">Discount code here</label>
+                <div class="btn primary-color">
+                  <i class="ion-ios-arrow-thin-right"></i>
                 </div>
               </div>
+            </form>
 
-              <!-- Discount -->
-              <form class="discount">
-                <div class="input-field">
-                  <input id="code" type="text" class="validate">
-                  <label for="code">Discount code here</label>
-                  <div class="btn primary-color">
-                    <i class="ion-ios-arrow-thin-right"></i>
-                  </div>
-                </div>
-              </form>
-
-              <!-- Subtotal -->
-              <div class="subtotal">
-                <h6>Subtotal <span class="right">$220.00</span></h6>
-                <span>Shipping <span class="right">$20.00</span></span>
-              </div>
-
-              <!-- Total -->
-              <div class="total">
-                <h4>Total <span class="right">$240.00</span></h4>
-              </div>
-
+            <!-- Subtotal -->
+            <div class="subtotal">
+              <h6>Subtotal <span class="right">$220.00</span></h6>
+              <span>Shipping <span class="right">$20.00</span></span>
             </div>
-          </li>
-        </ul>
 
-        <!-- Form Inputs -->
-        <div class="form-inputs p-20">
-          <h4>Customer Information</h4>
-          <div class="input-field">
-            <input id="email" type="email" class="validate">
-            <label for="email" data-error="wrong" data-success="right">Email</label>
-          </div>
-          <span>Already have an account? <a class="primary-text" href="login.html">Login</a></span>
+            <!-- Total -->
+            <div class="total">
+              <h4>Total <span class="right">$240.00</span></h4>
+            </div>
 
-          <h4 class="shipping-address">Shipping address</h4>
-          <div>
-            <div class="input-field">
-              <input id="first_name" type="text" class="validate">
-              <label for="first_name">First Name</label>
-            </div>
-            <div class="input-field">
-              <input id="last_name" type="text" class="validate">
-              <label for="last_name">Last Name</label>
-            </div>
+          </div>
+        </li>
+      </ul>
+
+      <!-- Form Inputs -->
+      <div class="form-inputs p-20">
+        <h4>Customer Information</h4>
+        <div class="input-field">
+          <input id="email" type="email" class="validate">
+          <label for="email" data-error="wrong" data-success="right">Email</label>
+        </div>
+        <span>Already have an account? <a class="primary-text" href="login.html">Login</a></span>
+
+        <h4 class="shipping-address">Shipping address</h4>
+        <div>
+          <div class="input-field">
+            <input id="first_name" type="text" class="validate">
+            <label for="first_name">First Name</label>
           </div>
           <div class="input-field">
-            <input id="company" type="text">
-            <label for="company">Company (optional)</label>
+            <input id="last_name" type="text" class="validate">
+            <label for="last_name">Last Name</label>
           </div>
-          <div class="input-field">
-            <input id="address" type="text" class="validate">
-            <label for="address">Address</label>
-          </div>
-          <div class="input-field">
-            <input id="apt" type="text">
-            <label for="apt">Apt, suite, etc (optional)</label>
-          </div>
-          <div class="input-field">
-            <input id="city" type="text" class="validate">
-            <label for="city">City</label>
-          </div>
-          <div class="input-field">
-            <input id="phone" type="number" class="validate">
-            <label for="phone">Phone</label>
-          </div>
-          <label>Shipping to:</label>
-          <select class="browser-default">
+        </div>
+        <div class="input-field">
+          <input id="company" type="text">
+          <label for="company">Company (optional)</label>
+        </div>
+        <div class="input-field">
+          <input id="address" type="text" class="validate">
+          <label for="address">Address</label>
+        </div>
+        <div class="input-field">
+          <input id="apt" type="text">
+          <label for="apt">Apt, suite, etc (optional)</label>
+        </div>
+        <div class="input-field">
+          <input id="city" type="text" class="validate">
+          <label for="city">City</label>
+        </div>
+        <div class="input-field">
+          <input id="phone" type="number" class="validate">
+          <label for="phone">Phone</label>
+        </div>
+        <label>Shipping to:</label>
+        <select class="browser-default">
             <option value="" disabled selected>--</option>
             <option value="1">Europe</option>
             <option value="2">America</option>
@@ -158,45 +155,46 @@
             <option value="5">Africa</option>
           </select>
 
-          <p class="remember">
-            <input type="checkbox" id="test5" />
-            <label for="test5">Fast checkout next time</label>
-          </p>
+        <p class="remember">
+          <input type="checkbox" id="test5" />
+          <label for="test5">Fast checkout next time</label>
+        </p>
 
-          <a class="waves-effect waves-light btn-large primary-color block" href="index.html">Purchase</a>
-        </div>
-
-        <!-- footer -->
-        {% module Template("shuttle/block-footer.html") %}
-        <!-- /footer -->
-
+        <a class="waves-effect waves-light btn-large primary-color block" href="index.html">Purchase</a>
       </div>
-      <!-- End of Page Contents -->
 
-      <!-- Sidebars -->
-      <!-- left sidebar -->
-      {% module Template("shuttle/block-left-sidebar.html") %}
-      <!-- /left sidebar -->
-
-      <!-- right sidebar -->
-      {% module Template("shuttle/block-right-sidebar.html") %}
-      <!-- /right sidebar -->
-      <!-- End of Sidebars -->
+      <!-- footer -->
+      {% module Template("shuttle/block-footer.html") %}
+      <!-- /footer -->
 
     </div>
-    <!-- End of Main Container -->
+    <!-- End of Page Contents -->
 
-    <!-- Scripts -->
-    <script src="{{ static_url('shuttle/js/vendor/jquery-2.1.0.min.js') }}"></script>
-    <script src="{{ static_url('shuttle/js/helper.js') }}"></script>
-    <script src="{{ static_url('shuttle/js/vendor/HeadsUp.js') }}"></script>
-    <script src="{{ static_url('shuttle/js/vendor/jquery.smoothState.js') }}"></script>
-    <script src="{{ static_url('shuttle/js/vendor/chart.min.js') }}"></script>
-    <script src="{{ static_url('shuttle/js/vendor/jquery.mixitup.min.js') }}"></script>
-    <script src="{{ static_url('shuttle/js/vendor/jquery.swipebox.min.js') }}"></script>
-    <script src="{{ static_url('shuttle/js/vendor/masonry.min.js') }}"></script>
-    <script src="{{ static_url('shuttle/js/vendor/swiper.min.js') }}"></script>
-    <script src="{{ static_url('shuttle/js/vendor/materialize.min.js') }}"></script>
-    <script src="{{ static_url('shuttle/js/main.js') }}"></script>
-  </body>
+    <!-- Sidebars -->
+    <!-- left sidebar -->
+    {% module Template("shuttle/block-left-sidebar.html") %}
+    <!-- /left sidebar -->
+
+    <!-- right sidebar -->
+    {% module Template("shuttle/block-right-sidebar.html") %}
+    <!-- /right sidebar -->
+    <!-- End of Sidebars -->
+
+  </div>
+  <!-- End of Main Container -->
+
+  <!-- Scripts -->
+  <script src="{{ static_url('shuttle/js/vendor/jquery-2.1.0.min.js') }}"></script>
+  <script src="{{ static_url('shuttle/js/helper.js') }}"></script>
+  <script src="{{ static_url('shuttle/js/vendor/HeadsUp.js') }}"></script>
+  <script src="{{ static_url('shuttle/js/vendor/jquery.smoothState.js') }}"></script>
+  <script src="{{ static_url('shuttle/js/vendor/chart.min.js') }}"></script>
+  <script src="{{ static_url('shuttle/js/vendor/jquery.mixitup.min.js') }}"></script>
+  <script src="{{ static_url('shuttle/js/vendor/jquery.swipebox.min.js') }}"></script>
+  <script src="{{ static_url('shuttle/js/vendor/masonry.min.js') }}"></script>
+  <script src="{{ static_url('shuttle/js/vendor/swiper.min.js') }}"></script>
+  <script src="{{ static_url('shuttle/js/vendor/materialize.min.js') }}"></script>
+  <script src="{{ static_url('shuttle/js/main.js') }}"></script>
+</body>
+
 </html>

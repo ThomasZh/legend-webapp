@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html class="no-js">
+
+<head>
+  <meta charset="utf-8">
+  <title>{{ club['name'] }}</title>
+  <meta name="description" content="Material Design Mobile Template">
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
+
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/static/shuttle/img/touch/apple-touch-icon-144x144-precomposed.png">
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/static/shuttle/img/touch/apple-touch-icon-114x114-precomposed.png">
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/static/shuttle/img/touch/apple-touch-icon-72x72-precomposed.png">
+  <link rel="apple-touch-icon-precomposed" href="/static/shuttle/img/touch/apple-touch-icon-57x57-precomposed.png">
+  <link rel="shortcut icon" sizes="196x196" href="/static/shuttle/img/touch/touch-icon-196x196.png">
+  <link rel="shortcut icon" href="/static/shuttle/img/touch/apple-touch-icon.png">
+
+  <!-- Tile icon for Win8 (144x144 + tile color) -->
+  <meta name="msapplication-TileImage" content="{{ article['img'] }}!200x200">
+  <meta name="msapplication-TileColor" content="#222222">
+
+  <!-- Add to homescreen for Chrome on Android -->
+  <meta name="mobile-web-app-capable" content="yes">
+
+  <!-- SEO: If mobile URL is different from desktop URL, add a canonical link to the desktop page -->
+  <!--
+    <link rel="canonical" href="http://www.example.com/" >
+    -->
+
+  <!-- For iOS web apps. Delete if not needed. https://github.com/h5bp/mobile-boilerplate/issues/94 -->
+  <!--
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="">
+    -->
+
+  <!-- Icons -->
+  <link href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" media="all" rel="stylesheet" type="text/css">
+  <!-- <link href="{{ static_url('shuttle/css/ionicons.min.css') }}" media="all" rel="stylesheet" type="text/css"> -->
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="{{ static_url('shuttle/css/animate.css') }}">
+  <link rel="stylesheet" href="{{ static_url('shuttle/css/materialize.min.css') }}">
+  <link rel="stylesheet" href="{{ static_url('shuttle/css/swipebox.min.css') }}">
+  <link rel="stylesheet" href="{{ static_url('shuttle/css/swiper.min.css') }}">
+  <link rel="stylesheet" href="{{ static_url('shuttle/css/normalize.css') }}">
+  <link rel="stylesheet" href="{{ static_url('shuttle/css/main.css') }}">
+  <script src="{{ static_url('shuttle/js/vendor/modernizr-2.7.1.min.js') }}"></script>
+</head>
+
+<body>
+
+  <!-- Main Container -->
+  <div id="main" class="main">
+
+    <!-- Page Contents -->
+    <div class="animated fadeinup">
+
+      <!-- Hero Header -->
+      <div class="hero-header hero-big bg-3 animated fadeindown" style="background: url({{ article['img'] }}!700x467) no-repeat center / cover !important;">
+        <div class="fixed-action-btn floating-button animated bouncein delay-3 horizontal click-to-toggle">
+          <a href="#!" class="btn-floating btn-large accent-color">
+            <i class="ion-android-share-alt"></i>
+          </a>
+          <ul>
+            <li><a class="btn-floating blue darken-4"><i class="ion-social-facebook"></i></a></li>
+            <li><a class="btn-floating light-blue"><i class="ion-social-twitter"></i></a></li>
+            <li><a class="btn-floating pink"><i class="ion-social-dribbble"></i></a></li>
+            <li><a class="btn-floating red darken-1"><i class="ion-social-pinterest"></i></a></li>
+          </ul>
+        </div>
+        <div class="hero-author">
+          <div class="media-top-object">
+            <img src="{{ article['avatar'] }}!100x100" alt="" class="media-left avatar">
+            <div class="media-body left-align">
+              <span class="white-text small"><em>{{ article['nickname'] }}</em></span>
+              <div class="card-feedback">
+                <div class="card-users white-text">
+                  {{ article['title'] }}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="opacity-overlay-gradient"></div>
+      </div>
+
+      <div class="card-feedback">
+        <div class="card-users">
+          <i class="ion-eye"></i> <span>{{ article['read_num'] }}</span>
+          <i class="ion-ios-heart accent-text"></i> <span>{{ article['like_num'] }}</span>
+          <i class="ion-chatbubble-working"></i> <span>{{ article['comment_num'] }}</span>
+        </div>
+        <div class="card-share">
+          <span>{{ article['publish_time'] }}</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Article Content -->
+    <div class="animated fadeinup delay-1">
+      <div class="p-20">
+        <blockquote class="accent-border">{{ article['subtitle'] }}</blockquote>
+        <p class="text-flow">{% raw article['paragraphs'] %}</p>
+      </div>
+    </div>
+
+    <!-- Like -->
+    <div class="p-20 center-align">
+      <a href="#!" class="btn-floating btn-large accent-color">
+        <i class="ion-ios-heart-outline"></i>
+      </a>
+    </div>
+
+    <!-- Comments -->
+    <div class="comments grey lighten-4">
+      <h5>{{ article['comment_num'] }} 条评论</h5> {% for comment in comments %}
+      <div class="media-top-object animated fadeinright delay-2">
+        <img src="{{ comment['avatar'] }}" alt="" class="media-left avatar">
+        <div class="media-body">
+          <span>{{ comment['nickname'] }}</span>
+          <span class="small">{{ comment['comment'] }}</span>
+        </div>
+      </div>
+      {% end %}
+    </div>
+
+    <!-- footer -->
+    <footer class="page-footer primary-color">
+      <div class="section center">
+        <div id="two" class="grid m-t-20">
+          {% for recently_article in recently_articles %}
+          <div class="grid-item gallery-item-card">
+            <a href="/wx/clubs/{{ club['_id'] }}/articles/{{ recently_article['_id'] }}" title="{{ recently_article['title'] }}">
+              <img src="{{ recently_article['img'] }}!700x467" alt="image">
+            </a>
+          </div>
+          {% end %}
+        </div>
+      </div>
+      <div class="footer-copyright">
+        <div class="container center">
+          <a href="/wx/clubs/{{ club['_id'] }}/index" class="card-users white-text">
+            <i class="ion-android-home">{{ club['name'] }}</i>
+          </a>
+        </div>
+      </div>
+    </footer>
+    <!-- /footer -->
+
+  </div>
+  <!-- End of Page Contents -->
+
+  </div>
+  <!-- End of Main Container -->
+
+  <!-- Scripts -->
+  <script src="{{ static_url('shuttle/js/vendor/jquery-2.1.0.min.js') }}"></script>
+  <!-- <script src="{{ static_url('shuttle/js/helper.js') }}"></script> -->
+  <script src="{{ static_url('shuttle/js/vendor/HeadsUp.js') }}"></script>
+  <!-- <script src="{{ static_url('shuttle/js/vendor/jquery.smoothState.js') }}"></script> -->
+  <!-- <script src="{{ static_url('shuttle/js/vendor/chart.min.js') }}"></script> -->
+  <script src="{{ static_url('shuttle/js/vendor/jquery.mixitup.min.js') }}"></script>
+  <script src="{{ static_url('shuttle/js/vendor/jquery.swipebox.min.js') }}"></script>
+  <script src="{{ static_url('shuttle/js/vendor/masonry.min.js') }}"></script>
+  <script src="{{ static_url('shuttle/js/vendor/swiper.min.js') }}"></script>
+  <script src="{{ static_url('shuttle/js/vendor/materialize.min.js') }}"></script>
+  <script src="{{ static_url('shuttle/js/main.js') }}"></script>
+</body>
+
+</html>

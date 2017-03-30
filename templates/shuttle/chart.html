@@ -1,248 +1,246 @@
 <!DOCTYPE html>
 <html class="no-js">
-  <head>
-    <meta charset="utf-8">
-    <title>Shuttle - Material Design Mobile Template</title>
-    <meta name="description" content="Material Design Mobile Template">
-    <meta name="HandheldFriendly" content="True">
-    <meta name="MobileOptimized" content="320">
-    <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
 
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/static/shuttle/img/touch/apple-touch-icon-144x144-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/static/shuttle/img/touch/apple-touch-icon-114x114-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/static/shuttle/img/touch/apple-touch-icon-72x72-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" href="/static/shuttle/img/touch/apple-touch-icon-57x57-precomposed.png">
-    <link rel="shortcut icon" sizes="196x196" href="/static/shuttle/img/touch/touch-icon-196x196.png">
-    <link rel="shortcut icon" href="/static/shuttle/img/touch/apple-touch-icon.png">
+<head>
+  <meta charset="utf-8">
+  <title>Shuttle - Material Design Mobile Template</title>
+  <meta name="description" content="Material Design Mobile Template">
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
 
-    <!-- Tile icon for Win8 (144x144 + tile color) -->
-    <meta name="msapplication-TileImage" content="/static/shuttle/img/touch/apple-touch-icon-144x144-precomposed.png">
-    <meta name="msapplication-TileColor" content="#222222">
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/static/shuttle/img/touch/apple-touch-icon-144x144-precomposed.png">
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/static/shuttle/img/touch/apple-touch-icon-114x114-precomposed.png">
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/static/shuttle/img/touch/apple-touch-icon-72x72-precomposed.png">
+  <link rel="apple-touch-icon-precomposed" href="/static/shuttle/img/touch/apple-touch-icon-57x57-precomposed.png">
+  <link rel="shortcut icon" sizes="196x196" href="/static/shuttle/img/touch/touch-icon-196x196.png">
+  <link rel="shortcut icon" href="/static/shuttle/img/touch/apple-touch-icon.png">
 
-    <!-- Add to homescreen for Chrome on Android -->
-    <meta name="mobile-web-app-capable" content="yes">
+  <!-- Tile icon for Win8 (144x144 + tile color) -->
+  <meta name="msapplication-TileImage" content="/static/shuttle/img/touch/apple-touch-icon-144x144-precomposed.png">
+  <meta name="msapplication-TileColor" content="#222222">
 
-    <!-- SEO: If mobile URL is different from desktop URL, add a canonical link to the desktop page -->
-    <!--
+  <!-- Add to homescreen for Chrome on Android -->
+  <meta name="mobile-web-app-capable" content="yes">
+
+  <!-- SEO: If mobile URL is different from desktop URL, add a canonical link to the desktop page -->
+  <!--
     <link rel="canonical" href="http://www.example.com/" >
     -->
 
-    <!-- For iOS web apps. Delete if not needed. https://github.com/h5bp/mobile-boilerplate/issues/94 -->
-    <!--
+  <!-- For iOS web apps. Delete if not needed. https://github.com/h5bp/mobile-boilerplate/issues/94 -->
+  <!--
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <meta name="apple-mobile-web-app-title" content="">
     -->
 
-    <!-- Fonts -->
-    <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Roboto:400,700,100' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>
-    <!-- Icons -->
-    <link href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" media="all" rel="stylesheet" type="text/css">
+  <!-- Icons -->
+  <link href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" media="all" rel="stylesheet" type="text/css">
 
-    <!-- Stylesheets -->
-    <link rel="stylesheet" href="{{ static_url('shuttle/css/animate.css') }}">
-    <link rel="stylesheet" href="{{ static_url('shuttle/css/materialize.min.css') }}">
-    <link rel="stylesheet" href="{{ static_url('shuttle/css/swipebox.min.css') }}">
-    <link rel="stylesheet" href="{{ static_url('shuttle/css/swiper.min.css') }}">
-    <link rel="stylesheet" href="{{ static_url('shuttle/css/normalize.css') }}">
-    <link rel="stylesheet" href="{{ static_url('shuttle/css/main.css') }}">
-    <script src="{{ static_url('shuttle/js/vendor/modernizr-2.7.1.min.js') }}"></script>
-  </head>
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="{{ static_url('shuttle/css/animate.css') }}">
+  <link rel="stylesheet" href="{{ static_url('shuttle/css/materialize.min.css') }}">
+  <link rel="stylesheet" href="{{ static_url('shuttle/css/swipebox.min.css') }}">
+  <link rel="stylesheet" href="{{ static_url('shuttle/css/swiper.min.css') }}">
+  <link rel="stylesheet" href="{{ static_url('shuttle/css/normalize.css') }}">
+  <link rel="stylesheet" href="{{ static_url('shuttle/css/main.css') }}">
+  <script src="{{ static_url('shuttle/js/vendor/modernizr-2.7.1.min.js') }}"></script>
+</head>
 
-  <body>
+<body>
 
-    <!-- Main Container -->
-    <div id="main" class="main">
+  <!-- Main Container -->
+  <div id="main" class="main">
 
-      <!-- Toolbar -->
-      {% module Template("shuttle/block-toolbar.html") %}
-      <!-- End of Toolbar -->
+    <!-- Toolbar -->
+    {% module Template("shuttle/block-toolbar.html") %}
+    <!-- End of Toolbar -->
 
-      <!-- Page Contents -->
-      <div class="page grey lighten-5 animated fadeinup">
+    <!-- Page Contents -->
+    <div class="page grey lighten-5 animated fadeinup">
 
-        <!-- Line chart -->
-        <div id="line_chart" class="card chart animated fadeinright">
-          <div class="legend">
-            <h5>Traffic <i class="ion-android-refresh right text-color"></i></h5>
-            <p><span class="data-color blue lighten-3"></span>Free</p>
-            <p><span class="data-color purple lighten-4"></span>Paid</p>
-          </div>
-
-          <div class="lineChartCont">
-            <canvas id="canvas"></canvas>
-          </div>
+      <!-- Line chart -->
+      <div id="line_chart" class="card chart animated fadeinright">
+        <div class="legend">
+          <h5>Traffic <i class="ion-android-refresh right text-color"></i></h5>
+          <p><span class="data-color blue lighten-3"></span>Free</p>
+          <p><span class="data-color purple lighten-4"></span>Paid</p>
         </div>
 
-        <!-- Pie Chart -->
-        <div id="pie_chart" class="card chart animated fadeinright delay-1">
-          <div class="legend">
-            <h5>Users <i class="ion-android-more-vertical right text-color"></i></h5>
-            <p><span class="data-color blue lighten-3"></span>New</p>
-            <p><span class="data-color orange lighten-3"></span>Completed</p>
-            <p><span class="data-color purple lighten-4"></span>Cancelled</p>
-          </div>
-
-          <div class="pieChartCont">
-            <canvas id="pieChart" width="300" height="300"></canvas>
-          </div>
+        <div class="lineChartCont">
+          <canvas id="canvas"></canvas>
         </div>
-
-        <!-- Doughnut Chart -->
-        <div id="doughnut_chart" class="card chart animated fadeinright delay-2">
-          <div class="legend">
-            <h5>Email Report <i class="ion-android-refresh right text-color"></i></h5>
-            <p><span class="data-color blue lighten-4"></span>Search</p>
-            <p><span class="data-color red lighten-3"></span>Bounce</p>
-            <p><span class="data-color yellow lighten-4"></span>New</p>
-          </div>
-
-          <div class="doughnutChartCont">
-            <canvas id="doughnutChart" width="300" height="300"></canvas>
-          </div>
-        </div>
-
-        <!-- Bar Chart -->
-        <div id="bar_chart" class="card chart animated fadeinright delay-3">
-          <div class="legend">
-            <h5>Growth <i class="ion-android-share-alt right text-color"></i></h5>
-            <p><span class="data-color blue lighten-3"></span>Euro</p>
-            <p><span class="data-color purple lighten-4"></span>Dollar</p>
-          </div>
-
-          <div class="barChartCont">
-            <canvas id="barChart"></canvas>
-          </div>
-        </div>
-
-        <!-- footer -->
-        {% module Template("shuttle/block-footer.html") %}
-        <!-- /footer -->
-
       </div>
-      <!-- End of Page Contents -->
 
-      <!-- Sidebars -->
-      <!-- left sidebar -->
-      {% module Template("shuttle/block-left-sidebar.html") %}
-      <!-- /left sidebar -->
+      <!-- Pie Chart -->
+      <div id="pie_chart" class="card chart animated fadeinright delay-1">
+        <div class="legend">
+          <h5>Users <i class="ion-android-more-vertical right text-color"></i></h5>
+          <p><span class="data-color blue lighten-3"></span>New</p>
+          <p><span class="data-color orange lighten-3"></span>Completed</p>
+          <p><span class="data-color purple lighten-4"></span>Cancelled</p>
+        </div>
 
-      <!-- right sidebar -->
-      {% module Template("shuttle/block-right-sidebar.html") %}
-      <!-- /right sidebar -->
-      <!-- End of Sidebars -->
+        <div class="pieChartCont">
+          <canvas id="pieChart" width="300" height="300"></canvas>
+        </div>
+      </div>
+
+      <!-- Doughnut Chart -->
+      <div id="doughnut_chart" class="card chart animated fadeinright delay-2">
+        <div class="legend">
+          <h5>Email Report <i class="ion-android-refresh right text-color"></i></h5>
+          <p><span class="data-color blue lighten-4"></span>Search</p>
+          <p><span class="data-color red lighten-3"></span>Bounce</p>
+          <p><span class="data-color yellow lighten-4"></span>New</p>
+        </div>
+
+        <div class="doughnutChartCont">
+          <canvas id="doughnutChart" width="300" height="300"></canvas>
+        </div>
+      </div>
+
+      <!-- Bar Chart -->
+      <div id="bar_chart" class="card chart animated fadeinright delay-3">
+        <div class="legend">
+          <h5>Growth <i class="ion-android-share-alt right text-color"></i></h5>
+          <p><span class="data-color blue lighten-3"></span>Euro</p>
+          <p><span class="data-color purple lighten-4"></span>Dollar</p>
+        </div>
+
+        <div class="barChartCont">
+          <canvas id="barChart"></canvas>
+        </div>
+      </div>
+
+      <!-- footer -->
+      {% module Template("shuttle/block-footer.html") %}
+      <!-- /footer -->
 
     </div>
-    <!-- End of Main Container -->
+    <!-- End of Page Contents -->
 
-    <!-- Scripts -->
-    <script src="{{ static_url('shuttle/js/vendor/jquery-2.1.0.min.js') }}"></script>
-    <script src="{{ static_url('shuttle/js/helper.js') }}"></script>
-    <script src="{{ static_url('shuttle/js/vendor/HeadsUp.js') }}"></script>
-    <script src="{{ static_url('shuttle/js/vendor/jquery.smoothState.js') }}"></script>
-    <script src="{{ static_url('shuttle/js/vendor/chart.min.js') }}"></script>
-    <script src="{{ static_url('shuttle/js/vendor/jquery.mixitup.min.js') }}"></script>
-    <script src="{{ static_url('shuttle/js/vendor/jquery.swipebox.min.js') }}"></script>
-    <script src="{{ static_url('shuttle/js/vendor/masonry.min.js') }}"></script>
-    <script src="{{ static_url('shuttle/js/vendor/swiper.min.js') }}"></script>
-    <script src="{{ static_url('shuttle/js/vendor/materialize.min.js') }}"></script>
-    <script src="{{ static_url('shuttle/js/main.js') }}"></script>
-    <script>
-      // Charts
-      // LINE GRAPH
-      var lineChartData = {
-          labels: ["1", "2", "3", "4", "5", "6", "7"],
-          datasets: [{
-            label: "My First dataset",
-            fillColor: "rgba(100, 181, 246, 0.5)",
-            strokeColor: "#90caf9",
-            pointColor: "transparent",
-            pointStrokeColor: "rgba(41, 128, 185, 0)",
-            pointHighlightFill: "rgba(41, 128, 185, 0.9)",
-            pointHighlightStroke: "rgba(41, 128, 185, 0)",
-            data: [100, 70, 20, 155, 50, 70, 50]
-          }, {
-            label: "My Second dataset",
-            fillColor: "rgba(155, 89, 182, 0.5)",
-            strokeColor: "rgba(155, 89, 182, 0.6)",
-            pointColor: "rgba(155, 89, 182, 0.9)",
-            pointStrokeColor: "rgba(231, 76, 60, 255, 0)",
-            pointHighlightFill: "rgba(155, 89, 182, 0.9)",
-            pointHighlightStroke: "rgba(231, 76, 60, 0)",
-            data: [28, 54, 40, 19, 37, 20, 90]
-          }]
-        }
-        // PIE CHART
-      var pieData = [{
-        value: 33,
-        color: "#BBDEFB",
-        highlight: "#29b6f6",
-        label: "New"
+    <!-- Sidebars -->
+    <!-- left sidebar -->
+    {% module Template("shuttle/block-left-sidebar.html") %}
+    <!-- /left sidebar -->
+
+    <!-- right sidebar -->
+    {% module Template("shuttle/block-right-sidebar.html") %}
+    <!-- /right sidebar -->
+    <!-- End of Sidebars -->
+
+  </div>
+  <!-- End of Main Container -->
+
+  <!-- Scripts -->
+  <script src="{{ static_url('shuttle/js/vendor/jquery-2.1.0.min.js') }}"></script>
+  <script src="{{ static_url('shuttle/js/helper.js') }}"></script>
+  <script src="{{ static_url('shuttle/js/vendor/HeadsUp.js') }}"></script>
+  <script src="{{ static_url('shuttle/js/vendor/jquery.smoothState.js') }}"></script>
+  <script src="{{ static_url('shuttle/js/vendor/chart.min.js') }}"></script>
+  <script src="{{ static_url('shuttle/js/vendor/jquery.mixitup.min.js') }}"></script>
+  <script src="{{ static_url('shuttle/js/vendor/jquery.swipebox.min.js') }}"></script>
+  <script src="{{ static_url('shuttle/js/vendor/masonry.min.js') }}"></script>
+  <script src="{{ static_url('shuttle/js/vendor/swiper.min.js') }}"></script>
+  <script src="{{ static_url('shuttle/js/vendor/materialize.min.js') }}"></script>
+  <script src="{{ static_url('shuttle/js/main.js') }}"></script>
+  <script>
+    // Charts
+    // LINE GRAPH
+    var lineChartData = {
+      labels: ["1", "2", "3", "4", "5", "6", "7"],
+      datasets: [{
+        label: "My First dataset",
+        fillColor: "rgba(100, 181, 246, 0.5)",
+        strokeColor: "#90caf9",
+        pointColor: "transparent",
+        pointStrokeColor: "rgba(41, 128, 185, 0)",
+        pointHighlightFill: "rgba(41, 128, 185, 0.9)",
+        pointHighlightStroke: "rgba(41, 128, 185, 0)",
+        data: [100, 70, 20, 155, 50, 70, 50]
       }, {
-        value: 66,
-        color: "#ffcc80",
-        highlight: "#ffa726",
-        label: "Completed"
+        label: "My Second dataset",
+        fillColor: "rgba(155, 89, 182, 0.5)",
+        strokeColor: "rgba(155, 89, 182, 0.6)",
+        pointColor: "rgba(155, 89, 182, 0.9)",
+        pointStrokeColor: "rgba(231, 76, 60, 255, 0)",
+        pointHighlightFill: "rgba(155, 89, 182, 0.9)",
+        pointHighlightStroke: "rgba(231, 76, 60, 0)",
+        data: [28, 54, 40, 19, 37, 20, 90]
+      }]
+    }
+    // PIE CHART
+    var pieData = [{
+      value: 33,
+      color: "#BBDEFB",
+      highlight: "#29b6f6",
+      label: "New"
+    }, {
+      value: 66,
+      color: "#ffcc80",
+      highlight: "#ffa726",
+      label: "Completed"
+    }, {
+      value: 66,
+      color: "#e1bee7",
+      highlight: "#ba68c8",
+      label: "Cancelled"
+    }];
+    // Doughnut Chart
+    var doughnutData = [{
+      value: 250,
+      color: "#BBDEFB",
+      highlight: "#42a5f5",
+      label: "Search"
+    }, {
+      value: 70,
+      color: "#EF9A9A",
+      highlight: "#ef5350",
+      label: "Bounce"
+    }, {
+      value: 100,
+      color: "#fff9c4",
+      highlight: "#fff176",
+      label: "New"
+    }];
+    // Bar Chart
+    var barChartData = {
+      labels: ["1", "2", "3", "4", "5"],
+      datasets: [{
+        fillColor: "rgba(100, 181, 246, 0.5)",
+        strokeColor: "#90caf9",
+        highlightFill: "rgba(41, 128, 185, 0.9)",
+        highlightStroke: "rgba(41, 128, 185, 0)",
+        data: [65, 59, 90, 56, 40]
       }, {
-        value: 66,
-        color: "#e1bee7",
-        highlight: "#ba68c8",
-        label: "Cancelled"
-      }];
-      // Doughnut Chart
-      var doughnutData = [{
-        value: 250,
-        color: "#BBDEFB",
-        highlight: "#42a5f5",
-        label: "Search"
-      }, {
-        value: 70,
-        color: "#EF9A9A",
-        highlight: "#ef5350",
-        label: "Bounce"
-      }, {
-        value: 100,
-        color: "#fff9c4",
-        highlight: "#fff176",
-        label: "New"
-      }];
-      // Bar Chart
-      var barChartData = {
-        labels: ["1", "2", "3", "4", "5"],
-        datasets: [{
-          fillColor: "rgba(100, 181, 246, 0.5)",
-          strokeColor: "#90caf9",
-          highlightFill: "rgba(41, 128, 185, 0.9)",
-          highlightStroke: "rgba(41, 128, 185, 0)",
-          data: [65, 59, 90, 56, 40]
-        }, {
-          fillColor: "rgba(155, 89, 182, 0.5)",
-          strokeColor: "rgba(155, 89, 182, 0.6)",
-          highlightFill: "rgba(155, 89, 182, 0.9)",
-          highlightStroke: "rgba(231, 76, 60, 0)",
-          data: [28, 48, 19, 27, 90]
-        }]
-      }
-      var ctx = document.getElementById("canvas").getContext("2d");
-      window.myLine = new Chart(ctx).Line(lineChartData, {
-        responsive: true,
-      });
-      var ctx2 = document.getElementById("pieChart").getContext("2d");
-      window.myPie = new Chart(ctx2).Pie(pieData, {
-        animation: true,
-        responsive: true
-      });
-      var ctx3 = document.getElementById("barChart").getContext("2d");
-      window.myBar = new Chart(ctx3).Bar(barChartData, {
-        responsive: true
-      });
-      var ctx4 = document.getElementById("doughnutChart").getContext("2d");
-      window.myPie = new Chart(ctx4).Doughnut(doughnutData, {
-        animation: true,
-        responsive: true
-      });
-    </script>
-  </body>
+        fillColor: "rgba(155, 89, 182, 0.5)",
+        strokeColor: "rgba(155, 89, 182, 0.6)",
+        highlightFill: "rgba(155, 89, 182, 0.9)",
+        highlightStroke: "rgba(231, 76, 60, 0)",
+        data: [28, 48, 19, 27, 90]
+      }]
+    }
+    var ctx = document.getElementById("canvas").getContext("2d");
+    window.myLine = new Chart(ctx).Line(lineChartData, {
+      responsive: true,
+    });
+    var ctx2 = document.getElementById("pieChart").getContext("2d");
+    window.myPie = new Chart(ctx2).Pie(pieData, {
+      animation: true,
+      responsive: true
+    });
+    var ctx3 = document.getElementById("barChart").getContext("2d");
+    window.myBar = new Chart(ctx3).Bar(barChartData, {
+      responsive: true
+    });
+    var ctx4 = document.getElementById("doughnutChart").getContext("2d");
+    window.myPie = new Chart(ctx4).Doughnut(doughnutData, {
+      animation: true,
+      responsive: true
+    });
+  </script>
+</body>
+
 </html>

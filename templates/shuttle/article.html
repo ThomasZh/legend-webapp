@@ -1,206 +1,206 @@
 <!DOCTYPE html>
 <html class="no-js">
-  <head>
-    <meta charset="utf-8">
-    <title>Shuttle - Material Design Mobile Template</title>
-    <meta name="description" content="Material Design Mobile Template">
-    <meta name="HandheldFriendly" content="True">
-    <meta name="MobileOptimized" content="320">
-    <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
 
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/static/shuttle/img/touch/apple-touch-icon-144x144-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/static/shuttle/img/touch/apple-touch-icon-114x114-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/static/shuttle/img/touch/apple-touch-icon-72x72-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" href="/static/shuttle/img/touch/apple-touch-icon-57x57-precomposed.png">
-    <link rel="shortcut icon" sizes="196x196" href="/static/shuttle/img/touch/touch-icon-196x196.png">
-    <link rel="shortcut icon" href="/static/shuttle/img/touch/apple-touch-icon.png">
+<head>
+  <meta charset="utf-8">
+  <title>Shuttle - Material Design Mobile Template</title>
+  <meta name="description" content="Material Design Mobile Template">
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
 
-    <!-- Tile icon for Win8 (144x144 + tile color) -->
-    <meta name="msapplication-TileImage" content="/static/shuttle/img/touch/apple-touch-icon-144x144-precomposed.png">
-    <meta name="msapplication-TileColor" content="#222222">
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/static/shuttle/img/touch/apple-touch-icon-144x144-precomposed.png">
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/static/shuttle/img/touch/apple-touch-icon-114x114-precomposed.png">
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/static/shuttle/img/touch/apple-touch-icon-72x72-precomposed.png">
+  <link rel="apple-touch-icon-precomposed" href="/static/shuttle/img/touch/apple-touch-icon-57x57-precomposed.png">
+  <link rel="shortcut icon" sizes="196x196" href="/static/shuttle/img/touch/touch-icon-196x196.png">
+  <link rel="shortcut icon" href="/static/shuttle/img/touch/apple-touch-icon.png">
 
-    <!-- Add to homescreen for Chrome on Android -->
-    <meta name="mobile-web-app-capable" content="yes">
+  <!-- Tile icon for Win8 (144x144 + tile color) -->
+  <meta name="msapplication-TileImage" content="/static/shuttle/img/touch/apple-touch-icon-144x144-precomposed.png">
+  <meta name="msapplication-TileColor" content="#222222">
 
-    <!-- SEO: If mobile URL is different from desktop URL, add a canonical link to the desktop page -->
-    <!--
+  <!-- Add to homescreen for Chrome on Android -->
+  <meta name="mobile-web-app-capable" content="yes">
+
+  <!-- SEO: If mobile URL is different from desktop URL, add a canonical link to the desktop page -->
+  <!--
     <link rel="canonical" href="http://www.example.com/" >
     -->
 
-    <!-- For iOS web apps. Delete if not needed. https://github.com/h5bp/mobile-boilerplate/issues/94 -->
-    <!--
+  <!-- For iOS web apps. Delete if not needed. https://github.com/h5bp/mobile-boilerplate/issues/94 -->
+  <!--
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <meta name="apple-mobile-web-app-title" content="">
     -->
 
-    <!-- Fonts -->
-    <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Roboto:400,700,100' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>
-    <!-- Icons -->
-    <link href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" media="all" rel="stylesheet" type="text/css">
+  <!-- Icons -->
+  <link href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" media="all" rel="stylesheet" type="text/css">
 
-    <!-- Stylesheets -->
-    <link rel="stylesheet" href="{{ static_url('shuttle/css/animate.css') }}">
-    <link rel="stylesheet" href="{{ static_url('shuttle/css/materialize.min.css') }}">
-    <link rel="stylesheet" href="{{ static_url('shuttle/css/swipebox.min.css') }}">
-    <link rel="stylesheet" href="{{ static_url('shuttle/css/swiper.min.css') }}">
-    <link rel="stylesheet" href="{{ static_url('shuttle/css/normalize.css') }}">
-    <link rel="stylesheet" href="{{ static_url('shuttle/css/main.css') }}">
-    <script src="{{ static_url('shuttle/js/vendor/modernizr-2.7.1.min.js') }}"></script>
-  </head>
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="{{ static_url('shuttle/css/animate.css') }}">
+  <link rel="stylesheet" href="{{ static_url('shuttle/css/materialize.min.css') }}">
+  <link rel="stylesheet" href="{{ static_url('shuttle/css/swipebox.min.css') }}">
+  <link rel="stylesheet" href="{{ static_url('shuttle/css/swiper.min.css') }}">
+  <link rel="stylesheet" href="{{ static_url('shuttle/css/normalize.css') }}">
+  <link rel="stylesheet" href="{{ static_url('shuttle/css/main.css') }}">
+  <script src="{{ static_url('shuttle/js/vendor/modernizr-2.7.1.min.js') }}"></script>
+</head>
 
-  <body>
+<body>
 
-    <!-- Main Container -->
-    <div id="main" class="main">
+  <!-- Main Container -->
+  <div id="main" class="main">
 
-      <!-- Toolbar -->
-      {% module Template("shuttle/block-toolbar.html") %}
-      <!-- End of Toolbar -->
+    <!-- Toolbar -->
+    {% module Template("shuttle/block-toolbar.html") %}
+    <!-- End of Toolbar -->
 
-      <!-- Page Contents -->
-      <div class="animated fadeinup">
+    <!-- Page Contents -->
+    <div class="animated fadeinup">
 
-        <!-- Hero Header -->
-        <div class="hero-material animated fadeindown">
-          <div class="parallax primary-color">
+      <!-- Hero Header -->
+      <div class="hero-material animated fadeindown">
+        <div class="parallax primary-color">
 
-            <div class="fixed-action-btn floating-button animated bouncein delay-3 horizontal click-to-toggle">
-              <a href="#!" class="btn-floating btn-large accent-color">
-                <i class="ion-android-share-alt"></i>
-              </a>
-              <ul>
-                <li><a class="btn-floating blue darken-4"><i class="ion-social-facebook"></i></a></li>
-                <li><a class="btn-floating light-blue"><i class="ion-social-twitter"></i></a></li>
-                <li><a class="btn-floating pink"><i class="ion-social-dribbble"></i></a></li>
-                <li><a class="btn-floating red darken-1"><i class="ion-social-pinterest"></i></a></li>
-              </ul>
-            </div>
-            <div class="banner-title">Drawing a Single Stroke Like this One</div>
+          <div class="fixed-action-btn floating-button animated bouncein delay-3 horizontal click-to-toggle">
+            <a href="#!" class="btn-floating btn-large accent-color">
+              <i class="ion-android-share-alt"></i>
+            </a>
+            <ul>
+              <li><a class="btn-floating blue darken-4"><i class="ion-social-facebook"></i></a></li>
+              <li><a class="btn-floating light-blue"><i class="ion-social-twitter"></i></a></li>
+              <li><a class="btn-floating pink"><i class="ion-social-dribbble"></i></a></li>
+              <li><a class="btn-floating red darken-1"><i class="ion-social-pinterest"></i></a></li>
+            </ul>
           </div>
+          <div class="banner-title">Drawing a Single Stroke Like this One</div>
         </div>
-
-        <div class="card-feedback">
-          <div class="card-users">
-            <i class="ion-ios-heart accent-text"></i> <span>346</span>
-            <i class="ion-chatbubble-working"></i> <span>205</span>
-          </div>
-        </div>
-
-        <!-- Article Content -->
-        <div class="animated fadeinup delay-1">
-          <div class="p-20">
-            <p class="text-flow"><span class="dropcap">A</span> wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart. I am alone, and feel the charm of existence in this spot, which was created for the bliss of souls like mine. I am so happy, my dear friend, so absorbed in the exquisite sense of mere tranquil existence, that I neglect my talents.
-            A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart.</p>
-            <blockquote class="accent-border">"The quick, brown fox jumps over a lazy dog. DJs flock by when MTV ax quiz prog."</blockquote>
-            <p class="text-flow">I am so happy, my dear friend, so absorbed in the exquisite sense of mere tranquil existence, that I neglect my talents.
-            A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart.</p>
-
-            <!-- Slider -->
-            <div class="swiper-container swiper-slider m-20">
-              <div class="swiper-wrapper">
-                <div class="swiper-slide">
-                  <img src="/static/shuttle/img/2.jpg" alt="">
-                </div>
-                <div class="swiper-slide">
-                  <img src="/static/shuttle/img/3.jpg" alt="">
-                </div>
-              </div>
-              <!-- Add Pagination -->
-              <div class="swiper-pagination"></div>
-            </div>
-            <!-- End of Slider -->
-
-            <p class="text-flow">A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart. I am alone, and feel the charm of existence in this spot, which was created for the bliss of souls like mine. I am so happy, my dear friend, so absorbed in the exquisite sense of mere tranquil existence, that I neglect my talents.
-            A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart.</p>
-          </div>
-        </div>
-
-        <!-- Share -->
-        <div class="p-20 center-align">
-          <h5>Share it!</h5>
-          <i class="ion-social-facebook p-20 blue-text text-darken-4"></i>
-          <i class="ion-social-twitter p-20 blue-text"></i>
-          <i class="ion-social-pinterest p-20 red-text"></i>
-        </div>
-
-        <!-- Comments -->
-        <div class="comments grey lighten-4">
-          <h5>205 Comments</h5>
-          <div class="media-top-object animated fadeinright delay-2">
-            <img src="/static/shuttle/img/user4.jpg" alt="" class="media-left avatar">
-            <div class="media-body">
-              <span>Luke Noel</span>
-              <span class="small">Awesome work!!</span>
-            </div>
-          </div>
-
-          <div class="media-top-object animated fadeinright delay-3">
-            <img src="/static/shuttle/img/user5.jpg" alt="" class="media-left avatar">
-            <div class="media-body">
-              <span>Luke Noel</span>
-              <span class="small">You have done a great job there :)</span>
-            </div>
-          </div>
-
-          <div class="media-top-object animated fadeinright delay-4">
-            <img src="/static/shuttle/img/user6.jpg" alt="" class="media-left avatar">
-            <div class="media-body">
-              <span>Joel Roksin</span>
-              <span class="small">Keep going!</span>
-            </div>
-          </div>
-
-          <div class="media-top-object animated fadeinright delay-5">
-            <img src="/static/shuttle/img/user7.jpg" alt="" class="media-left avatar">
-            <div class="media-body">
-              <span>Mike White</span>
-              <span class="small">That's pretty good!</span>
-            </div>
-          </div>
-
-          <div class="media-top-object animated fadeinright delay-6">
-            <img src="/static/shuttle/img/user8.jpg" alt="" class="media-left avatar">
-            <div class="media-body">
-              <span>Robb Swan</span>
-              <span class="small">Love your works! Asalways!</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- footer -->
-        {% module Template("shuttle/block-footer.html") %}
-        <!-- /footer -->
-
       </div>
-      <!-- End of Page Contents -->
 
-      <!-- Sidebars -->
-      <!-- left sidebar -->
-      {% module Template("shuttle/block-left-sidebar.html") %}
-      <!-- /left sidebar -->
+      <div class="card-feedback">
+        <div class="card-users">
+          <i class="ion-ios-heart accent-text"></i> <span>346</span>
+          <i class="ion-chatbubble-working"></i> <span>205</span>
+        </div>
+      </div>
 
-      <!-- right sidebar -->
-      {% module Template("shuttle/block-right-sidebar.html") %}
-      <!-- /right sidebar -->
-      <!-- End of Sidebars -->
+      <!-- Article Content -->
+      <div class="animated fadeinup delay-1">
+        <div class="p-20">
+          <p class="text-flow"><span class="dropcap">A</span> wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart. I am alone, and feel the charm of existence in this spot, which was created for
+            the bliss of souls like mine. I am so happy, my dear friend, so absorbed in the exquisite sense of mere tranquil existence, that I neglect my talents. A wonderful serenity has taken possession of my entire soul, like these sweet mornings of
+            spring which I enjoy with my whole heart.</p>
+          <blockquote class="accent-border">"The quick, brown fox jumps over a lazy dog. DJs flock by when MTV ax quiz prog."</blockquote>
+          <p class="text-flow">I am so happy, my dear friend, so absorbed in the exquisite sense of mere tranquil existence, that I neglect my talents. A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole
+            heart.</p>
+
+          <!-- Slider -->
+          <div class="swiper-container swiper-slider m-20">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide">
+                <img src="/static/shuttle/img/2.jpg" alt="">
+              </div>
+              <div class="swiper-slide">
+                <img src="/static/shuttle/img/3.jpg" alt="">
+              </div>
+            </div>
+            <!-- Add Pagination -->
+            <div class="swiper-pagination"></div>
+          </div>
+          <!-- End of Slider -->
+
+          <p class="text-flow">A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart. I am alone, and feel the charm of existence in this spot, which was created for the bliss of souls like mine.
+            I am so happy, my dear friend, so absorbed in the exquisite sense of mere tranquil existence, that I neglect my talents. A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my
+            whole heart.</p>
+        </div>
+      </div>
+
+      <!-- Share -->
+      <div class="p-20 center-align">
+        <h5>Share it!</h5>
+        <i class="ion-social-facebook p-20 blue-text text-darken-4"></i>
+        <i class="ion-social-twitter p-20 blue-text"></i>
+        <i class="ion-social-pinterest p-20 red-text"></i>
+      </div>
+
+      <!-- Comments -->
+      <div class="comments grey lighten-4">
+        <h5>205 Comments</h5>
+        <div class="media-top-object animated fadeinright delay-2">
+          <img src="/static/shuttle/img/user4.jpg" alt="" class="media-left avatar">
+          <div class="media-body">
+            <span>Luke Noel</span>
+            <span class="small">Awesome work!!</span>
+          </div>
+        </div>
+
+        <div class="media-top-object animated fadeinright delay-3">
+          <img src="/static/shuttle/img/user5.jpg" alt="" class="media-left avatar">
+          <div class="media-body">
+            <span>Luke Noel</span>
+            <span class="small">You have done a great job there :)</span>
+          </div>
+        </div>
+
+        <div class="media-top-object animated fadeinright delay-4">
+          <img src="/static/shuttle/img/user6.jpg" alt="" class="media-left avatar">
+          <div class="media-body">
+            <span>Joel Roksin</span>
+            <span class="small">Keep going!</span>
+          </div>
+        </div>
+
+        <div class="media-top-object animated fadeinright delay-5">
+          <img src="/static/shuttle/img/user7.jpg" alt="" class="media-left avatar">
+          <div class="media-body">
+            <span>Mike White</span>
+            <span class="small">That's pretty good!</span>
+          </div>
+        </div>
+
+        <div class="media-top-object animated fadeinright delay-6">
+          <img src="/static/shuttle/img/user8.jpg" alt="" class="media-left avatar">
+          <div class="media-body">
+            <span>Robb Swan</span>
+            <span class="small">Love your works! Asalways!</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- footer -->
+      {% module Template("shuttle/block-footer.html") %}
+      <!-- /footer -->
 
     </div>
-    <!-- End of Main Container -->
+    <!-- End of Page Contents -->
 
-    <!-- Scripts -->
-    <script src="{{ static_url('shuttle/js/vendor/jquery-2.1.0.min.js') }}"></script>
-    <script src="{{ static_url('shuttle/js/helper.js') }}"></script>
-    <script src="{{ static_url('shuttle/js/vendor/HeadsUp.js') }}"></script>
-    <script src="{{ static_url('shuttle/js/vendor/jquery.smoothState.js') }}"></script>
-    <script src="{{ static_url('shuttle/js/vendor/chart.min.js') }}"></script>
-    <script src="{{ static_url('shuttle/js/vendor/jquery.mixitup.min.js') }}"></script>
-    <script src="{{ static_url('shuttle/js/vendor/jquery.swipebox.min.js') }}"></script>
-    <script src="{{ static_url('shuttle/js/vendor/masonry.min.js') }}"></script>
-    <script src="{{ static_url('shuttle/js/vendor/swiper.min.js') }}"></script>
-    <script src="{{ static_url('shuttle/js/vendor/materialize.min.js') }}"></script>
-    <script src="{{ static_url('shuttle/js/main.js') }}"></script>
-  </body>
+    <!-- Sidebars -->
+    <!-- left sidebar -->
+    {% module Template("shuttle/block-left-sidebar.html") %}
+    <!-- /left sidebar -->
+
+    <!-- right sidebar -->
+    {% module Template("shuttle/block-right-sidebar.html") %}
+    <!-- /right sidebar -->
+    <!-- End of Sidebars -->
+
+  </div>
+  <!-- End of Main Container -->
+
+  <!-- Scripts -->
+  <script src="{{ static_url('shuttle/js/vendor/jquery-2.1.0.min.js') }}"></script>
+  <script src="{{ static_url('shuttle/js/helper.js') }}"></script>
+  <script src="{{ static_url('shuttle/js/vendor/HeadsUp.js') }}"></script>
+  <script src="{{ static_url('shuttle/js/vendor/jquery.smoothState.js') }}"></script>
+  <script src="{{ static_url('shuttle/js/vendor/chart.min.js') }}"></script>
+  <script src="{{ static_url('shuttle/js/vendor/jquery.mixitup.min.js') }}"></script>
+  <script src="{{ static_url('shuttle/js/vendor/jquery.swipebox.min.js') }}"></script>
+  <script src="{{ static_url('shuttle/js/vendor/masonry.min.js') }}"></script>
+  <script src="{{ static_url('shuttle/js/vendor/swiper.min.js') }}"></script>
+  <script src="{{ static_url('shuttle/js/vendor/materialize.min.js') }}"></script>
+  <script src="{{ static_url('shuttle/js/main.js') }}"></script>
+</body>
+
 </html>
