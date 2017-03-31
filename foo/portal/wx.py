@@ -46,6 +46,9 @@ class WxIndexHandler(tornado.web.RequestHandler):
         logging.info(self.request)
         logging.info("got club_id %r--------", club_id)
 
+        tab = self.get_argument("tab", "1")
+        logging.debug("get tab=[%r] from argument", tab)
+
         # club
         url = "http://api.7x24hs.com/api/clubs/"+club_id
         http_client = HTTPClient()
@@ -77,10 +80,11 @@ class WxIndexHandler(tornado.web.RequestHandler):
         for multimedia in multimedias:
             multimedia['publish_time'] = timestamp_friendly_date(multimedia['publish_time'])
 
-        self.render('wx/timeline.html',
+        self.render('wx/index.html',
                 club=club,
                 multimedias=multimedias,
-                articles=articles)
+                articles=articles,
+                tab=tab)
 
 
 class WxBlogHandler(tornado.web.RequestHandler):

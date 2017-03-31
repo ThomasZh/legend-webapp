@@ -94,24 +94,43 @@
         </div>
       </div>
 
+      <!-- Tabs -->
+      <ul class="tabs m-b-20">
+        <li class="tab"><a class="active" href="#one">精彩瞬间</a></li>
+        <li class="tab"><a href="#two">关于我</a></li>
+      </ul>
+
       <!-- Gallery One -->
-      <div class="grid m-t-20">
-        {% for i in range(len(multimedias)) %}
-        <div class="grid-item">
-          <a href="{{ multimedias[i]['url'] }}" class="swipebox no-smoothState" title="This is dummy caption.">
+      <div id="one">
+        <div class="grid m-t-20">
+          {% for i in range(len(multimedias)) %}
+          <div class="grid-item">
+            <a href="{{ multimedias[i]['url'] }}" class="swipebox no-smoothState" title="This is dummy caption.">
             {% if i == 1 or i == 2 or i == 5 or i == 6 %}
             <img src="{{ multimedias[i]['url'] }}!700x1050" alt="image">
             {% else %}
             <img src="{{ multimedias[i]['url'] }}!700x467" alt="image">
             {% end %}
           </a>
+          </div>
+          {% end %}
         </div>
-        {% end %}
+
+        <!-- load more... -->
+        <div class="controls right-align p-20 animated fadeinup delay-2">
+          <button class="center">加载更多...</button>
+        </div>
       </div>
 
-      <!-- load more... -->
-      <div class="controls right-align p-20 animated fadeinup delay-2">
-        <button class="center">加载更多...</button>
+      <div id="two">
+        <!-- Article Content -->
+        <div class="animated fadeinup delay-1">
+          <div class="p-20">
+            <h1 class="text-flow">{{ club['name'] }}</h1>
+            <blockquote class="accent-border">{{ club['introduction'] }}</blockquote>
+            <p class="text-flow">{% raw club['paragraphs'] %}</p>
+          </div>
+        </div>
       </div>
 
       <div class="clr"></div>

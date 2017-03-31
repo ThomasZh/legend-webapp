@@ -94,29 +94,49 @@
         </div>
       </div>
 
-      <div class="news">
-        {% for article in articles %}
-        <div class="media-top-object animated fadeinright z-depth-1 delay-2">
-          <a href="/wx/clubs/{{ club['_id'] }}/articles/{{ article['_id'] }}" class="media-left"><img src="{{ article['img'] }}!492x512" alt=""></a>
-          <div class="media-body">
-            <h4 class="news-title">
+      <!-- Tabs -->
+      <ul class="tabs m-b-20">
+        <li class="tab"><a class="active" href="#one">精彩瞬间</a></li>
+        <li class="tab"><a href="#two">关于我</a></li>
+      </ul>
+
+      <!-- Gallery One -->
+      <div id="one">
+        <div class="news">
+          {% for article in articles %}
+          <div class="media-top-object animated fadeinright z-depth-1 delay-2">
+            <a href="/wx/clubs/{{ club['_id'] }}/articles/{{ article['_id'] }}" class="media-left"><img src="{{ article['img'] }}!492x512" alt=""></a>
+            <div class="media-body">
+              <h4 class="news-title">
                 <a href="event.html">{{ article['title'] }}</a>
               </h4>
-            <p class="small">{{ article['subtitle'] }}</p>
-            <div class="card-feedback">
-              <div class="card-users">
-                <i class="ion-eye"></i> <span>{{ article['read_num'] }}</span>
-                <i class="ion-ios-heart accent-text"></i> <span>{{ article['like_num'] }}</span>
-                <i class="ion-chatbubble-working"></i> <span>{{ article['comment_num'] }}</span>
+              <p class="small">{{ article['subtitle'] }}</p>
+              <div class="card-feedback">
+                <div class="card-users">
+                  <i class="ion-eye"></i> <span>{{ article['read_num'] }}</span>
+                  <i class="ion-ios-heart accent-text"></i> <span>{{ article['like_num'] }}</span>
+                  <i class="ion-chatbubble-working"></i> <span>{{ article['comment_num'] }}</span>
+                </div>
               </div>
             </div>
           </div>
+          {% end %}
         </div>
-        {% end %}
 
         <!-- load more... -->
         <div class="controls right-align p-20 animated fadeinup delay-2">
           <button class="center">加载更多...</button>
+        </div>
+      </div>
+
+      <div id="two">
+        <!-- Article Content -->
+        <div class="animated fadeinup delay-1">
+          <div class="p-20">
+            <h1 class="text-flow">{{ club['name'] }}</h1>
+            <blockquote class="accent-border">{{ club['introduction'] }}</blockquote>
+            <p class="text-flow">{% raw club['paragraphs'] %}</p>
+          </div>
         </div>
       </div>
 

@@ -96,93 +96,89 @@
 
       <!-- Tabs -->
       <ul class="tabs m-b-20">
-        <li class="tab"><a class="active" href="#one">热销中</a></li>
-        <li class="tab"><a href="#two">关于我</a></li>
+
+        <li class="tab"><a {% if tab=="1" %} class="active" {% end %} href="#one">热销中</a></li>
+        <li class="tab"><a {% if tab=="2" %} class="active" {% end %} href="#two">博客</a></li>
+        <li class="tab"><a {% if tab=="3" %} class="active" {% end %} href="#three">精彩瞬间</a></li>
       </ul>
 
-      <!-- Gallery One -->
       <div id="one">
-        <div class="grid m-t-20">
-          {% for i in range(len(articles)) %}
-          <div class="grid-item gallery-item-card">
-            <a href="/wx/clubs/{{ club['_id'] }}/products/{{ articles[i]['_id'] }}" title="This is dummy caption.">
-            {% if i == 1 or i == 4 or i == 5 or i == 8 %}
-            <img src="{{ articles[i]['img'] }}!700x1050" alt="image">
-            {% else %}
-            <img src="{{ articles[i]['img'] }}!700x467" alt="image">
-            {% end %}
-            <div class="gallery-item-header">
-              <div class="gallery-item-author">
-                <span>{{ articles[i]['title'] }}</span>
-                <span class="small">$ 199.99</span>
+        {% for article in articles %}
+        <div class="product half">
+          <a href="/wx/clubs/{{ club['_id'] }}/products/{{ article['_id'] }}"><img src="{{ article['img'] }}!370x320" alt=""></a>
+          <div class="product-info">
+            <h5 class="m-0"><strong>{{ article['title'] }}</strong></h5>
+            <p class="m-0">$ 199.99</p>
+            <!-- Rating -->
+            <div class="rating">
+              <i class="ion-star active"></i>
+              <i class="ion-star active"></i>
+              <i class="ion-star active"></i>
+              <i class="ion-star active"></i>
+              <i class="ion-star active"></i>
+            </div>
+          </div>
+        </div>
+        {% end %}
+      </div>
+
+      <div id="two">
+        {% for article in articles %}
+        <div class="card fullscreen">
+          <div class="card-image">
+            <a href="/wx/clubs/{{ club['_id'] }}/articles/{{ article['_id'] }}"><img src="{{ article['img'] }}!800x370" alt=""></a>
+          </div>
+          <div class="card-feedback">
+            <div class="card-users">
+              <i class="ion-eye"></i> <span>{{ article['read_num'] }}</span>
+              <i class="ion-ios-heart accent-text"></i> <span>{{ article['like_num'] }}</span>
+              <i class="ion-chatbubble-working"></i> <span>{{ article['comment_num'] }}</span>
+            </div>
+            <div class="card-share">
+              <i class="ion-android-calendar white-text"></i> <span>{{ article['publish_time'] }}</span>
+            </div>
+          </div>
+          <div class="card-content">
+            <h5><strong>{{ article['title'] }}</strong></h5>
+          </div>
+          <!-- <div class="card-author">
+            <div class="media-top-object middle">
+              <img src="{{ article['avatar'] }}" alt="" class="media-left avatar small">
+              <div class="media-body">
+                <span class="small">{{ article['nickname'] }}
+                  <a href="/wx/clubs/{{ club['_id'] }}/articles/{{ article['_id'] }}" class="accent-text">{{ article['publish_time'] }}</a>
+                </span>
               </div>
             </div>
-          </a>
-          </div>
-          {% end %}
+          </div> -->
         </div>
+        {% end %}
 
         <!-- load more... -->
         <div class="controls right-align p-20 animated fadeinup delay-2">
           <button class="center">加载更多...</button>
         </div>
+
       </div>
 
-      <div id="two">
-        <!-- Article Content -->
-        <div class="animated fadeinup delay-1">
-          <div class="p-20">
-            <h1 class="text-flow">{{ club['name'] }}</h1>
-            <blockquote class="accent-border">{{ club['introduction'] }}</blockquote>
-            <p class="text-flow">{% raw club['paragraphs'] %}</p>
-          </div>
+      <div id="three" class="grid m-t-20">
+        {% for i in range(len(multimedias)) %}
+        <div class="grid-item">
+          <a href="{{ multimedias[i]['url'] }}" class="swipebox no-smoothState" title="This is dummy caption.">
+            {% if i == 1 or i == 2 or i == 5 or i == 6 %}
+            <img src="{{ multimedias[i]['url'] }}!700x1050" alt="image">
+            {% else %}
+            <img src="{{ multimedias[i]['url'] }}!700x467" alt="image">
+            {% end %}
+          </a>
         </div>
+        {% end %}
       </div>
 
       <div class="clr"></div>
 
       <!-- footer -->
       <footer class="page-footer primary-color">
-        <div class="animated fadeinup delay-1">
-          <div class="shop-banner animated fadeinup delay-1">
-            <a href="/wx/clubs/{{ club['_id'] }}/products">
-              <img src="http://tripc2c-club-title.b0.upaiyun.com/default/cake_104.jpg!492x1023" alt="">
-              <div class="opacity-overlay valign-wrapper">
-                <div class="valign center width-100">
-                  <h3 class="white-text">热销中</h3>
-                  <p class="white-text">438</p>
-                </div>
-              </div>
-            </a>
-          </div>
-
-          <div class="shop-banner animated fadeinup delay-2">
-            <a href="/wx/clubs/{{ club['_id'] }}/blogs">
-              <img src="http://tripc2c-club-title.b0.upaiyun.com/default/cake_102.jpg!492x512" alt="">
-              <div class="opacity-overlay valign-wrapper">
-                <div class="valign center width-100">
-                  <h3 class="white-text">博客</h3>
-                  <p class="white-text">86k</p>
-                </div>
-              </div>
-            </a>
-          </div>
-
-          <div class="shop-banner animated fadeinup delay-3">
-            <a href="/wx/clubs/{{ club['_id'] }}/multimedias">
-              <img src="http://tripc2c-club-title.b0.upaiyun.com/default/cake_109.jpg!492x512" alt="">
-              <div class="opacity-overlay valign-wrapper">
-                <div class="valign center width-100">
-                  <h3 class="white-text">精彩瞬间</h3>
-                  <p class="white-text">1.6k</p>
-                </div>
-              </div>
-            </a>
-          </div>
-        </div>
-
-        <div class="clr"></div>
-
         <div class="footer-copyright">
           <div class="container center">
             <a href="/wx/clubs/{{ club['_id'] }}/index" class="card-users white-text">
