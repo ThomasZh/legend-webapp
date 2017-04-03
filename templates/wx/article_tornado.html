@@ -7,7 +7,7 @@
   <meta name="description" content="Material Design Mobile Template">
   <meta name="HandheldFriendly" content="True">
   <meta name="MobileOptimized" content="320">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="viewport" content="width=device-width, inital-scale=1.0, maximum-scale=1.0, user-scalable=no;" />
 
   <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/static/shuttle/img/touch/apple-touch-icon-144x144-precomposed.png">
   <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/static/shuttle/img/touch/apple-touch-icon-114x114-precomposed.png">
@@ -17,7 +17,7 @@
   <link rel="shortcut icon" href="/static/shuttle/img/touch/apple-touch-icon.png">
 
   <!-- Tile icon for Win8 (144x144 + tile color) -->
-  <meta name="msapplication-TileImage" content="{{! article.img }}!200x200">
+  <meta name="msapplication-TileImage" content="{{ article['img'] }}!200x200">
   <meta name="msapplication-TileColor" content="#222222">
 
   <!-- Add to homescreen for Chrome on Android -->
@@ -59,7 +59,7 @@
     <div id="mainForm" class="animated fadeinup">
 
       <!-- Hero Header -->
-      <div class="hero-header hero-big bg-3 animated fadeindown" v-bind:style="article.style">
+      <div class="hero-header hero-big bg-3 animated fadeindown" style="background: url({{ article['img'] }}!700x467) no-repeat center / cover !important;">
         <div class="fixed-action-btn floating-button animated bouncein delay-3 horizontal click-to-toggle">
           <a href="#!" class="btn-floating btn-large accent-color">
             <i class="ion-android-share-alt"></i>
@@ -68,7 +68,7 @@
             <li><a v-on:click="sendLike" class="btn-floating red"><i class="ion-ios-heart"></i></a></li>
             <li><a v-on:click="sendLike" class="btn-floating yellow darken-1"><i class="ion-android-star"></i></a></li>
             <li><a v-on:click="sendLike" class="btn-floating green"><i class="ion-thumbsup"></i></a></li>
-            <li><a onclick="javascript:focusOnCommentText();" class="btn-floating blue"><i class="ion-chatbubble-working"></i></a></li>
+            <li><a href="#commentText" class="btn-floating blue"><i class="ion-chatbubble-working"></i></a></li>
           </ul>
         </div>
 
@@ -76,10 +76,10 @@
           <div class="media-top-object">
             <img v-bind:src="article.avatar" alt="" class="media-left avatar">
             <div class="media-body left-align">
-              <span class="white-text small"><em>{{! article.nickname }}</em></span>
+              <span class="white-text small"><em>{{ article['nickname'] }}</em></span>
               <div class="card-feedback">
                 <div class="card-users white-text">
-                  {{! article.title }}
+                  {{ article['title'] }}
                 </div>
               </div>
             </div>
@@ -93,8 +93,11 @@
           <i class="ion-eye"></i> <span>{{! article.read_num }}</span>
           <i id="likeIcon" class="ion-ios-heart-outline accent-text"></i> <span>{{! article.like_num }}</span>
           <i class="ion-chatbubble-working"></i> <span>{{! article.comment_num }}</span>
-          <i class="ion-android-calendar white-text"></i> <span>{{! article.publish_time }}</span>
+          <i class="ion-android-calendar white-text"></i> <span>{{ article['publish_time'] }}</span>
         </div>
+        <!-- <div class="card-share">
+          <span>{{ article['publish_time'] }}</span>
+        </div> -->
       </div>
 
       <!-- uploading toast -->
@@ -106,6 +109,7 @@
         <div class="p-20">
           <blockquote class="accent-border">{{! article.subtitle }}</blockquote>
           <p class="text-flow" v-html="article.paragraphs"></p>
+          <!-- <p class="text-flow">{% raw article['paragraphs'] %}</p> -->
         </div>
       </div>
 
@@ -236,14 +240,14 @@
 
           $.ajax({
             type: "GET",
-            url: "http://api.7x24hs.com/api/articles/{{ article_id }}",
+            url: "http://api.7x24hs.com/api/articles/{{ article['_id'] }}",
             async: true,
             dataType: "json",
             contentType: 'application/json',
             success: function(data, status, xhr) {
               console.log(data);
               article = data.rs;
-              article.style = "background: url(" + article.img + ") no-repeat center / cover !important;"
+              article.img += "!700x467";
               article.avatar += "!100x100";
               article.publish_time = _self.getFriendlyTime(article.publish_time);
               _self.article = article;
@@ -262,7 +266,7 @@
 
           $.ajax({
             type: "GET",
-            url: "http://api.7x24hs.com/api/articles/{{ article_id }}/comment?" + idx + "&limit=" + limit,
+            url: "http://api.7x24hs.com/api/articles/{{ article['_id'] }}/comment?" + idx + "&limit=" + limit,
             async: true,
             dataType: "json",
             contentType: 'application/json',
@@ -289,7 +293,7 @@
 
           $.ajax({
             type: "POST",
-            url: "http://api.7x24hs.com/api/articles/{{ article_id }}/like",
+            url: "http://api.7x24hs.com/api/articles/{{ article['_id'] }}/like",
             dataType: "json",
             contentType: 'application/json',
             success: function(data, status, xhr) {
@@ -317,7 +321,7 @@
 
           $.ajax({
             type: "POST",
-            url: "http://api.7x24hs.com/api/articles/{{ article_id }}/comment",
+            url: "http://api.7x24hs.com/api/articles/{{ article['_id'] }}/comment",
             async: true,
             dataType: "json",
             contentType: 'application/json',
@@ -336,13 +340,6 @@
         },
       }
     })
-  </script>
-
-  <script>
-    function focusOnCommentText() {
-      location.href = "#commentText";
-      $("#commentText").select();
-    }
   </script>
 
 </body>

@@ -7,7 +7,7 @@
   <meta name="description" content="Material Design Mobile Template">
   <meta name="HandheldFriendly" content="True">
   <meta name="MobileOptimized" content="320">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
 
   <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/static/shuttle/img/touch/apple-touch-icon-144x144-precomposed.png">
   <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/static/shuttle/img/touch/apple-touch-icon-114x114-precomposed.png">
@@ -104,11 +104,13 @@
       <ul class="tabs m-b-20">
         <li class="tab"><a {% if tab=="1" %} class="active" {% end %} href="#productsForm">热销</a></li>
         <li class="tab"><a {% if tab=="2" %} class="active" {% end %} href="#articlesForm">博客</a></li>
-        <li id="tab3" onclick="javascript:refresh();" class="tab"><a {% if tab=="3" %} class="active" {% end %} href="#multimediasForm">精彩瞬间</a></li>
+        <li class="tab"><a {% if tab=="3" %} class="active" {% end %} href="#multimediasForm">精彩瞬间</a></li>
       </ul>
 
       <div id="productsForm">
-        <div is="oneProduct" v-for="(product, idx) in products" v-bind:product="product" v-bind:idx="idx"></div>
+        <div>
+          <div is="oneProduct" v-for="(product, idx) in products" v-bind:product="product" v-bind:idx="idx"></div>
+        </div>
 
         <!-- load more... -->
         <div class="controls right-align p-20 animated fadeinup delay-2">
@@ -175,13 +177,9 @@
     Vue.component('oneProduct', {
       template: '\
         <div class="product half">\
-          <div class="swiper-container swiper-slider">\
-            <div class="swiper-wrapper">\
-              <div class="swiper-slide">\
-                <a v-bind:href="product.url"><img v-bind:src="product.img" alt=""></a>\
-              </div>\
-            </div>\
-            <div class="swiper-pagination"></div>\
+          <div class="card-image">\
+            <a v-bind:href="product.url">\
+            <img v-bind:src="product.img" alt=""></a>\
           </div>\
           <div class="product-info">\
             <h5 class="m-0"><strong>{{! product.title }}</strong></h5>\
@@ -227,8 +225,8 @@
 
     Vue.component('oneMultimedia', {
       template: '\
-        <div class="grid-item">\
-          <a v-bind:href="multimedia.url_original" class="swipebox no-smoothState">\
+        <div class="grid-item gallery-item-card">\
+        <a v-bind:href="multimedia.url_original" class="swipebox no-smoothState">\
           <img v-bind:src="multimedia.url">\
         </a></div>\
       ',
@@ -364,17 +362,6 @@
         },
       }
     })
-  </script>
-
-  <script>
-    function refresh() {
-      setTimeout(function() {
-        // Masonry
-        $('.grid').masonry({
-          itemSelector: '.grid-item'
-        });
-      }, 100);
-    }
   </script>
 
 </body>

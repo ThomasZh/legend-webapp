@@ -207,7 +207,8 @@ class BaseHandler(tornado.web.RequestHandler):
                 "app_secret":"2518e11b3bc89ebec594350d5739f29e"}
         _json = json_encode(data)
         response = http_client.fetch(url, method="POST", body=_json)
-        session_code = json_decode(response.body)
+        rs = json_decode(response.body)
+        session_code = rs['rs']
         logging.info("got session_code %r", session_code)
         code = session_code['code']
         return code

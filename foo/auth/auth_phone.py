@@ -76,7 +76,8 @@ class AuthLoginHandler(BaseHandler):
             logging.info("request %r body %r", url, _json)
             response = http_client.fetch(url, method="POST", headers=headers, body=_json)
             logging.info("got response %r", response.body)
-            session_ticket = json_decode(response.body)
+            rs = json_decode(response.body)
+            session_ticket = rs['rs']
 
             # 添加此帐号到俱乐部的普通用户帐号表中
             url = "http://api.7x24hs.com/api/clubs/"+CLUB_ID+"/signup"
