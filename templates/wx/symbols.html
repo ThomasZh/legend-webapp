@@ -7,11 +7,7 @@
   <meta name="description" content="Material Design Mobile Template">
   <meta name="HandheldFriendly" content="True">
   <meta name="MobileOptimized" content="320">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-  <!-- Add to homescreen for Chrome on Android -->
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  <meta name="format-detection" content="telephone=no">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 
   <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/static/shuttle/img/touch/apple-touch-icon-144x144-precomposed.png">
   <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/static/shuttle/img/touch/apple-touch-icon-114x114-precomposed.png">
@@ -23,6 +19,9 @@
   <!-- Tile icon for Win8 (144x144 + tile color) -->
   <meta name="msapplication-TileImage" content="{{ club['img'] }}!200x200">
   <meta name="msapplication-TileColor" content="#222222">
+
+  <!-- Add to homescreen for Chrome on Android -->
+  <meta name="mobile-web-app-capable" content="yes">
 
   <!-- SEO: If mobile URL is different from desktop URL, add a canonical link to the desktop page -->
   <!--
@@ -64,7 +63,7 @@
       <div class="hero-header hero-big bg-3 animated fadeindown" style="background: url({{ club['img'] }}!700x467) no-repeat center / cover !important;">
         <div class="fixed-action-btn floating-button animated bouncein delay-3 horizontal click-to-toggle">
           <a href="#!" class="btn-floating btn-large accent-color">
-            <i class="ion-android-share-alt"></i>
+            <i class="ion-android-add"></i>
           </a>
           <ul>
             <li><a class="btn-floating red"><i class="ion-ios-heart"></i></a></li>
@@ -101,40 +100,12 @@
       {% module Template("wx/block-loading-toast.html") %}
       <!-- /uploading toast -->
 
-      <!-- Tabs -->
-      <ul class="tabs m-b-20">
-        <li class="tab"><a {% if tab=="1" %} class="active" {% end %} href="#productsForm">热销</a></li>
-        <li class="tab"><a {% if tab=="2" %} class="active" {% end %} href="#articlesForm">博客</a></li>
-        <li id="tab3" onclick="javascript:refresh();" class="tab"><a {% if tab=="3" %} class="active" {% end %} href="#multimediasForm">精彩瞬间</a></li>
-      </ul>
-
-      <div id="productsForm">
-        <div is="oneProduct" v-for="(product, idx) in products" v-bind:product="product" v-bind:idx="idx"></div>
+      <div id="momentsForm">
+        <div is="oneMoment" v-for="(moment, idx) in moments" v-bind:moment="moment" v-bind:idx="idx"></div>
 
         <!-- load more... -->
         <div class="controls right-align p-20 animated fadeinup delay-2">
-          <button id="queryMoreProductsBtn" class="center" v-on:click="queryMoreProducts">加载更多...</button>
-        </div>
-      </div>
-
-      <div id="articlesForm">
-        <div is="oneArticle" v-for="(article, idx) in articles" v-bind:article="article" v-bind:idx="idx"></div>
-
-        <!-- load more... -->
-        <div class="controls right-align p-20 animated fadeinup delay-2">
-          <button id="queryMoreArticlesBtn" class="center" v-on:click="queryMoreArticles">加载更多...</button>
-        </div>
-      </div>
-
-      <!-- mutlimedias -->
-      <div id="multimediasForm">
-        <div class="grid m-t-20">
-          <div is="oneMultimedia" v-for="(multimedia, idx) in multimedias" v-bind:multimedia="multimedia" v-bind:idx="idx"></div>
-        </div>
-
-        <!-- load more... -->
-        <div class="controls right-align p-20 animated fadeinup delay-2">
-          <button id="queryMoreMultimediasBtn" class="center" v-on:click="queryMoreMultimedias">加载更多...</button>
+          <button id="queryMoreMomentsBtn" class="center" v-on:click="queryMoreMoments">加载更多...</button>
         </div>
       </div>
 
@@ -173,180 +144,102 @@
   <script src="{{ static_url('js/vue-2.1.4.js') }}" type="text/javascript"></script>
 
   <script>
-    Vue.component('oneProduct', {
-      template: '\
-        <div class="product half">\
-          <div class="swiper-container swiper-slider">\
-            <div class="swiper-wrapper">\
-              <div class="swiper-slide">\
-                <a v-bind:href="product.url"><img v-bind:src="product.img" alt=""></a>\
-              </div>\
-            </div>\
-            <div class="swiper-pagination"></div>\
-          </div>\
-          <div class="product-info">\
-            <h5 class="m-0"><strong>{{! product.title }}</strong></h5>\
-            <p class="m-0">$ 199.99</p>\
-            <div class="rating">\
-              <i class="ion-star active"></i>\
-              <i class="ion-star active"></i>\
-              <i class="ion-star active"></i>\
-              <i class="ion-star active"></i>\
-              <i class="ion-star active"></i>\
-            </div>\
-          </div>\
-        </div>\
-      ',
-      props: ['idx', 'product'],
-      methods: {}
-    })
-
-    Vue.component('oneArticle', {
-      template: '\
-        <div class="card fullscreen">\
-          <div class="card-image">\
-            <a v-bind:href="article.url"><img v-bind:src="article.img" alt=""></a>\
-          </div>\
-          <div class="card-feedback">\
-            <div class="card-users">\
-              <i class="ion-eye"></i> <span>{{! article.read_num }}</span>\
-              <i class="ion-ios-heart accent-text"></i> <span>{{! article.like_num }}</span>\
-              <i class="ion-chatbubble-working"></i> <span>{{! article.comment_num }}</span>\
-            </div>\
-            <div class="card-share">\
-              <i class="ion-android-calendar white-text"></i> <span>{{! article.publish_time }}</span>\
-            </div>\
-          </div>\
-          <div class="card-content">\
-            <h5><strong>{{! article.title }}</strong></h5>\
-          </div>\
-        </div>\
-      ',
-      props: ['idx', 'article'],
-      methods: {}
-    })
-
-    Vue.component('oneMultimedia', {
+    Vue.component('oneImage', {
       template: '\
         <div class="grid-item">\
-          <a v-bind:href="multimedia.url_original" class="swipebox no-smoothState">\
-          <img v-bind:src="multimedia.url">\
-        </a></div>\
+          <a v-bind:href="imginfo.url_original" class="swipebox no-smoothState" title="">\
+            <img v-bind:src="imginfo.url" alt="image">\
+          </a>\
+        </div>\
       ',
-      props: ['idx', 'multimedia'],
+      props: ['idx', 'imginfo'],
+    })
+
+    Vue.component('oneMoment', {
+      template: '\
+      <div class="card fullscreen">\
+        <div class="p-20">\
+          <div class="grid m-t-20">\
+            <div is="oneImage"\
+              v-for="(imginfo, idx) in moment.imgs"\
+              v-bind:imginfo="imginfo"\
+              v-bind:idx="idx"\
+            ></div>\
+          </div>\
+        </div>\
+        <div class="card-content">\
+          <h5><strong>{{! moment.subtitle }}</strong></h5>\
+        </div>\
+        <div class="card-author">\
+          <div class="media-top-object middle">\
+            <img v-bind:src="moment.avatar" alt="" class="media-left avatar small">\
+            <div class="media-body">\
+              <span class="small">{{! moment.nickname }}\
+              <a href="#!" class="accent-text">\
+                &nbsp;{{! moment.friendlyTime }}</a>\
+              </span>\
+            </div>\
+          </div>\
+        </div>\
+        <div class="comments grey lighten-4">\
+          <div class="card-facebook">\
+            <div class="card-users">\
+              <i class="ion-eye"></i> <span>{{! moment.view_num  }}</span>\
+              <i class="ion-ios-heart accent-text"></i> <span>{{! moment.like_num  }}</span>\
+              <i class="ion-chatbubble-working"></i> <span>{{! moment.comment_num  }}</span>\
+            </div>\
+            <button class="right" v-bind:id="idx" v-on:click="showComments(idx)">查看详情</button>\
+          </div>\
+         </div>\
+       </div>\
+      ',
+      props: ['idx', 'moment'],
       methods: {}
     })
 
     new Vue({
       el: '#mainForm',
       data: {
-        products: [],
-        products_num: 0,
-        articles: [],
-        articles_num: 0,
-        multimedias: [],
-        multimedias_num: 0,
+        moments: [],
+        num: 0,
         limit: 8,
       },
       created: function() {
-        this.queryMoreProducts();
-        this.queryMoreArticles();
-        this.queryMoreMultimedias();
+        this.queryMoreMoments();
       },
       methods: {
-        queryMoreProducts: function() {
+        queryMoreMoments: function() {
           $('#loadingToast').show();
 
           _self = this;
-          idx = this.products_num;
+          idx = this.num;
           limit = this.limit;
 
           $.ajax({
             type: "GET",
-            url: "http://api.7x24hs.com/api/articles?idx=" + idx + "&limit=" + limit + "&filter=club&club_id={{ club['_id'] }}",
+            url: "http://api.7x24hs.com/api/moments?idx=" + idx + "&limit=" + limit + "&filter=club&club_id={{ club['_id'] }}",
             async: true,
             dataType: "json",
             contentType: 'application/json',
             success: function(datas, status, xhr) {
               console.log(datas);
               for (var i = 0, l = datas.rs.length; i < l; i++) {
-                product = datas.rs[i];
-                product.url = "/wx/clubs/" + product.club_id + "/products/" + product._id;
-                product.img += "!370x320";
-                _self.products.push(product);
-                _self.products_num += 1;
-              }
-
-              if (datas.rs.length < limit) {
-                $("#queryMoreProductsBtn").css('display', 'none');
-              }
-
-              $('#loadingToast').hide();
-            },
-          });
-        },
-        queryMoreArticles: function() {
-          $('#loadingToast').show();
-
-          _self = this;
-          idx = this.articles_num;
-          limit = this.limit;
-
-          $.ajax({
-            type: "GET",
-            url: "http://api.7x24hs.com/api/articles?idx=" + idx + "&limit=" + limit + "&filter=club&club_id={{ club['_id'] }}",
-            async: true,
-            dataType: "json",
-            contentType: 'application/json',
-            success: function(datas, status, xhr) {
-              console.log(datas);
-              for (var i = 0, l = datas.rs.length; i < l; i++) {
-                article = datas.rs[i];
-                article.url = "/wx/clubs/" + article.club_id + "/articles/" + article._id;
-                article.img += "!800x370";
-                article.publish_time = _self.getFriendlyTime(article.publish_time);
-                _self.articles.push(article);
-                _self.articles_num += 1;
-              }
-
-              if (datas.rs.length < limit) {
-                $("#queryMoreArticlesBtn").css('display', 'none');
-              }
-
-              $('#loadingToast').hide();
-            },
-          });
-        },
-        queryMoreMultimedias: function() {
-          $('#loadingToast').show();
-
-          _self = this;
-          idx = this.multimedias_num;
-          limit = this.limit;
-
-          $.ajax({
-            type: "GET",
-            url: "http://api.7x24hs.com/api/multimedias?idx=" + idx + "&limit=" + limit + "&filter=club&club_id={{ club['_id'] }}",
-            async: true,
-            dataType: "json",
-            contentType: 'application/json',
-            success: function(datas, status, xhr) {
-              console.log(datas);
-              for (var i = 0, l = datas.rs.length; i < l; i++) {
-                multimedia = datas.rs[i];
-                // !370x320
-                multimedia.url_original = multimedia.url;
-                if (_self.multimedias_num % 4 == 1 || _self.multimedias_num % 4 == 2) {
-                  multimedia.url += "!700x1050";
-                } else {
-                  multimedia.url += "!700x467";
+                moment = datas.rs[i];
+                moment.url = "/wx/clubs/" + moment.club_id + "/moments/" + moment._id;
+                imgs = [];
+                for (var j = 0, m = moment.imgs.length; j < m; j++) {
+                  img = {};
+                  img.url = moment.imgs[j] + "!700x467";
+                  img.url_original = moment.imgs[j];
+                  imgs.push(img);
                 }
-                _self.multimedias.push(multimedia);
-                _self.multimedias_num += 1;
+                moment.imgs = imgs;
+                _self.moments.push(moment);
+                _self.num += 1;
               }
 
               if (datas.rs.length < limit) {
-                $("#queryMoreMultimediasBtn").css('display', 'none');
+                $("#queryMoreMomentsBtn").css('display', 'none');
               }
 
               $('#loadingToast').hide();
@@ -367,16 +260,22 @@
     })
   </script>
 
-  <script>
-    function refresh() {
-      setTimeout(function() {
-        // Masonry
-        $('.grid').masonry({
-          itemSelector: '.grid-item'
-        });
-      }, 100);
-    }
-  </script>
+</body>
+
+</html>
+\d{1,2}$/, ' '); }, } })
+</script>
+
+</body>
+
+</html>
+>
+
+</body>
+
+</html>
+\d{1,2}$/, ' '); }, } })
+</script>
 
 </body>
 

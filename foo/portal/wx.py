@@ -151,6 +151,23 @@ class WxMultimediaIndexHandler(tornado.web.RequestHandler):
                 multimedias=multimedias)
 
 
+class WxSymbolIndexHandler(tornado.web.RequestHandler):
+    def get(self, club_id):
+        logging.info(self.request)
+        logging.info("got club_id %r--------", club_id)
+
+        # club
+        url = "http://api.7x24hs.com/api/clubs/"+club_id
+        http_client = HTTPClient()
+        response = http_client.fetch(url, method="GET")
+        logging.info("got response %r", response.body)
+        rs = json_decode(response.body)
+        club = rs['rs']
+
+        self.render('wx/symbols.html',
+                club=club)
+
+
 class WxArticleHandler(tornado.web.RequestHandler):
     def get(self, club_id, article_id):
         logging.info(self.request)
