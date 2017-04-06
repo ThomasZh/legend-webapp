@@ -13,6 +13,8 @@ from foo.auth import auth_phone
 from foo.portal import shuttle
 from foo.portal import demo
 from foo.portal import wx
+from foo.portal import ydui
+from foo.portal import weui
 
 
 def map():
@@ -27,6 +29,18 @@ def map():
         (r'/wx/clubs/([a-z0-9]*)/symbols', getattr(wx, 'WxSymbolIndexHandler')),
         (r'/wx/clubs/([a-z0-9]*)/articles/([a-z0-9]*)', getattr(wx, 'WxArticleHandler')),
         (r'/wx/clubs/([a-z0-9]*)/products/([a-z0-9]*)', getattr(wx, 'WxProductHandler')),
+        (r'/wx/clubs/([a-z0-9]*)/products/([a-z0-9]*)/order', getattr(wx, 'WxOrderHandler')),
+
+        (r'/ydui', getattr(ydui, 'YduiHomeHandler')),
+        (r'/ydui/clubs/([a-z0-9]*)/index', getattr(ydui, 'YduiIndexHandler')),
+        (r'/ydui/clubs/([a-z0-9]*)/pc', getattr(ydui, 'YduiPcHandler')),
+
+        (r'/weui', getattr(weui, 'WeuiHomeHandler')),
+        (r'/weui/clubs/([a-z0-9]*)', getattr(weui, 'WeuiIndexHandler')),
+        (r'/weui/clubs/([a-z0-9]*)/products/([a-z0-9]*)', getattr(weui, 'WeuiProductHandler')),
+        (r'/weui/clubs/([a-z0-9]*)/products/([a-z0-9]*)/place-order', getattr(weui, 'WeuiPlaceOrderHandler')),
+        (r'/weui/clubs/([a-z0-9]*)/products/([a-z0-9]*)/place-order-success', getattr(weui, 'WeuiPlaceOrderSuccessHandler')),
+        (r'/weui/clubs/([a-z0-9]*)/pc', getattr(weui, 'WeuiPcHandler')),
 
         # homepage
         (r'/', getattr(demo, 'DemoIndexHandler')),

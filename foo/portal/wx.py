@@ -257,3 +257,29 @@ class WxProductHandler(tornado.web.RequestHandler):
                 club=club,
                 article=article,
                 comments=comments)
+
+
+class WxOrderHandler(tornado.web.RequestHandler):
+    def get(self, club_id, article_id):
+        logging.info(self.request)
+        logging.info("got article_id %r in uri", article_id)
+
+        # club
+        url = "http://api.7x24hs.com/api/clubs/"+club_id
+        http_client = HTTPClient()
+        response = http_client.fetch(url, method="GET")
+        logging.info("got response %r", response.body)
+        rs = json_decode(response.body)
+        club = rs['rs']
+
+        # article
+        url = "http://api.7x24hs.com/api/articles/"+article_id
+        http_client = HTTPClient()
+        response = http_client.fetch(url, method="GET")
+        logging.info("got article response %r", response.body)
+        rs = json_decode(response.body)
+        article = rs['rs']
+
+        self.render('wx/order.html',
+                club=club,
+                article=article)

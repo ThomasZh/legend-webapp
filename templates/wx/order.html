@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html class="no-js">
+
+<head>
+  <meta charset="utf-8">
+  <title>{{ club['name'] }}</title>
+  <meta name="description" content="Material Design Mobile Template">
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  <!-- Add to homescreen for Chrome on Android -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no">
+
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/static/shuttle/img/touch/apple-touch-icon-144x144-precomposed.png">
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/static/shuttle/img/touch/apple-touch-icon-114x114-precomposed.png">
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/static/shuttle/img/touch/apple-touch-icon-72x72-precomposed.png">
+  <link rel="apple-touch-icon-precomposed" href="/static/shuttle/img/touch/apple-touch-icon-57x57-precomposed.png">
+  <link rel="shortcut icon" sizes="196x196" href="/static/shuttle/img/touch/touch-icon-196x196.png">
+  <link rel="shortcut icon" href="/static/shuttle/img/touch/apple-touch-icon.png">
+
+  <!-- Tile icon for Win8 (144x144 + tile color) -->
+  <meta name="msapplication-TileImage" content="/static/shuttle/img/touch/apple-touch-icon-144x144-precomposed.png">
+  <meta name="msapplication-TileColor" content="#222222">
+
+  <!-- SEO: If mobile URL is different from desktop URL, add a canonical link to the desktop page -->
+  <!--
+    <link rel="canonical" href="http://www.example.com/" >
+    -->
+
+  <!-- For iOS web apps. Delete if not needed. https://github.com/h5bp/mobile-boilerplate/issues/94 -->
+  <!--
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="">
+    -->
+
+  <!-- Icons -->
+  <link href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" media="all" rel="stylesheet" type="text/css">
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="{{ static_url('shuttle/css/animate.css') }}">
+  <link rel="stylesheet" href="{{ static_url('shuttle/css/materialize.min.css') }}">
+  <link rel="stylesheet" href="{{ static_url('shuttle/css/swipebox.min.css') }}">
+  <link rel="stylesheet" href="{{ static_url('shuttle/css/swiper.min.css') }}">
+  <link rel="stylesheet" href="{{ static_url('shuttle/css/normalize.css') }}">
+  <link rel="stylesheet" href="{{ static_url('shuttle/css/main.css') }}">
+  <link rel="stylesheet" href="{{ static_url('weui/lib/weui.min.css') }}">
+  <script src="{{ static_url('shuttle/js/vendor/modernizr-2.7.1.min.js') }}"></script>
+</head>
+
+<body>
+
+  <!-- Main Container -->
+  <div id="main" class="main">
+
+    <!-- Toolbar -->
+    {% module Template("shuttle/block-toolbar.html") %}
+    <!-- End of Toolbar -->
+
+    <!-- Page Contents -->
+    <div class="page animated fadeinup">
+
+      <!-- Order Recap -->
+      <ul class="collapsible checkout-header animated fadeindown delay-2" data-collapsible="accordion">
+        <li>
+          <div class="collapsible-header">
+            显示商品信息
+            <i class="ion-android-arrow-dropdown"></i>
+            <span class="checkout-price right">$240.00</span>
+          </div>
+          <div class="collapsible-body z-depth-1">
+
+            <!-- Products in cart -->
+            <div class="checkout-details">
+              <img class="checkout-image" src="{{ article['img'] }}!200x200" alt="">
+              <div class="checkout-product-title">
+                <h6>{{ article['title'] }} <span class="right"></span></h6>
+                <span>6寸 8寸 10寸</span>
+              </div>
+            </div>
+
+          </div>
+        </li>
+      </ul>
+
+      <div class="bd">
+        <div class="weui_cells_title">选择尺寸</div>
+        <div class="weui_cells weui_cells_radio">
+          <label class="weui_cell weui_check_label" for="x11">
+            <div class="weui_cell_bd weui_cell_primary">
+              <p>6寸</p>
+            </div>
+            <div class="weui_cell_ft">
+              <input type="radio" class="weui_check" name="radio1" id="x11" checked="checked">
+              <span class="weui_icon_checked"></span>
+            </div>
+          </label>
+          <label class="weui_cell weui_check_label" for="x12">
+            <div class="weui_cell_bd weui_cell_primary">
+              <p>8寸</p>
+            </div>
+            <div class="weui_cell_ft">
+              <input type="radio" name="radio1" class="weui_check" id="x12">
+              <span class="weui_icon_checked"></span>
+            </div>
+          </label>
+          <label class="weui_cell weui_check_label" for="x13">
+            <div class="weui_cell_bd weui_cell_primary">
+              <p>10寸</p>
+            </div>
+            <div class="weui_cell_ft">
+              <input type="radio" name="radio1" class="weui_check" id="x13">
+              <span class="weui_icon_checked"></span>
+            </div>
+          </label>
+        </div>
+
+        <div class="weui_cells_title">交货日期</div>
+        <div class="weui_cell">
+          <div class="weui_cell_bd weui_cell_primary">
+            <input class="weui_input" type="date" value="">
+          </div>
+        </div>
+
+        <div class="weui_cells_title">联系方式</div>
+        <div class="weui-cells">
+          <div class="weui-cell weui-cell_select weui-cell_select-before">
+            <div class="weui-cell__bd">
+              <input class="weui-input" type="number" pattern="[0-9]*" placeholder="请输入手机号码">
+            </div>
+          </div>
+        </div>
+        <div class="weui_cells weui_cells_form">
+          <div class="weui_cell">
+            <div class="weui_cell_bd weui_cell_primary">
+              <textarea class="weui_textarea" placeholder="请输入送货地址" rows="3"></textarea>
+              <div class="weui_textarea_counter"><span>0</span>/200</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Form Inputs -->
+      <div class="form-inputs p-20">
+        <a class="waves-effect waves-light btn-large primary-color block" href="index.html">下单</a>
+      </div>
+
+      <!-- footer -->
+      <footer class="page-footer primary-color">
+        <div class="footer-copyright">
+          <div class="container center">
+            <a href="/wx/clubs/{{ club['_id'] }}/index" class="card-users white-text">
+              <i class="ion-android-home">{{ club['name'] }}</i>
+            </a>
+          </div>
+        </div>
+      </footer>
+      <!-- /footer -->
+
+    </div>
+    <!-- End of Page Contents -->
+
+  </div>
+  <!-- End of Main Container -->
+
+  <!-- Scripts -->
+  <script src="{{ static_url('shuttle/js/vendor/jquery-2.1.0.min.js') }}"></script>
+  <!-- <script src="{{ static_url('shuttle/js/helper.js') }}"></script> -->
+  <script src="{{ static_url('shuttle/js/vendor/HeadsUp.js') }}"></script>
+  <!-- <script src="{{ static_url('shuttle/js/vendor/jquery.smoothState.js') }}"></script> -->
+  <!-- <script src="{{ static_url('shuttle/js/vendor/chart.min.js') }}"></script> -->
+  <script src="{{ static_url('shuttle/js/vendor/jquery.mixitup.min.js') }}"></script>
+  <script src="{{ static_url('shuttle/js/vendor/jquery.swipebox.min.js') }}"></script>
+  <script src="{{ static_url('shuttle/js/vendor/masonry.min.js') }}"></script>
+  <script src="{{ static_url('shuttle/js/vendor/swiper.min.js') }}"></script>
+  <script src="{{ static_url('shuttle/js/vendor/materialize.min.js') }}"></script>
+  <script src="{{ static_url('shuttle/js/main.js') }}"></script>
+  <script src="{{ static_url('weui/js/jquery-weui.min.js') }}"></script>
+
+</body>
+
+</html>

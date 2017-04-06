@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>jquery-weui demo</title>
+  <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" name="viewport" />
+  <meta content="yes" name="apple-mobile-web-app-capable" />
+  <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+  <meta content="telephone=no" name="format-detection" />
+
+  <link rel="stylesheet" href="{{ static_url('jquery-weui/lib/weui.min.css') }}">
+  <link rel="stylesheet" href="{{ static_url('jquery-weui/css/jquery-weui.min.css') }}">
+  <link rel="stylesheet" href="{{ static_url('jquery-weui/demos/css/demos.css') }}">
+</head>
+
+<body>
+
+  <div class="page__bd">
+    <div class="weui-panel weui-panel_access">
+      <div class="weui-panel__bd">
+        <a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg">
+          <div class="weui-media-box__hd">
+            <img class="weui-media-box__thumb" src="{{ article['img'] }}!100x100" alt="">
+          </div>
+          <div class="weui-media-box__bd">
+            <h4 class="weui-media-box__title">{{ article['title'] }}</h4>
+            <p class="weui-media-box__desc">{{ article['subtitle'] }}</p>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <article class="weui-article">
+    <section>
+      {% raw article['paragraphs'] %}
+    </section>
+  </article>
+
+  <div class='demos-content-padded'>
+    <div class="button_sp_area">
+      <a href="/weui/clubs/{{ club['_id'] }}/products/{{ article['_id'] }}/place-order" class="weui-btn weui-btn_primary">预订</a>
+    </div>
+  </div>
+
+  <!-- 引入jQuery 2.0+ -->
+  <script src="{{ static_url('js/jquery-2.2.4.min.js') }}"></script>
+  <script src="{{ static_url('jquery-weui/lib/fastclick.js') }}"></script>
+  <script>
+    $(function() {
+      FastClick.attach(document.body);
+    });
+  </script>
+  <script src="{{ static_url('jquery-weui/js/jquery-weui.min.js') }}"></script>
+
+  <!-- 如果使用了某些拓展插件还需要额外的JS -->
+  <script src="{{ static_url('jquery-weui/js/swiper.min.js') }}"></script>
+  <script src="{{ static_url('jquery-weui/js/city-picker.min.js') }}"></script>
+
+</body>
+
+</html>

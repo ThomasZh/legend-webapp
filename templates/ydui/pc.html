@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>ydui demo</title>
+  <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" name="viewport" />
+  <meta content="yes" name="apple-mobile-web-app-capable" />
+  <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+  <meta content="telephone=no" name="format-detection" />
+  <!-- 引入YDUI样式 -->
+  <link rel="stylesheet" href="{{ static_url('ydui/css/ydui.css') }}">
+  <!-- 引入YDUI自适应解决方案类库 -->
+  <script src="{{ static_url('ydui/js/ydui.flexible.js') }}"></script>
+</head>
+
+<body>
+  <div class="m-slider" id="J_Slider">
+    <div class="slider-wrapper">
+      <div class="slider-item">
+        <a href="#">
+          <img src="http://static.ydcss.com/uploads/ydui/1.jpg">
+        </a>
+      </div>
+      <div class="slider-item">
+        <a href="#">
+          <img src="http://static.ydcss.com/uploads/ydui/2.jpg">
+        </a>
+      </div>
+      <div class="slider-item">
+        <a href="#">
+          <img src="http://static.ydcss.com/uploads/ydui/3.jpg">
+        </a>
+      </div>
+    </div>
+    <div class="slider-pagination"></div>
+    <!-- 分页标识 -->
+  </div>
+
+  <div class="m-celltitle">订单</div>
+  <div class="m-cell">
+    <div class="cell-item">
+      <div class="cell-left">我的订单</div>
+      <div class="cell-right cell-arrow">查看全部订单</div>
+    </div>
+
+    <div class="m-grids-4">
+      <a href="#" class="grids-item">
+        <div class="grids-icon"><i class="icon-shopcart-outline"></i></div>
+        <div class="grids-txt"><span>待付款</span></div>
+      </a>
+      <a href="#" class="grids-item">
+        <div class="grids-icon"><i class="icon-share3"></i></div>
+        <div class="grids-txt"><span>待发货</span></div>
+      </a>
+      <a href="#" class="grids-item">
+        <div class="grids-icon"><i class="icon-order"></i></div>
+        <div class="grids-txt"><span>待收货</span></div>
+      </a>
+      <a href="#" class="grids-item">
+        <div class="grids-icon"><i class="icon-compose"></i></div>
+        <div class="grids-txt"><span>待评价</span></div>
+      </a>
+    </div>
+  </div>
+
+  <div class="m-celltitle">互动</div>
+  <div class="m-grids-3">
+    <a href="#" class="grids-item">
+      <div class="grids-icon"><i class="icon-share1"></i></div>
+      <div class="grids-txt"><span>获取积分</span></div>
+    </a>
+    <a href="#" class="grids-item">
+      <div class="grids-icon"><i class="icon-shopcart-outline"></i></div>
+      <div class="grids-txt"><span>消费积分</span></div>
+    </a>
+    <a href="#" class="grids-item">
+      <div class="grids-icon"><i class="icon-shield-outline"></i></div>
+      <div class="grids-txt"><span>剩余积分</span></div>
+    </a>
+    <a href="#" class="grids-item">
+      <div class="grids-icon"><i class="icon-footmark"></i></div>
+      <div class="grids-txt"><span>足迹</span></div>
+    </a>
+    <a href="#" class="grids-item">
+      <div class="grids-icon"><i class="icon-star-outline"></i></div>
+      <div class="grids-txt"><span>收藏</span></div>
+    </a>
+    <a href="#" class="grids-item">
+      <div class="grids-icon"><i class="icon-good"></i></div>
+      <div class="grids-txt"><span>评价</span></div>
+    </a>
+    <a href="#" class="grids-item">
+      <div class="grids-icon"><i class="icon-share1"></i></div>
+      <div class="grids-txt"><span>分享</span></div>
+    </a>
+    <a href="#" class="grids-item">
+      <div class="grids-icon"><i class="icon-location"></i></div>
+      <div class="grids-txt"><span>地址</span></div>
+    </a>
+    <a href="#" class="grids-item">
+      <div class="grids-icon"><i class="icon-ucenter-outline"></i></div>
+      <div class="grids-txt"><span>好友</span></div>
+    </a>
+  </div>
+
+  <div class="m-celltitle">footer</div>
+
+  <!-- 引入jQuery 2.0+ -->
+  <script src="{{ static_url('js/jquery-2.2.4.min.js') }}"></script>
+  <!-- 引入YDUI脚本 -->
+  <script src="{{ static_url('ydui/js/ydui.js') }}"></script>
+
+  <script>
+    $('#J_Slider').slider({
+      speed: 200,
+      autoplay: 2000,
+      lazyLoad: true
+    });
+  </script>
+
+</body>
+
+</html>

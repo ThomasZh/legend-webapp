@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>jquery-weui demo</title>
+  <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" name="viewport" />
+  <meta content="yes" name="apple-mobile-web-app-capable" />
+  <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+  <meta content="telephone=no" name="format-detection" />
+
+  <link rel="stylesheet" href="{{ static_url('jquery-weui/lib/weui.min.css') }}">
+  <link rel="stylesheet" href="{{ static_url('jquery-weui/css/jquery-weui.min.css') }}">
+  <link rel="stylesheet" href="{{ static_url('jquery-weui/demos/css/demos.css') }}">
+</head>
+
+<body>
+
+  <div class="page__bd">
+    <div class="weui-panel weui-panel_access">
+      <div class="weui-panel__bd">
+        <a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg">
+          <div class="weui-media-box__hd">
+            <img class="weui-media-box__thumb" src="{{ club['img'] }}!100x100" alt="">
+          </div>
+          <div class="weui-media-box__bd">
+            <h4 class="weui-media-box__title">{{ club['name'] }}</h4>
+            <p class="weui-media-box__desc">{{ club['introduction'] }}</p>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="weui-tab">
+    <div class="weui-navbar">
+      <a class="weui-navbar__item weui-bar__item--on" href="#tab1">
+        热卖
+      </a>
+      <a class="weui-navbar__item" href="#tab2">
+        博客
+      </a>
+      <a class="weui-navbar__item" href="#tab3">
+        精彩瞬间
+      </a>
+    </div>
+    <div class="weui-tab__bd">
+      <div id="tab1" class="weui-tab__bd-item weui-tab__bd-item--active infinite">
+        <div class="weui-panel weui-panel_access">
+          <div class="weui-panel__bd content-padded">
+            {% for article in articles %}
+            <a href="/weui/clubs/{{ article['club_id'] }}/products/{{ article['_id'] }}" class="weui-media-box weui-media-box_appmsg">
+              <div class="weui-media-box__hd">
+                <img class="weui-media-box__thumb" src="{{ article['img'] }}!100x100" alt="">
+              </div>
+              <div class="weui-media-box__bd">
+                <h4 class="weui-media-box__title">{{ article['title'] }}</h4>
+                <p class="weui-media-box__desc">{{ article['subtitle'] }}</p>
+              </div>
+            </a>
+            {% end %}
+          </div>
+          <div class="weui-panel__ft">
+            <div class="weui-loadmore">
+              <i class="weui-loading"></i>
+              <span class="weui-loadmore__tips">正在加载</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="tab2" class="weui-tab__bd-item">
+        <div class="weui-panel weui-panel_access">
+          <div class="weui-panel__bd">
+            {% for article in articles %}
+            <a href="/weui/clubs/{{ article['club_id'] }}/products/{{ article['_id'] }}" class="weui-media-box weui-media-box_appmsg">
+              <div class="weui-media-box__hd">
+                <img class="weui-media-box__thumb" src="{{ article['img'] }}!100x100" alt="">
+              </div>
+              <div class="weui-media-box__bd">
+                <h4 class="weui-media-box__title">{{ article['title'] }}</h4>
+                <p class="weui-media-box__desc">{{ article['subtitle'] }}</p>
+              </div>
+            </a>
+            {% end %}
+          </div>
+          <div class="weui-panel__ft">
+            <a href="javascript:void(0);" class="weui-cell weui-cell_access weui-cell_link">
+              <div class="weui-cell__bd">查看更多</div>
+              <span class="weui-cell__ft"></span>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div id="tab3" class="weui-tab__bd-item">
+        <div class="weui-panel weui-panel_access">
+          <div class="weui-panel__bd">
+            {% for multimedia in multimedias %}
+            <a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg">
+              <div class="weui-media-box__hd">
+                <img class="weui-media-box__thumb" src="{{ multimedia['url'] }}!100x100" alt="">
+              </div>
+              <div class="weui-media-box__bd">
+              </div>
+            </a>
+            {% end %}
+          </div>
+          <div class="weui-panel__ft">
+            <a href="javascript:void(0);" class="weui-cell weui-cell_access weui-cell_link">
+              <div class="weui-cell__bd">查看更多</div>
+              <span class="weui-cell__ft"></span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 引入jQuery 2.0+ -->
+  <script src="{{ static_url('js/jquery-2.2.4.min.js') }}"></script>
+  <script src="{{ static_url('jquery-weui/lib/fastclick.js') }}"></script>
+  <script>
+    $(function() {
+      FastClick.attach(document.body);
+    });
+  </script>
+  <script src="{{ static_url('jquery-weui/js/jquery-weui.min.js') }}"></script>
+
+  <!-- 如果使用了某些拓展插件还需要额外的JS -->
+  <script src="{{ static_url('jquery-weui/js/swiper.min.js') }}"></script>
+  <script src="{{ static_url('jquery-weui/js/city-picker.min.js') }}"></script>
+
+  <script>
+    $(".infinite").infinite().on("infinite", function() {
+      var self = this;
+      if (self.loading) return;
+      console.log(self)
+      self.loading = true;
+      console.log(self);
+      setTimeout(function() {
+        $(self).find(".content-padded").append("<p>我是加载的新内容。我是加载的新内容。。。我是加载的新内容。。。我是加载的新内容。。。我是加载的新内容。。。我是加载的新内容。。。我是加载的新内容。。。我是加载的新内容。。。我是加载的新内容。。。。。</p>");
+        self.loading = false;
+      }, 2000); //模拟延迟
+    });
+  </script>
+
+</body>
+
+</html>

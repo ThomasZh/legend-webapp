@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>ydui demo</title>
+  <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" name="viewport" />
+  <meta content="yes" name="apple-mobile-web-app-capable" />
+  <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+  <meta content="telephone=no" name="format-detection" />
+  <!-- 引入YDUI样式 -->
+  <link rel="stylesheet" href="{{ static_url('ydui/css/ydui.css') }}">
+  <!-- 引入YDUI自适应解决方案类库 -->
+  <script src="{{ static_url('ydui/js/ydui.flexible.js') }}"></script>
+</head>
+
+<body>
+  <div class="m-slider" id="J_Slider">
+    <div class="slider-wrapper">
+      <div class="slider-item">
+        <a href="#">
+          <img src="http://static.ydcss.com/uploads/ydui/1.jpg">
+        </a>
+      </div>
+      <div class="slider-item">
+        <a href="#">
+          <img src="http://static.ydcss.com/uploads/ydui/2.jpg">
+        </a>
+      </div>
+      <div class="slider-item">
+        <a href="#">
+          <img src="http://static.ydcss.com/uploads/ydui/3.jpg">
+        </a>
+      </div>
+    </div>
+    <div class="slider-pagination"></div>
+    <!-- 分页标识 -->
+  </div>
+
+  <div class="m-grids-3">
+    <a href="#" class="grids-item">
+      <div class="grids-icon"><img src="//static.ydcss.com/ydui/img/logo.png"></div>
+      <div class="grids-txt"><span>image</span></div>
+    </a>
+    <a href="#" class="grids-item">
+      <div class="grids-icon"><i class="icon-home"></i></div>
+      <div class="grids-txt"><span>iconfont</span></div>
+    </a>
+    <a href="#" class="grids-item">
+      <div class="grids-icon"><i class="icon-home"></i></div>
+      <div class="grids-txt"><span>iconfont</span></div>
+    </a>
+  </div>
+
+  <div class="m-celltitle">popular</div>
+  <article class="m-list list-theme3">
+    <a href="#" class="list-item">
+      <div class="list-img">
+        <img src="http://img1.shikee.com/try/2016/06/19/09430120929215230041.jpg_220x220.jpg">
+      </div>
+      <div class="list-mes">
+        <h3 class="list-title">标题标题标题标题标题</h3>
+        <div class="list-mes-item">
+          <div>
+            <span class="list-price"><em>¥</em>34.7</span>
+            <span class="list-del-price">¥45.65</span>
+          </div>
+          <div>right</div>
+        </div>
+      </div>
+    </a>
+    <a href="#" class="list-item">
+      <div class="list-img">
+        <img src="http://img1.shikee.com/try/2016/06/21/10172020923917672923.jpg_220x220.jpg">
+      </div>
+      <div class="list-mes">
+        <h3 class="list-title">骆驼男装2016夏装男士短袖T恤 圆领衣服 印花男装体恤 半袖打底衫</h3>
+        <div class="list-mes-item">
+          <div>
+            <span class="list-price"><em>¥</em>34.7</span>
+            <span class="list-del-price">¥45.65</span>
+          </div>
+        </div>
+      </div>
+    </a>
+    <a href="#" class="list-item">
+      <div class="list-img">
+        <img src="http://img1.shikee.com/try/2016/06/23/15395220917905380014.jpg_220x220.jpg">
+      </div>
+      <div class="list-mes">
+        <h3 class="list-title">条纹短袖T恤男士韩版衣服大码潮流男装夏季圆领体恤2016新款半袖</h3>
+        <div class="list-mes-item">
+          <div>
+            <span class="list-price"><em>¥</em>34.7</span>
+            <span class="list-del-price">¥45.65</span>
+          </div>
+        </div>
+      </div>
+    </a>
+    <a href="#" class="list-item">
+      <div class="list-img">
+        <img src="http://img1.shikee.com/try/2016/06/25/14244120933639105658.jpg_220x220.jpg">
+      </div>
+      <div class="list-mes">
+        <h3 class="list-title">夏季青少年衣服男生潮牌t恤 男士 夏秋学生 日系棉短袖半袖男小衫</h3>
+        <div class="list-mes-item">
+          <div>
+            <span class="list-price"><em>¥</em>34.7</span>
+            <span class="list-del-price">¥45.65</span>
+          </div>
+          <div>right</div>
+        </div>
+      </div>
+    </a>
+  </article>
+
+  <div class="m-celltitle">product list</div>
+  <section id="J_List">
+    <div id="J_ListContent"></div>
+  </section>
+
+  <!-- 引入jQuery 2.0+ -->
+  <script src="{{ static_url('js/jquery-2.2.4.min.js') }}"></script>
+  <!-- 引入YDUI脚本 -->
+  <script src="{{ static_url('ydui/js/ydui.js') }}"></script>
+
+  <script>
+    $('#J_Slider').slider({
+      speed: 200,
+      autoplay: 2000,
+      lazyLoad: true
+    });
+  </script>
+
+  <script>
+    /* 通过自定义的方法获取数据【通常是需要定义变量当前第几页page，和每页请求的记录数pageSize】 */
+    var page = 1,
+      pageSize = 10;
+
+    $('#J_List').infiniteScroll({
+      pageSize: pageSize,
+      initLoad: true,
+      loadingHtml: '<strong>加载中...</strong>',
+      /* 当然也可以<img src="../img/loading.gif" /> */
+      loadListFn: function() {
+        var def = $.Deferred();
+
+        /* 通过自定义的方法获取数据 */
+        $.ajax({
+          url: '/请求数据方法',
+          dataType: 'json',
+          data: {
+            page: page,
+            pagesize: pageSize
+          },
+          success: function(ret) {
+            /* 假设ret.list为后端返回的列表数组 */
+
+            /* 用你喜欢的方法将获取到的数据拼接成HTML，然后插入；*/
+            /* 建议使用模板引擎，示例使用artTemplate；https://github.com/aui/artTemplate */
+            var html = ret.list + '将数据拼接成html';
+            $('#J_ListContent').append(html);
+
+            /* 获取数据，并插入页面后，调用resole，并传入当前获取的记录列表集合 */
+            def.resolve(ret.list);
+
+            /* 页码自增1 */
+            ++page;
+          }
+        });
+
+        return def.promise();
+      }
+    });
+  </script>
+
+</body>
+
+</html>

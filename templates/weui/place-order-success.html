@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>jquery-weui demo</title>
+  <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" name="viewport" />
+  <meta content="yes" name="apple-mobile-web-app-capable" />
+  <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+  <meta content="telephone=no" name="format-detection" />
+
+  <link rel="stylesheet" href="{{ static_url('jquery-weui/lib/weui.min.css') }}">
+  <link rel="stylesheet" href="{{ static_url('jquery-weui/css/jquery-weui.min.css') }}">
+  <link rel="stylesheet" href="{{ static_url('jquery-weui/demos/css/demos.css') }}">
+</head>
+
+<body ontouchstart>
+
+  <div class="weui-msg">
+    <div class="weui-msg__icon-area"><i class="weui-icon-success weui-icon_msg"></i></div>
+    <div class="weui-msg__text-area">
+      <h2 class="weui-msg__title">操作成功</h2>
+      <p class="weui-msg__desc">下单成功，请等待店小二与您联系<a href="javascript:void(0);">多米蛋糕</a></p>
+    </div>
+    <div class="weui-msg__opr-area">
+      <p class="weui-btn-area">
+        <a href="/weui/clubs/{{ club['_id'] }}" class="weui-btn weui-btn_primary">返回首页</a>
+        <a href="javascript:;" class="weui-btn weui-btn_default">关闭</a>
+      </p>
+    </div>
+    <div class="weui-msg__extra-area">
+      <div class="weui-footer">
+        <p class="weui-footer__links">
+          <a href="javascript:void(0);" class="weui-footer__link">全天鹰工作室</a>
+        </p>
+        <p class="weui-footer__text">Copyright © 2015-2017 7x24hs.com</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 引入jQuery 2.0+ -->
+  <script src="{{ static_url('js/jquery-2.2.4.min.js') }}"></script>
+  <script src="{{ static_url('jquery-weui/lib/fastclick.js') }}"></script>
+  <script>
+    $(function() {
+      FastClick.attach(document.body);
+    });
+  </script>
+  <script src="{{ static_url('jquery-weui/js/jquery-weui.min.js') }}"></script>
+
+  <!-- 如果使用了某些拓展插件还需要额外的JS -->
+  <script src="{{ static_url('jquery-weui/js/swiper.min.js') }}"></script>
+  <script src="{{ static_url('jquery-weui/js/city-picker.min.js') }}"></script>
+
+</body>
+
+</html>
