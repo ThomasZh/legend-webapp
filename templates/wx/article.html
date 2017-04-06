@@ -225,7 +225,7 @@
         article: {},
         comments: [],
         num: 0,
-        limit: 8,
+        limit: 4,
       },
       created: function() {
         this.queryArticle();
@@ -263,7 +263,7 @@
 
           $.ajax({
             type: "GET",
-            url: "http://api.7x24hs.com/api/articles/{{ article_id }}/comment?" + idx + "&limit=" + limit,
+            url: "http://api.7x24hs.com/api/articles/{{ article_id }}/comment?idx=" + idx + "&limit=" + limit,
             async: true,
             dataType: "json",
             contentType: 'application/json',
