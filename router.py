@@ -15,11 +15,22 @@ from foo.portal import demo
 from foo.portal import wx
 from foo.portal import ydui
 from foo.portal import weui
+from foo.portal import eshop
 
 
 def map():
 
     config = [
+
+        (r'/', getattr(eshop, 'EshopHomeHandler')),
+        (r'/webapp', getattr(eshop, 'EshopHomeHandler')),
+        (r'/webapp/eshop', getattr(eshop, 'EshopHomeHandler')),
+        (r'/webapp/eshop/clubs/([a-z0-9]*)', getattr(eshop, 'EshopIndexHandler')),
+        (r'/webapp/eshop/clubs/([a-z0-9]*)/articles/([a-z0-9]*)', getattr(eshop, 'EshopArticleHandler')),
+        (r'/webapp/eshop/clubs/([a-z0-9]*)/articles/([a-z0-9]*)/add-comment', getattr(eshop, 'EshopArticleAddCommentHandler')),
+        (r'/webapp/eshop/clubs/([a-z0-9]*)/products/([a-z0-9]*)', getattr(eshop, 'EshopProductHandler')),
+        (r'/webapp/eshop/clubs/([a-z0-9]*)/products/([a-z0-9]*)/place-order', getattr(eshop, 'EshopProductPlaceOrderHandler')),
+        (r'/webapp/eshop/clubs/([a-z0-9]*)/products/([a-z0-9]*)/place-order-success', getattr(eshop, 'EshopProductPlaceOrderSuccessHandler')),
 
         (r'/wx', getattr(wx, 'WxHomeHandler')),
         (r'/wx/clubs/([a-z0-9]*)/index', getattr(wx, 'WxIndexHandler')),
@@ -32,8 +43,11 @@ def map():
         (r'/wx/clubs/([a-z0-9]*)/products/([a-z0-9]*)/order', getattr(wx, 'WxOrderHandler')),
 
         (r'/ydui', getattr(ydui, 'YduiHomeHandler')),
-        (r'/ydui/clubs/([a-z0-9]*)/index', getattr(ydui, 'YduiIndexHandler')),
+        (r'/ydui/clubs/([a-z0-9]*)', getattr(ydui, 'YduiIndexHandler')),
         (r'/ydui/clubs/([a-z0-9]*)/pc', getattr(ydui, 'YduiPcHandler')),
+        (r'/ydui/clubs/([a-z0-9]*)/products/([a-z0-9]*)', getattr(ydui, 'YduiProductHandler')),
+        (r'/ydui/clubs/([a-z0-9]*)/products/([a-z0-9]*)/place-order', getattr(ydui, 'YduiPlaceOrderHandler')),
+        (r'/ydui/clubs/([a-z0-9]*)/products/([a-z0-9]*)/place-order-success', getattr(ydui, 'YduiPlaceOrderSuccessHandler')),
 
         (r'/weui', getattr(weui, 'WeuiHomeHandler')),
         (r'/weui/clubs/([a-z0-9]*)', getattr(weui, 'WeuiIndexHandler')),
@@ -43,7 +57,6 @@ def map():
         (r'/weui/clubs/([a-z0-9]*)/pc', getattr(weui, 'WeuiPcHandler')),
 
         # homepage
-        (r'/', getattr(demo, 'DemoIndexHandler')),
         (r'/webapp/clubs/([a-z0-9]*)/index', getattr(demo, 'DemoClubIndexHandler')),
         (r'/webapp/clubs/([a-z0-9]*)/articles', getattr(demo, 'DemoArticlesHandler')),
         (r'/webapp/clubs/([a-z0-9]*)/articles/([a-z0-9]*)', getattr(demo, 'DemoArticleHandler')),
@@ -55,7 +68,6 @@ def map():
         (r'/webapp/auth/forget', getattr(auth_phone, 'AuthForgotPwdHandler')),
         (r'/webapp/login-next', getattr(auth_phone, 'WebappLoginNextHandler')),
 
-        (r'/webapp', getattr(shuttle, 'ShuttleIndexHandler')),
         (r'/webapp/index', getattr(shuttle, 'ShuttleIndexHandler')),
         (r'/webapp/index-sliced', getattr(shuttle, 'ShuttleIndexSlicedHandler')),
         (r'/webapp/index-slider', getattr(shuttle, 'ShuttleIndexSliderHandler')),

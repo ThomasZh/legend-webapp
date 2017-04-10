@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>{{ club['name'] }}</title>
+  <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" name="viewport" />
+  <meta content="yes" name="apple-mobile-web-app-capable" />
+  <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+  <meta content="telephone=no" name="format-detection" />
+  <!-- 引入YDUI样式 -->
+  <link rel="stylesheet" href="{{ static_url('ydui/css/ydui.css') }}">
+  <link rel="stylesheet" href="{{ static_url('ydui/css/demo.css') }}" />
+  <link rel="stylesheet" href="{{ static_url('jquery-weui/lib/weui.css') }}" />
+  <!-- 引入YDUI自适应解决方案类库 -->
+  <script src="{{ static_url('ydui/js/ydui.flexible.js') }}"></script>
+</head>
+
+<body>
+  <section class="g-flexview">
+    <!-- <section id="mainForm" class="g-scrollview"> -->
+    <section id="mainForm">
+
+      <div class="tab-panel-item">
+        <article class="m-list list-theme5 g-scrollview">
+          <div class="m-slider " id="J_Slider ">
+            <div class="slider-wrapper ">
+              <div class="slider-item ">
+                <a href="# ">
+                  <img src="{{ article[ 'img'] }}!700x467 ">
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <h1 class="demo-pagetitle ">{{ article['title'] }}</h1>
+          <p class="demo-detail-title ">{{ article['subtitle'] }}</p>
+
+          <div class="m-tab demo-small-pitch " data-ydui-tab>
+            <ul class="tab-nav ">
+              <li class="tab-nav-item tab-active "><a href="javascript:; ">价格</a></li>
+              <li class="tab-nav-item "><a href="javascript:; ">{{ article['comment_num'] }}条评论</a></li>
+            </ul>
+
+            <div class="tab-panel ">
+              <div class="tab-panel-item tab-active ">
+                <section class="g-scrollview ">
+                  <div class="m-cell ">
+                    <div class="cell-item ">
+                      <div class="cell-left ">6寸:</div>
+                      <div class="cell-right "><span class="list-price "><em>¥</em>200</span>&nbsp;<span class="list-del-price ">¥220</span></div>
+                    </div>
+                    <div class="cell-item ">
+                      <div class="cell-left ">8寸:</div>
+                      <div class="cell-right "><span class="list-price "><em>¥</em>240</span>&nbsp;<span class="list-del-price ">¥260</span></div>
+                    </div>
+                    <div class="cell-item ">
+                      <div class="cell-left ">10寸:</div>
+                      <div class="cell-right "><span class="list-price "><em>¥</em>280</span>&nbsp;<span class="list-del-price ">¥300</span></div>
+                    </div>
+                  </div>
+                </section>
+              </div>
+              <div class="tab-panel-item ">
+                <section class="g-scrollview ">
+                  <div class="page__bd">
+                    <div class="weui-panel weui-panel_access">
+                      <div class="weui-panel__bd">
+                        {% for comment in comments %}
+                        <a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg">
+                          <div class="weui-media-box__hd">
+                            <img class="weui-media-box__thumb" src="{{ comment['avatar'] }}" alt="">
+                          </div>
+                          <div class="weui-media-box__bd">
+                            <h4 class="weui-media-box__title">{{ comment['nickname'] }}</h4>
+                            <p class="weui-media-box__desc">{{ comment['comment'] }}</p>
+                          </div>
+                        </a>
+                        {% end %}
+                      </div>
+                      <div class="weui-panel__ft">
+                        <a href="javascript:void(0);" class="weui-cell weui-cell_access weui-cell_link">
+                          <div class="weui-cell__bd">查看更多</div>
+                          <span class="weui-cell__ft"></span>
+                        </a>
+                      </div>
+                    </div>
+                </section>
+                </div>
+              </div>
+            </div>
+
+            <section class="weui-article">
+              <p>{% raw article['paragraphs'] %}</p>
+            </section>
+
+            <!-- 使用：样式模块以按钮为例 -->
+            <div class="m-button ">
+              <a href="/ydui/clubs/{{ club[ '_id'] }}/products/{{ article[ '_id'] }}/place-order " class="btn-block btn-primary ">预订</a>
+            </div>
+
+        </article>
+        </div>
+
+    </section>
+  </section>
+
+  <!-- 引入jQuery 2.0+ -->
+  <script src="{{ static_url( 'js/jquery-2.2.4.min.js') }} "></script>
+  <!-- 引入YDUI脚本 -->
+  <script src="{{ static_url( 'ydui/js/ydui.js') }} "></script>
+
+</body>
+
+</html>

@@ -3,126 +3,75 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>ydui demo</title>
+  <title>{{ club['name'] }}</title>
   <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" name="viewport" />
   <meta content="yes" name="apple-mobile-web-app-capable" />
   <meta content="black" name="apple-mobile-web-app-status-bar-style" />
   <meta content="telephone=no" name="format-detection" />
   <!-- 引入YDUI样式 -->
   <link rel="stylesheet" href="{{ static_url('ydui/css/ydui.css') }}">
+  <link rel="stylesheet" href="{{ static_url('ydui/css/demo.css') }}" />
   <!-- 引入YDUI自适应解决方案类库 -->
   <script src="{{ static_url('ydui/js/ydui.flexible.js') }}"></script>
 </head>
 
 <body>
-  <div class="m-slider" id="J_Slider">
-    <div class="slider-wrapper">
-      <div class="slider-item">
-        <a href="#">
-          <img src="http://static.ydcss.com/uploads/ydui/1.jpg">
-        </a>
-      </div>
-      <div class="slider-item">
-        <a href="#">
-          <img src="http://static.ydcss.com/uploads/ydui/2.jpg">
-        </a>
-      </div>
-      <div class="slider-item">
-        <a href="#">
-          <img src="http://static.ydcss.com/uploads/ydui/3.jpg">
-        </a>
-      </div>
-    </div>
-    <div class="slider-pagination"></div>
-    <!-- 分页标识 -->
-  </div>
 
-  <div class="m-grids-3">
-    <a href="#" class="grids-item">
-      <div class="grids-icon"><img src="//static.ydcss.com/ydui/img/logo.png"></div>
-      <div class="grids-txt"><span>image</span></div>
-    </a>
-    <a href="#" class="grids-item">
-      <div class="grids-icon"><i class="icon-home"></i></div>
-      <div class="grids-txt"><span>iconfont</span></div>
-    </a>
-    <a href="#" class="grids-item">
-      <div class="grids-icon"><i class="icon-home"></i></div>
-      <div class="grids-txt"><span>iconfont</span></div>
-    </a>
-  </div>
+  <section class="g-flexview">
+    <section id="mainForm" class="g-scrollview">
+      <!-- <section id="mainForm"> -->
 
-  <div class="m-celltitle">popular</div>
-  <article class="m-list list-theme3">
-    <a href="#" class="list-item">
-      <div class="list-img">
-        <img src="http://img1.shikee.com/try/2016/06/19/09430120929215230041.jpg_220x220.jpg">
-      </div>
-      <div class="list-mes">
-        <h3 class="list-title">标题标题标题标题标题</h3>
-        <div class="list-mes-item">
-          <div>
-            <span class="list-price"><em>¥</em>34.7</span>
-            <span class="list-del-price">¥45.65</span>
-          </div>
-          <div>right</div>
-        </div>
-      </div>
-    </a>
-    <a href="#" class="list-item">
-      <div class="list-img">
-        <img src="http://img1.shikee.com/try/2016/06/21/10172020923917672923.jpg_220x220.jpg">
-      </div>
-      <div class="list-mes">
-        <h3 class="list-title">骆驼男装2016夏装男士短袖T恤 圆领衣服 印花男装体恤 半袖打底衫</h3>
-        <div class="list-mes-item">
-          <div>
-            <span class="list-price"><em>¥</em>34.7</span>
-            <span class="list-del-price">¥45.65</span>
+      <div class="m-slider" id="J_Slider">
+        <div class="slider-wrapper">
+          <div class="slider-item">
+            <a href="#">
+              <img src="{{ club['img'] }}!700x467">
+            </a>
           </div>
         </div>
+        <div class="slider-pagination"></div>
+        <!-- 分页标识 -->
       </div>
-    </a>
-    <a href="#" class="list-item">
-      <div class="list-img">
-        <img src="http://img1.shikee.com/try/2016/06/23/15395220917905380014.jpg_220x220.jpg">
-      </div>
-      <div class="list-mes">
-        <h3 class="list-title">条纹短袖T恤男士韩版衣服大码潮流男装夏季圆领体恤2016新款半袖</h3>
-        <div class="list-mes-item">
-          <div>
-            <span class="list-price"><em>¥</em>34.7</span>
-            <span class="list-del-price">¥45.65</span>
-          </div>
-        </div>
-      </div>
-    </a>
-    <a href="#" class="list-item">
-      <div class="list-img">
-        <img src="http://img1.shikee.com/try/2016/06/25/14244120933639105658.jpg_220x220.jpg">
-      </div>
-      <div class="list-mes">
-        <h3 class="list-title">夏季青少年衣服男生潮牌t恤 男士 夏秋学生 日系棉短袖半袖男小衫</h3>
-        <div class="list-mes-item">
-          <div>
-            <span class="list-price"><em>¥</em>34.7</span>
-            <span class="list-del-price">¥45.65</span>
-          </div>
-          <div>right</div>
-        </div>
-      </div>
-    </a>
-  </article>
 
-  <div class="m-celltitle">product list</div>
-  <section id="J_List">
-    <div id="J_ListContent"></div>
+      <div class="m-tab demo-small-pitch" data-ydui-tab>
+        <ul class="tab-nav">
+          <li class="tab-nav-item tab-active"><a href="javascript:;">热卖</a></li>
+          <li class="tab-nav-item"><a href="javascript:;">博客</a></li>
+          <li class="tab-nav-item"><a href="javascript:;">精彩瞬间</a></li>
+        </ul>
+
+        <div class="tab-panel">
+          <div class="tab-panel-item tab-active">
+            <section id="productForm" class="g-scrollview">
+              <article class="m-list list-theme2">
+                <a is="oneProduct" v-for="(product, idx) in products" v-bind:product="product" v-bind:idx="idx"></a>
+              </article>
+            </section>
+          </div>
+          <div class="tab-panel-item">
+            <section id="articleForm" class="g-scrollview">
+              <article class="m-list list-theme4">
+                <a is="oneArticle" v-for="(article, idx) in articles" v-bind:article="article" v-bind:idx="idx"></a>
+              </article>
+            </section>
+          </div>
+          <div class="tab-panel-item">
+            <section id="multimediaForm" class="g-scrollview">
+              <article class="m-list list-theme5">
+                <a is="oneMultimedia" v-for="(multimedia, idx) in multimedias" v-bind:multimedia="multimedia" v-bind:idx="idx"></a>
+              </article>
+            </section>
+          </div>
+        </div>
+      </div>
+    </section>
   </section>
 
   <!-- 引入jQuery 2.0+ -->
   <script src="{{ static_url('js/jquery-2.2.4.min.js') }}"></script>
   <!-- 引入YDUI脚本 -->
   <script src="{{ static_url('ydui/js/ydui.js') }}"></script>
+  <script src="{{ static_url('js/vue-2.1.4.js') }}" type="text/javascript"></script>
 
   <script>
     $('#J_Slider').slider({
@@ -133,45 +82,271 @@
   </script>
 
   <script>
-    /* 通过自定义的方法获取数据【通常是需要定义变量当前第几页page，和每页请求的记录数pageSize】 */
-    var page = 1,
-      pageSize = 10;
+    Vue.component('oneProduct', {
+      template: '\
+        <a v-bind:href="product.url" class="list-item">\
+          <div class="list-img">\
+            <img v-bind:src="product.img">\
+          </div>\
+          <div class="list-mes">\
+            <h3 class="list-title">{{! product.title }}</h3>\
+            <div class="list-mes-item">\
+              <div>\
+                <span class="list-price"><em>¥</em>34.7</span>\
+                <span class="list-del-price">¥45.65</span>\
+              </div>\
+              <div>right</div>\
+            </div>\
+          </div>\
+        </a>\
+      ',
+      props: ['idx', 'product'],
+      methods: {}
+    })
 
-    $('#J_List').infiniteScroll({
-      pageSize: pageSize,
-      initLoad: true,
-      loadingHtml: '<strong>加载中...</strong>',
-      /* 当然也可以<img src="../img/loading.gif" /> */
-      loadListFn: function() {
-        var def = $.Deferred();
+    Vue.component('oneArticle', {
+      template: '\
+        <a v-bind:href="article.url" class="list-item">\
+          <div class="list-img">\
+            <img v-bind:src="article.img">\
+          </div>\
+          <div class="list-mes">\
+            <h3 class="list-title">{{! article.title }}</h3>\
+            <div class="list-mes-item">\
+              <div>\
+                <span class="list-price"><em>¥</em>34.7</span>\
+                <span class="list-del-price">¥45.65</span>\
+              </div>\
+              <div>right</div>\
+            </div>\
+          </div>\
+        </a>\
+      ',
+      props: ['idx', 'article'],
+      methods: {}
+    })
 
-        /* 通过自定义的方法获取数据 */
-        $.ajax({
-          url: '/请求数据方法',
-          dataType: 'json',
-          data: {
-            page: page,
-            pagesize: pageSize
-          },
-          success: function(ret) {
-            /* 假设ret.list为后端返回的列表数组 */
+    Vue.component('oneMultimedia', {
+      template: '\
+        <a href="#" class="list-item">\
+          <div class="list-img">\
+            <img v-bind:src="multimedia.url">\
+          </div>\
+        </a>\
+      ',
+      props: ['idx', 'multimedia'],
+      methods: {}
+    })
 
-            /* 用你喜欢的方法将获取到的数据拼接成HTML，然后插入；*/
-            /* 建议使用模板引擎，示例使用artTemplate；https://github.com/aui/artTemplate */
-            var html = ret.list + '将数据拼接成html';
-            $('#J_ListContent').append(html);
-
-            /* 获取数据，并插入页面后，调用resole，并传入当前获取的记录列表集合 */
-            def.resolve(ret.list);
-
-            /* 页码自增1 */
-            ++page;
+    var vm = new Vue({
+      el: '#mainForm',
+      data: {
+        products: [],
+        products_num: 0,
+        articles: [],
+        articles_num: 0,
+        multimedias: [],
+        multimedias_num: 0,
+        limit: 8,
+      },
+      created: function() {
+        this.queryMoreProducts();
+        this.queryMoreArticles();
+        this.queryMoreMultimedias();
+      },
+      methods: {
+        addProducts: function(datas) {
+          for (var i = 0, l = datas.length; i < l; i++) {
+            product = datas[i];
+            product.url = "/ydui/clubs/" + product.club_id + "/products/" + product._id;
+            product.img += "!370x320";
+            _self.products.push(product);
+            _self.products_num += 1;
           }
-        });
+        },
+        queryMoreProducts: function() {
+          _self = this;
+          idx = this.products_num;
+          limit = this.limit;
 
-        return def.promise();
+          $.ajax({
+            type: "GET",
+            url: "http://api.7x24hs.com/api/articles?idx=" + idx + "&limit=" + limit + "&filter=club&club_id={{ club['_id'] }}&category=0bbf89e2f73411e69a3c00163e023e51",
+            async: true,
+            dataType: "json",
+            contentType: 'application/json',
+            success: function(datas, status, xhr) {
+              console.log(datas);
+              _self.addProducts(datas.rs);
+            },
+          });
+        },
+        addArticles: function(datas) {
+          for (var i = 0, l = datas.length; i < l; i++) {
+            article = datas[i];
+            article.url = "/ydui/clubs/" + article.club_id + "/products/" + article._id;
+            article.img += "!370x320";
+            article.publish_time = _self.getFriendlyTime(article.publish_time);
+            _self.articles.push(article);
+            _self.articles_num += 1;
+          }
+        },
+        queryMoreArticles: function() {
+          _self = this;
+          idx = this.articles_num;
+          limit = this.limit;
+
+          $.ajax({
+            type: "GET",
+            url: "http://api.7x24hs.com/api/articles?idx=" + idx + "&limit=" + limit + "&filter=club&club_id={{ club['_id'] }}",
+            async: true,
+            dataType: "json",
+            contentType: 'application/json',
+            success: function(datas, status, xhr) {
+              console.log(datas);
+              _self.addArticles(datas.rs);
+            },
+          });
+        },
+        addMultimedias: function(datas) {
+          for (var i = 0, l = datas.length; i < l; i++) {
+            multimedia = datas[i];
+            multimedia.url_original = multimedia.url;
+            multimedia.url += "!370x320";
+            _self.multimedias.push(multimedia);
+            _self.multimedias_num += 1;
+          }
+        },
+        queryMoreMultimedias: function() {
+          _self = this;
+          idx = this.multimedias_num;
+          limit = this.limit;
+
+          $.ajax({
+            type: "GET",
+            url: "http://api.7x24hs.com/api/multimedias?idx=" + idx + "&limit=" + limit + "&filter=club&club_id={{ club['_id'] }}",
+            async: true,
+            dataType: "json",
+            contentType: 'application/json',
+            success: function(datas, status, xhr) {
+              console.log(datas);
+              _self.addMultimedias(datas.rs);
+            },
+          });
+        },
+        getFriendlyTime(nS) { //时间戳转换
+          return new Date(parseInt(nS) * 1000).toLocaleString().replace(/:\d{1,2}$/, ' ');
+        },
       }
-    });
+    })
+  </script>
+
+  <script>
+    ! function() {
+
+      // 根据实际情况自定义获取数据方法
+      var loadMoreProducts = function(callback) {
+        $.ajax({
+          type: "GET",
+          url: "http://api.7x24hs.com/api/articles?idx=" + vm.products_num + "&limit=" + vm.limit + "&filter=club&club_id={{ club['_id'] }}&category=0bbf89e2f73411e69a3c00163e023e51",
+          async: true,
+          dataType: "json",
+          contentType: 'application/json',
+          success: function(datas, status, xhr) {
+            console.log(datas);
+            vm.addProducts(datas.rs);
+
+            typeof callback == 'function' && callback(datas.rs);
+          },
+        });
+      };
+
+      $('#productForm').infiniteScroll({
+        binder: '#mainForm',
+        pageSize: vm.limit,
+        initLoad: false,
+        loadingHtml: '<img src="http://static.ydcss.com/uploads/ydui/loading/loading10.svg"/>',
+        loadListFn: function() {
+          console.log('loadListFn');
+          var def = $.Deferred();
+
+          loadMoreProducts(function(listArr) {
+            def.resolve(listArr);
+          });
+
+          return def.promise();
+        }
+      });
+
+      // 根据实际情况自定义获取数据方法
+      var loadMoreArticles = function(callback) {
+        $.ajax({
+          type: "GET",
+          url: "http://api.7x24hs.com/api/articles?idx=" + vm.articles_num + "&limit=" + vm.limit + "&filter=club&club_id={{ club['_id'] }}",
+          async: true,
+          dataType: "json",
+          contentType: 'application/json',
+          success: function(datas, status, xhr) {
+            console.log(datas);
+            vm.addArticles(datas.rs);
+
+            typeof callback == 'function' && callback(datas.rs);
+          },
+        });
+      };
+
+      $('#articleForm').infiniteScroll({
+        binder: '#articleForm',
+        pageSize: vm.limit,
+        initLoad: false,
+        loadingHtml: '<img src="http://static.ydcss.com/uploads/ydui/loading/loading10.svg"/>',
+        loadListFn: function() {
+          console.log('loadListFn');
+          var def = $.Deferred();
+
+          loadMoreArticles(function(listArr) {
+            def.resolve(listArr);
+          });
+
+          return def.promise();
+        }
+      });
+
+      // 根据实际情况自定义获取数据方法
+      var loadMoreMultimedias = function(callback) {
+        $.ajax({
+          type: "GET",
+          url: "http://api.7x24hs.com/api/multimedias?idx=" + vm.multimedias_num + "&limit=" + vm.limit + "&filter=club&club_id={{ club['_id'] }}",
+          async: true,
+          dataType: "json",
+          contentType: 'application/json',
+          success: function(datas, status, xhr) {
+            console.log(datas);
+            vm.addMultimedias(datas.rs);
+
+            typeof callback == 'function' && callback(datas.rs);
+          },
+        });
+      };
+
+      $('#multimediaForm').infiniteScroll({
+        binder: '#multimediaForm',
+        pageSize: vm.limit,
+        initLoad: false,
+        loadingHtml: '<img src="http://static.ydcss.com/uploads/ydui/loading/loading10.svg"/>',
+        loadListFn: function() {
+          console.log('loadListFn');
+          var def = $.Deferred();
+
+          loadMoreMultimedias(function(listArr) {
+            def.resolve(listArr);
+          });
+
+          return def.promise();
+        }
+      });
+
+    }();
   </script>
 
 </body>

@@ -34,102 +34,111 @@ from comm import *
 from global_const import *
 
 
-class YduiHomeHandler(tornado.web.RequestHandler):
+class EshopHomeHandler(tornado.web.RequestHandler):
     def get(self):
         logging.info(self.request)
 
-        self.redirect("/ydui/clubs/"+CLUB_ID)
+        self.redirect("/webapp/eshop/clubs/"+CLUB_ID)
 
 
-class YduiIndexHandler(tornado.web.RequestHandler):
+class EshopIndexHandler(tornado.web.RequestHandler):
     def get(self, club_id):
         logging.info(self.request)
         logging.info("got club_id %r--------", club_id)
 
         # club
-        url = "http://api.7x24hs.com/api/clubs/"+club_id
+        url = API_DOMAIN + "/api/clubs/" + club_id
         http_client = HTTPClient()
         response = http_client.fetch(url, method="GET")
-        logging.info("got response %r", response.body)
+        logging.info("got club response %r", response.body)
         rs = json_decode(response.body)
         club = rs['rs']
 
-        self.render('ydui/index.html',
+        self.render('eshop/index.html',
+                API_DOMAIN=API_DOMAIN,
                 club=club)
 
 
-class YduiProductHandler(tornado.web.RequestHandler):
+class EshopArticleHandler(tornado.web.RequestHandler):
     def get(self, club_id, article_id):
         logging.info(self.request)
-        logging.info("got club_id %r--------", club_id)
+        logging.info("got article_id %r in uri", article_id)
 
         # club
-        url = "http://api.7x24hs.com/api/clubs/"+club_id
+        url = API_DOMAIN + "/api/clubs/"+club_id
         http_client = HTTPClient()
         response = http_client.fetch(url, method="GET")
         logging.info("got response %r", response.body)
         rs = json_decode(response.body)
         club = rs['rs']
 
-        # article
-        url = "http://api.7x24hs.com/api/articles/"+article_id
-        http_client = HTTPClient()
-        response = http_client.fetch(url, method="GET")
-        logging.info("got article response %r", response.body)
-        rs = json_decode(response.body)
-        article = rs['rs']
-        article['publish_time'] = timestamp_friendly_date(article['publish_time'])
-
-        html = article['paragraphs']
-        # 为图片延迟加载准备数据
-        # <img alt="" src="http://bighorn.b0.upaiyun.com/blog/2016/11/2/758f7478-d406-4f2e-9566-306a963fb979" />
-        # <img data-original="真实图片" src="占位符图片">
-        ptn="(<img src=\"http[s]*://[\w\.\/\-]+\" />)"
-        img_ptn = re.compile(ptn)
-        imgs = img_ptn.findall(html)
-        for img in imgs:
-            logging.info("got img %r", img)
-            ptn="<img src=\"(http[s]*://[\w\.\/\-]+)\" />"
-            url_ptn = re.compile(ptn)
-            urls = url_ptn.findall(html)
-            url = urls[0]
-            logging.info("got url %r", url)
-            #html = html.replace(img, "<img class=\"lazy\" data-original=\""+url+"\" src=\"/static/images/weui.png\" width=\"100%\" height=\"480\" />")
-            html = html.replace(img, "<img width='100%' src='"+url+"!794w' />")
-        logging.info("got html %r", html)
-        article['paragraphs'] = html
-
         # update read_num
-        read_num = article['read_num']
-        url = "http://api.7x24hs.com/api/articles/"+article_id+"/read"
+        url = API_DOMAIN + "/api/articles/"+article_id+"/read"
         http_client = HTTPClient()
-        _body = {"read_num": read_num+1}
+        _body = {"read_num": 1}
         _json = json_encode(_body)
         response = http_client.fetch(url, method="POST", body=_json)
         logging.info("got update read_num response %r", response.body)
 
-        # article's last comments
-        params = {"idx":0, "limit":8}
-        url = url_concat("http://api.7x24hs.com/api/articles/"+article_id+"/comment", params)
-        http_client = HTTPClient()
-        response = http_client.fetch(url, method="GET")
-        logging.info("got article response %r", response.body)
-        rs = json_decode(response.body)
-        comments = rs['rs']
-
-        self.render('ydui/product.html',
+        self.render('eshop/article.html',
+                API_DOMAIN=API_DOMAIN,
                 club=club,
-                article=article,
-                comments=comments)
+                article_id=article_id)
 
 
-class YduiPlaceOrderHandler(tornado.web.RequestHandler):
+class EshopProductHandler(tornado.web.RequestHandler):
     def get(self, club_id, article_id):
         logging.info(self.request)
         logging.info("got article_id %r in uri", article_id)
 
         # club
-        url = "http://api.7x24hs.com/api/clubs/"+club_id
+        url = API_DOMAIN + "/api/clubs/"+club_id
+        http_client = HTTPClient()
+        response = http_client.fetch(url, method="GET")
+        logging.info("got response %r", response.body)
+        rs = json_decode(response.body)
+        club = rs['rs']
+
+        # update read_num
+        url = API_DOMAIN + "/api/articles/"+article_id+"/read"
+        http_client = HTTPClient()
+        _body = {"read_num": 1}
+        _json = json_encode(_body)
+        response = http_client.fetch(url, method="POST", body=_json)
+        logging.info("got update read_num response %r", response.body)
+
+        self.render('eshop/product.html',
+                API_DOMAIN=API_DOMAIN,
+                club=club,
+                article_id=article_id)
+
+
+class EshopArticleAddCommentHandler(tornado.web.RequestHandler):
+    def get(self, club_id, article_id):
+        logging.info(self.request)
+        logging.info("got article_id %r in uri", article_id)
+
+        # club
+        url = API_DOMAIN + "/api/clubs/"+club_id
+        http_client = HTTPClient()
+        response = http_client.fetch(url, method="GET")
+        logging.info("got response %r", response.body)
+        rs = json_decode(response.body)
+        club = rs['rs']
+
+        self.render('eshop/add-comment.html',
+                API_DOMAIN=API_DOMAIN,
+                club=club,
+                article_id=article_id)
+
+
+class EshopProductPlaceOrderHandler(tornado.web.RequestHandler):
+    def get(self, club_id, article_id):
+        logging.info(self.request)
+        logging.info("got article_id %r in uri", article_id)
+
+        # club
+        url = API_DOMAIN + "/api/clubs/"+club_id
         http_client = HTTPClient()
         response = http_client.fetch(url, method="GET")
         logging.info("got response %r", response.body)
@@ -137,25 +146,26 @@ class YduiPlaceOrderHandler(tornado.web.RequestHandler):
         club = rs['rs']
 
         # article
-        url = "http://api.7x24hs.com/api/articles/"+article_id
+        url = API_DOMAIN + "/api/articles/"+article_id
         http_client = HTTPClient()
         response = http_client.fetch(url, method="GET")
         logging.info("got article response %r", response.body)
         rs = json_decode(response.body)
         article = rs['rs']
 
-        self.render('ydui/place-order.html',
+        self.render('eshop/place-order.html',
+                API_DOMAIN=API_DOMAIN,
                 club=club,
                 article=article)
 
 
-class YduiPlaceOrderSuccessHandler(tornado.web.RequestHandler):
+class EshopProductPlaceOrderSuccessHandler(tornado.web.RequestHandler):
     def get(self, club_id, article_id):
         logging.info(self.request)
         logging.info("got article_id %r in uri", article_id)
 
         # club
-        url = "http://api.7x24hs.com/api/clubs/"+club_id
+        url = API_DOMAIN + "/api/clubs/"+club_id
         http_client = HTTPClient()
         response = http_client.fetch(url, method="GET")
         logging.info("got response %r", response.body)
@@ -163,30 +173,14 @@ class YduiPlaceOrderSuccessHandler(tornado.web.RequestHandler):
         club = rs['rs']
 
         # article
-        url = "http://api.7x24hs.com/api/articles/"+article_id
+        url = API_DOMAIN + "/api/articles/"+article_id
         http_client = HTTPClient()
         response = http_client.fetch(url, method="GET")
         logging.info("got article response %r", response.body)
         rs = json_decode(response.body)
         article = rs['rs']
 
-        self.render('ydui/place-order-success.html',
+        self.render('eshop/place-order-success.html',
+                API_DOMAIN=API_DOMAIN,
                 club=club,
                 article=article)
-
-
-class YduiPcHandler(tornado.web.RequestHandler):
-    def get(self, club_id):
-        logging.info(self.request)
-        logging.info("got club_id %r--------", club_id)
-
-        # club
-        url = "http://api.7x24hs.com/api/clubs/"+club_id
-        http_client = HTTPClient()
-        response = http_client.fetch(url, method="GET")
-        logging.info("got response %r", response.body)
-        rs = json_decode(response.body)
-        club = rs['rs']
-
-        self.render('ydui/pc.html',
-                club=club)
